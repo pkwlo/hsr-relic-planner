@@ -1,5 +1,6 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
+const fs = require("fs");
 
 async function fetchRelicData(url) {
     try {
@@ -19,7 +20,12 @@ async function fetchRelicData(url) {
             const relicType = ($(element).find(".hsr-relic-info").text().trim()).split(": ")[1];
             
             const baseURL = "https://www.prydwen.gg";
-            const relicImgUrl = $(element).find(".hsr-relic-image img").attr("src");
+            // const relicImgUrl = $(element).find("picture img").attr("src");
+
+            // Extract the correct image URL
+            const pictureElement = $(element).find(".hsr-relic-image picture");
+            const imgElement = pictureElement.find("img");
+            const relicImgUrl = imgElement.attr("src") || imgElement.attr("data-src");
             const fullRelicImgUrl = new URL(relicImgUrl, baseURL).href;
             
             // Separate the bonus into two parts: (2) and (4)
@@ -45,9 +51,18 @@ async function fetchRelicData(url) {
                 });
             }
         });
-        
         // Log the extracted relic data
         console.log(relics);
+
+        // Convert the relics array to JSON string
+        const jsonString = JSON.stringify(relics, null, 2);
+
+        // Save the JSON string to a file
+        fs.writeFileSync("relics.json", jsonString, "utf-8");
+
+        // Log the message indicating successful save
+        console.log("Relic data has been saved to relics.json");
+
     } catch (error) {
         console.error(`Error fetching data from ${url}`, error);
     }
