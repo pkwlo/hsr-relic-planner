@@ -71,7 +71,7 @@ export default function Page() {
           const relicName = relic.name;
           const relic2Pc = relic.bonus2pc || "";
           const relic4Pc = relic.bonus4pc || "";
-          const relicImage = relic.image;
+          const relicImage = relic.local;
           return (
             <RelicCardTemplate
               key={index}
@@ -91,7 +91,7 @@ export default function Page() {
         if (relic.type !== "Relic Set") {
           const ornamentName = relic.name;
           const ornament2Pc = relic.bonus2pc;
-          const ornamentImage = relic.image;
+          const ornamentImage = relic.local;
           return (
             <OrnamentCardTemplate
               key={index}
