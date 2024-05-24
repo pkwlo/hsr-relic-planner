@@ -1,7 +1,4 @@
 import Image from "next/image";
-import path from "path";
-import fs from "fs";
-
 import relics from "./relics.json";
 
 function RelicCardTemplate({

@@ -1,42 +1,67 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# HSR Relic Manager
 
-## Getting Started
+# To Do
 
-First, run the development server:
+## Dashboard
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- populate with info saved from character page
+- sort by set
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Character Page
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- select owned character -> save to user
+- for each character select relic set(s) + ornament set to farm -> save to user
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. select set
+2. select stats per part
 
-## Learn More
+for each user: (example)
+{'character': Dan Heng,
+'relic': {musketeer: {head:{main: , sub: {}}, arm: {main: , sub: {}}, feet: {main: {}, sub: {}}, body: {main: {}, sub: {}}},
+eagle: {head:{main: , sub: {}}, arm: {main: , sub: {}}, feet: {main: {} , sub: {}}, body: {main: {} , sub: {}}}},
+'ornament': {hss: {orb: {main: {atk%,wind dmg%}},substats: {atk%,spd,crit rate,crit dmg}rope: {main: {atk%}},substats: {atk%,spd,crit rate,crit dmg}}, salsotto {orb: {main:{}, sub:{}} ,rope: {main:{}, sub:{}}}}
+}
 
-To learn more about Next.js, take a look at the following resources:
+- show list of chars
+- click to expand
+- list of relic sets (set 1, set 2...etc)
+- click to expand to see each piece with the stats you are farming for
+- check mark for done/not done on each piece
+- mark all as complete button
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Relic Sets Page
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- search bar
+- filter options
+  - relic vs ornaments
+- filter options (search 2pc description)
+  - ATK
+  - DEF
+  - Lightning DMG
+  - Effect RES
+  - CRIT DMG/CRIT Rate
+  - Physical DMG
+  - Wind DMG
+  - Fire DMG
+  - HP
+  - Quantum DMG
+  - Reduces DMG
+  - Ice DMG
+  - SPD
+  - Effect Hit Rate
+  - Energy Regeneration Rate
+  - debuff
+  - Break Effect
+  - follow-up
+  - Imaginary DMG
+- or manually add tags and make it so that rerunning server.js does not overwrite relics that are already present
+- add css and beautify page
+- add responsiveness
 
 # Libraries Used
+
 ## Axios
+
 axios is a promise-based HTTP client for JavaScript, often used in both browser and Node.js environments. It simplifies making HTTP requests, such as GET, POST, PUT, DELETE, etc., and handling responses. Here are some key features:
 
 Promise-based: Uses Promises to handle asynchronous operations, making it easier to work with asynchronous code.
@@ -45,6 +70,7 @@ Error handling: Provides better error handling compared to the native fetch API.
 Interceptors: Allows you to intercept requests or responses before they are handled, useful for adding headers, logging, or modifying request data.
 
 ## Cheerios
+
 cheerio is a fast, flexible, and lean implementation of core jQuery designed specifically for the server. It is commonly used for web scraping, allowing you to parse and manipulate HTML and XML in a jQuery-like syntax. Cheerio is often used to extract data from HTML documents after fetching them using an HTTP client like axios.
 
 Key features of cheerio:
