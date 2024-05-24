@@ -50,7 +50,7 @@ async function fetchRelicData(url) {
       const fullRelicImgUrl = new URL(relicImgUrl, baseURL).href;
       const placeholderImage = "/set-images/placeholder.png";
       const imageLocation = path.join(
-        "../public/set-images",
+        "/set-images",
         `${relicName.replace(/\s+/g, "_")}.png`,
       );
       const imageFilename = path.join(
