@@ -4,7 +4,7 @@ const fs = require("fs");
 const path = require("path");
 
 const imageFolder = path.join(__dirname, 'public/set-images');
-console.log(imageFolder);
+const url = "https://www.prydwen.gg/star-rail/guides/relic-sets/";
 
 // Create the images directory if it doesn't exist
 if (!fs.existsSync(path.join(imageFolder))) {
@@ -40,14 +40,11 @@ async function fetchRelicData(url) {
         
         // Select and iterate over each relic element to extract the name and set bonus
         $(".col").each((index, element) => {
-            // const relicImgUrl = $(element).find(".hsr-relic-image img").attr("srcset");
             const relicName = $(element).find(".hsr-relic-data h4").text().trim();
             const relicType = ($(element).find(".hsr-relic-info").text().trim()).split(": ")[1];
-            
-            const baseURL = "https://www.prydwen.gg";
-            // const relicImgUrl = $(element).find("picture img").attr("src");
 
-            // Extract the correct image URL
+            // Getting Image URL
+            const baseURL = "https://www.prydwen.gg";
             const pictureElement = $(element).find(".hsr-relic-image picture");
             const imgElement = pictureElement.find("img");
             const relicImgUrl = imgElement.attr("src") || imgElement.attr("data-src");
@@ -75,18 +72,18 @@ async function fetchRelicData(url) {
                     bonus2pc: bonus2.split("(2) ")[1]
                 });
 
+            }
             // Download and save the image only if it doesn't already exist
-            if (relicImgUrl) {
+            if (fullRelicImgUrl && fullRelicImgUrl !== "https://www.prydwen.gg/undefined") {
                 const imageFilename = path.join(imageFolder, `${relicName.replace(/\s+/g, '_')}.png`);
                 if (!fs.existsSync(imageFilename)) {
-                    downloadImage(`https://www.prydwen.gg${relicImgUrl}`, imageFilename)
+                    downloadImage(`${fullRelicImgUrl}`, imageFilename)
                         .then(() => console.log(`Image saved: ${imageFilename}`))
                         .catch(err => console.error(`Error saving image ${imageFilename}:`, err));
                 } else {
                     console.log(`Image already exists: ${imageFilename}`);
                 }
             }
-        }
     });
         // Log the extracted relic data
         console.log(relics);
@@ -104,9 +101,6 @@ async function fetchRelicData(url) {
         console.error(`Error fetching data from ${url}`, error);
     }
 }
-
-// URL of the webpage to scrape
-const url = "https://www.prydwen.gg/star-rail/guides/relic-sets/";
 
 // Fetch the relic data from the specified URL
 fetchRelicData(url);
