@@ -3,12 +3,11 @@ const cheerio = require("cheerio");
 const fs = require("fs");
 const path = require("path");
 
-const imageFolder = path.join(__dirname, 'public/set-images');
 const url = "https://www.prydwen.gg/star-rail/guides/relic-sets/";
 
-// Create the images directory if it doesn't exist
-if (!fs.existsSync(path.join(imageFolder))) {
-    fs.mkdirSync(path.join(imageFolder));
+const imageFolder = path.join(__dirname, 'public/set-images');
+if (!fs.existsSync(imageFolder)) {
+    fs.mkdirSync(imageFolder, { recursive: true });
 }
 
 async function downloadImage(url, filename) {
@@ -29,16 +28,11 @@ async function downloadImage(url, filename) {
 
 async function fetchRelicData(url) {
     try {
-        // Fetch the HTML content of the page
         const { data: pageHTML } = await axios.get(url);
-        
-        // Load the HTML into Cheerio
         const $ = cheerio.load(pageHTML);
         
-        // Array to store the relic data
         const relics = [];
         
-        // Select and iterate over each relic element to extract the name and set bonus
         $(".col").each((index, element) => {
             const relicName = $(element).find(".hsr-relic-data h4").text().trim();
             const relicType = ($(element).find(".hsr-relic-info").text().trim()).split(": ")[1];
@@ -55,24 +49,19 @@ async function fetchRelicData(url) {
             const [bonus2, bonus4] = setBonus.split("(4)").map(part => part.trim());
 
             // Add the relic data to the array
-            if (relicType === "Relic Set"){
-                relics.push({
-                    image: fullRelicImgUrl,
-                    name: relicName,
-                    type: relicType,
-                    bonus2pc: bonus2.split("(2) ")[1],
-                    bonus4pc: bonus4
-                });
+            const relic = {
+                image: fullRelicImgUrl,
+                name: relicName,
+                type: relicType,
+                bonus2pc: bonus2.split("(2) ")[1]
+            };
             
-            } else {
-                relics.push({
-                    image: fullRelicImgUrl,
-                    name: relicName,
-                    type: relicType,
-                    bonus2pc: bonus2.split("(2) ")[1]
-                });
-
+            if (relicType === "Relic Set") {
+                relic.bonus4pc = bonus4;
             }
+            
+            relics.push(relic);
+
             // Download and save the image only if it doesn't already exist
             if (fullRelicImgUrl && fullRelicImgUrl !== "https://www.prydwen.gg/undefined") {
                 const imageFilename = path.join(imageFolder, `${relicName.replace(/\s+/g, '_')}.png`);
@@ -85,16 +74,9 @@ async function fetchRelicData(url) {
                 }
             }
     });
-        // Log the extracted relic data
-        console.log(relics);
-
-        // Convert the relics array to JSON string
+        // Convert the relics array to JSON string and save it to relics.json
         const jsonString = JSON.stringify(relics, null, 2);
-
-        // Save the JSON string to a file
         fs.writeFileSync("relics.json", jsonString, "utf-8");
-
-        // Log the message indicating successful save
         console.log("Relic data has been saved to relics.json");
 
     } catch (error) {
