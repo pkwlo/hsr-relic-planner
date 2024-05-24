@@ -107,7 +107,7 @@ async function fetchRelicData(url) {
       jsonString,
       "utf-8",
     );
-    console.log("Relic data has been saved to relics.json");
+    console.log("Relic data has been saved to /relic-sets/relics.json");
   } catch (error) {
     console.error(`Error fetching data from ${url}`, error);
   }
