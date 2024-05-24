@@ -76,7 +76,7 @@ async function fetchRelicData(url) {
     });
         // Convert the relics array to JSON string and save it to relics.json
         const jsonString = JSON.stringify(relics, null, 2);
-        fs.writeFileSync("relics.json", jsonString, "utf-8");
+        fs.writeFileSync(path.join(__dirname, "/app/relic-sets/relics.json"), jsonString, "utf-8");
         console.log("Relic data has been saved to relics.json");
 
     } catch (error) {
