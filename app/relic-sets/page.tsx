@@ -1,5 +1,6 @@
 import Image from "next/image";
 import path from "path";
+import fs from "fs";
 
 import relics from "./relics.json";
 
@@ -15,7 +16,7 @@ function RelicCardTemplate({
   relicImage: string;
 }) {
   return (
-    <div className="flex flex-row">
+    <div className="flex flex-row justify-start">
       <Image
         src={relicImage}
         alt={relicName}
@@ -25,7 +26,7 @@ function RelicCardTemplate({
         priority
       />
 
-      <div className="flex flex-col py-4">
+      <div className="flex flex-col py-4" style={{ width: 500 }}>
         <h6 className="text-xl">{relicName}</h6>
         <p className="mt-3">2-Piece Bonus: {relic2Pc}</p>
         {relic4Pc && <p className="mt-3">4-Piece Bonus: {relic4Pc}</p>}
@@ -54,7 +55,7 @@ function OrnamentCardTemplate({
         priority
       />
 
-      <div className="flex flex-col py-4">
+      <div className="flex flex-col py-4" style={{ width: 500 }}>
         <h6 className="text-xl">{ornamentName}</h6>
         <p className="mt-3">2-Piece Bonus: {ornament2Pc}</p>
       </div>
@@ -73,10 +74,7 @@ export default function Page() {
           const relicName = relic.name;
           const relic2Pc = relic.bonus2pc || "";
           const relic4Pc = relic.bonus4pc || "";
-          const relicImage = path.join(
-            "/set-images",
-            `${relicName.replace(/\s+/g, "_")}.png`,
-          );
+          const relicImage = relic.image;
           return (
             <RelicCardTemplate
               key={index}

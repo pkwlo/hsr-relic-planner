@@ -48,36 +48,21 @@ async function fetchRelicData(url) {
       const imgElement = pictureElement.find("img");
       const relicImgUrl = imgElement.attr("src") || imgElement.attr("data-src");
       const fullRelicImgUrl = new URL(relicImgUrl, baseURL).href;
+      const placeholderImage = "/set-images/placeholder.png";
+      const imageLocation = path.join(
+        "/set-images",
+        `${relicName.replace(/\s+/g, "_")}.png`,
+      );
+      const imageFilename = path.join(
+        imageFolder,
+        `${relicName.replace(/\s+/g, "_")}.png`,
+      );
 
-      // Separate the bonus into two parts: (2) and (4)
-      const setBonus = $(element).find(".hsr-set-description").text().trim();
-      const [bonus2, bonus4] = setBonus.split("(4)").map((part) => part.trim());
-
-      // Add the relic data to the array
-      const relic = {
-        id: relicID,
-        image: fullRelicImgUrl,
-        name: relicName,
-        type: relicType,
-        bonus2pc: bonus2.split("(2) ")[1],
-      };
-
-      if (relicType === "Relic Set") {
-        relic.bonus4pc = bonus4;
-      }
-
-      relicID++;
-      relics.push(relic);
-
-      // Download and save the image only if it doesn't already exist
+      // Download and save the image if it doesn't already exist
       if (
         fullRelicImgUrl &&
         fullRelicImgUrl !== "https://www.prydwen.gg/undefined"
       ) {
-        const imageFilename = path.join(
-          imageFolder,
-          `${relicName.replace(/\s+/g, "_")}.png`,
-        );
         if (!fs.existsSync(imageFilename)) {
           downloadImage(`${fullRelicImgUrl}`, imageFilename)
             .then(() => console.log(`Image saved: ${imageFilename}`))
@@ -88,6 +73,31 @@ async function fetchRelicData(url) {
           console.log(`Image already exists: ${imageFilename}`);
         }
       }
+
+      // Separate the bonus into two parts: (2) and (4)
+      const setBonus = $(element).find(".hsr-set-description").text().trim();
+      const [bonus2, bonus4] = setBonus.split("(4)").map((part) => part.trim());
+
+      // Add the relic data to the array
+      const relic = {
+        id: relicID,
+        name: relicName,
+        type: relicType,
+        bonus2pc: bonus2.split("(2) ")[1],
+      };
+
+      if (relicType === "Relic Set") {
+        relic.bonus4pc = bonus4;
+      }
+
+      if (fullRelicImgUrl === "https://www.prydwen.gg/undefined") {
+        relic.image = placeholderImage;
+      } else {
+        relic.image = imageLocation;
+      }
+
+      relicID++;
+      relics.push(relic);
     });
 
     // Convert the relics array to JSON string and save it to relics.json
