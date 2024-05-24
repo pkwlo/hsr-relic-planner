@@ -6,6 +6,7 @@
 
 - populate with info saved from character page
 - sort by set
+- sidebar with links to character and relic-sets pages
 
 ## Character Page
 

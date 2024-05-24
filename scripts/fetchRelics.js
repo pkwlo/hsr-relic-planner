@@ -5,7 +5,7 @@ const path = require("path");
 
 const url = "https://www.prydwen.gg/star-rail/guides/relic-sets/";
 
-const imageFolder = path.join(__dirname, "public/set-images");
+const imageFolder = path.join(__dirname, "../public/set-images");
 if (!fs.existsSync(imageFolder)) {
   fs.mkdirSync(imageFolder, { recursive: true });
 }
@@ -50,7 +50,7 @@ async function fetchRelicData(url) {
       const fullRelicImgUrl = new URL(relicImgUrl, baseURL).href;
       const placeholderImage = "/set-images/placeholder.png";
       const imageLocation = path.join(
-        "/set-images",
+        "../public/set-images",
         `${relicName.replace(/\s+/g, "_")}.png`,
       );
       const imageFilename = path.join(
@@ -103,7 +103,7 @@ async function fetchRelicData(url) {
     // Convert the relics array to JSON string and save it to relics.json
     const jsonString = JSON.stringify(relics, null, 2);
     fs.writeFileSync(
-      path.join(__dirname, "/app/relic-sets/relics.json"),
+      path.join(__dirname, "../app/relic-sets/relics.json"),
       jsonString,
       "utf-8",
     );

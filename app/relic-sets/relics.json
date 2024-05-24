@@ -5,28 +5,28 @@
     "type": "Relic Set",
     "bonus2pc": "Increases Lightning DMG by 10%.",
     "bonus4pc": "When the wearer uses Skill, increases the wearer's ATK by 20% for 1 turn(s).",
-    "image": "/set-images/Band_of_Sizzling_Thunder.png"
+    "image": "../public/set-images/Band_of_Sizzling_Thunder.png"
   },
   {
     "id": 1,
     "name": "Belobog of the Architects",
     "type": "Planetary Ornament Set",
     "bonus2pc": "Increases the wearer's DEF by 15%. When the wearer's Effect Hit Rate is 50% or higher, the wearer gains an extra 15% DEF.",
-    "image": "/set-images/Belobog_of_the_Architects.png"
+    "image": "../public/set-images/Belobog_of_the_Architects.png"
   },
   {
     "id": 2,
     "name": "Broken Keel",
     "type": "Planetary Ornament Set",
     "bonus2pc": "Increases the wearer's Effect RES by 10%. When the wearer's Effect RES is at 30% or higher, all allies' CRIT DMG increases by 10%.",
-    "image": "/set-images/Broken_Keel.png"
+    "image": "../public/set-images/Broken_Keel.png"
   },
   {
     "id": 3,
     "name": "Celestial Differentiator",
     "type": "Planetary Ornament Set",
     "bonus2pc": "Increases the wearer's CRIT DMG by 16%. When the wearer's current CRIT DMG reaches 120% or higher, after entering battle, the wearer's CRIT Rate increases by 60% until the end of their first attack.",
-    "image": "/set-images/Celestial_Differentiator.png"
+    "image": "../public/set-images/Celestial_Differentiator.png"
   },
   {
     "id": 4,
@@ -34,7 +34,7 @@
     "type": "Relic Set",
     "bonus2pc": "Increases Physical DMG by 10%.",
     "bonus4pc": "After the wearer attacks or is hit, their ATK increases by 5% for the rest of the battle. This effect can stack up to 5 time(s).",
-    "image": "/set-images/Champion_of_Streetwise_Boxing.png"
+    "image": "../public/set-images/Champion_of_Streetwise_Boxing.png"
   },
   {
     "id": 5,
@@ -42,7 +42,7 @@
     "type": "Relic Set",
     "bonus2pc": "Increases Wind DMG by 10%.",
     "bonus4pc": "After the wearer uses Ultimate, their action is Advanced Forward by 25%.",
-    "image": "/set-images/Eagle_of_Twilight_Line.png"
+    "image": "../public/set-images/Eagle_of_Twilight_Line.png"
   },
   {
     "id": 6,
@@ -50,21 +50,21 @@
     "type": "Relic Set",
     "bonus2pc": "Increases Fire DMG by 10%.",
     "bonus4pc": "Increases the wearer's Skill DMG by 12%. After unleashing Ultimate, increases the wearer's Fire DMG by 12% for next attack.",
-    "image": "/set-images/Firesmith_of_Lava-Forging.png"
+    "image": "../public/set-images/Firesmith_of_Lava-Forging.png"
   },
   {
     "id": 7,
     "name": "Firmament Frontline: Glamoth",
     "type": "Planetary Ornament Set",
     "bonus2pc": "Increases the wearer's ATK by 12%. When the wearer's SPD is equal to or higher than 135/160, the wearer deals 12%/18% more DMG.",
-    "image": "/set-images/Firmament_Frontline:_Glamoth.png"
+    "image": "../public/set-images/Firmament_Frontline:_Glamoth.png"
   },
   {
     "id": 8,
     "name": "Fleet of the Ageless",
     "type": "Planetary Ornament Set",
     "bonus2pc": "Increases the wearer's Max HP by 12%. When the wearer's SPD reaches 120 or higher, all allies' ATK increases by 8%.",
-    "image": "/set-images/Fleet_of_the_Ageless.png"
+    "image": "../public/set-images/Fleet_of_the_Ageless.png"
   },
   {
     "id": 9,
@@ -72,7 +72,7 @@
     "type": "Relic Set",
     "bonus2pc": "Increases Quantum DMG by 10%.",
     "bonus4pc": "When the wearer deals DMG to the target enemy, ignores 10% DEF. If the target enemy has Quantum Weakness, the wearer additionally ignores 10% DEF.",
-    "image": "/set-images/Genius_of_Brilliant_Stars.png"
+    "image": "../public/set-images/Genius_of_Brilliant_Stars.png"
   },
   {
     "id": 10,
@@ -80,7 +80,7 @@
     "type": "Relic Set",
     "bonus2pc": "Reduces DMG taken by 8%.",
     "bonus4pc": "At the beginning of the turn, if the wearer's HP is equal to or less than 50% of their Max HP, restores HP equal to 8% of their Max HP and regenerates 5 Energy.",
-    "image": "/set-images/Guard_of_Wuthering_Snow.png"
+    "image": "../public/set-images/Guard_of_Wuthering_Snow.png"
   },
   {
     "id": 11,
@@ -88,14 +88,14 @@
     "type": "Relic Set",
     "bonus2pc": "Increases Ice DMG by 10%.",
     "bonus4pc": "After the wearer unleashes their Ultimate, their CRIT DMG increases by 25% for 2 turn(s).",
-    "image": "/set-images/Hunter_of_Glacial_Forest.png"
+    "image": "../public/set-images/Hunter_of_Glacial_Forest.png"
   },
   {
     "id": 12,
     "name": "Inert Salsotto",
     "type": "Planetary Ornament Set",
     "bonus2pc": "Increases the wearer's CRIT Rate by 8%. When the wearer's current CRIT Rate reaches 50% or higher, the wearer's Ultimate and follow-up attack DMG increases by 15%.",
-    "image": "/set-images/Inert_Salsotto.png"
+    "image": "../public/set-images/Inert_Salsotto.png"
   },
   {
     "id": 13,
@@ -110,7 +110,7 @@
     "type": "Relic Set",
     "bonus2pc": "Increases DEF by 15%.",
     "bonus4pc": "Increases the max DMG that can be absorbed by the shield created by the wearer by 20%.",
-    "image": "/set-images/Knight_of_Purity_Palace.png"
+    "image": "../public/set-images/Knight_of_Purity_Palace.png"
   },
   {
     "id": 15,
@@ -118,7 +118,7 @@
     "type": "Relic Set",
     "bonus2pc": "Increases Max HP by 12%.",
     "bonus4pc": "When the wearer is hit or has their HP consumed by an ally or themselves, their CRIT Rate increases by 8% for 2 turn(s) and up to 2 stacks.",
-    "image": "/set-images/Longevous_Disciple.png"
+    "image": "../public/set-images/Longevous_Disciple.png"
   },
   {
     "id": 16,
@@ -126,7 +126,7 @@
     "type": "Relic Set",
     "bonus2pc": "Increases SPD by 6%.",
     "bonus4pc": "When the wearer uses their Ultimate on an ally, SPD for all allies increases by 12% for 1 turn(s). This effect cannot be stacked.",
-    "image": "/set-images/Messenger_Traversing_Hackerspace.png"
+    "image": "../public/set-images/Messenger_Traversing_Hackerspace.png"
   },
   {
     "id": 17,
@@ -134,14 +134,14 @@
     "type": "Relic Set",
     "bonus2pc": "ATK increases by 12%.",
     "bonus4pc": "The wearer's SPD increases by 6% and Basic ATK DMG increases by 10%.",
-    "image": "/set-images/Musketeer_of_Wild_Wheat.png"
+    "image": "../public/set-images/Musketeer_of_Wild_Wheat.png"
   },
   {
     "id": 18,
     "name": "Pan-Cosmic Commercial Enterprise",
     "type": "Planetary Ornament Set",
     "bonus2pc": "Increases the wearer's Effect Hit Rate by 10%. Meanwhile, the wearer's ATK increases by an amount that is equal to 25% of the current Effect Hit Rate, up to a maximum of 25%.",
-    "image": "/set-images/Pan-Cosmic_Commercial_Enterprise.png"
+    "image": "../public/set-images/Pan-Cosmic_Commercial_Enterprise.png"
   },
   {
     "id": 19,
@@ -149,14 +149,14 @@
     "type": "Relic Set",
     "bonus2pc": "Increases Outgoing Healing by 10%.",
     "bonus4pc": "At the beginning of the battle, immediately recovers 1 Skill Point.",
-    "image": "/set-images/Passerby_of_Wandering_Cloud.png"
+    "image": "../public/set-images/Passerby_of_Wandering_Cloud.png"
   },
   {
     "id": 20,
     "name": "Penacony, Land of the Dreams",
     "type": "Planetary Ornament Set",
     "bonus2pc": "Increases wearer's Energy Regeneration Rate by 5%. Increases DMG for all other allies with the same DMG Type as the wearer by 10%.",
-    "image": "/set-images/Penacony,_Land_of_the_Dreams.png"
+    "image": "../public/set-images/Penacony,_Land_of_the_Dreams.png"
   },
   {
     "id": 21,
@@ -164,7 +164,7 @@
     "type": "Relic Set",
     "bonus2pc": "Increases DMG dealt to enemies with debuff by 12%.",
     "bonus4pc": "Increases CRIT Rate by 4%. The wearer deals 8%/12% increased CRIT DMG to enemies with at least 2/3 debuffs. After the wearer inflicts a debuff on enemy targets, the aforementioned effects increase by 100%, lasting for 1 turn.",
-    "image": "/set-images/Pioneer_Diver_of_Dead_Waters.png"
+    "image": "../public/set-images/Pioneer_Diver_of_Dead_Waters.png"
   },
   {
     "id": 22,
@@ -172,14 +172,14 @@
     "type": "Relic Set",
     "bonus2pc": "Increases ATK by 12%.",
     "bonus4pc": "For every DoT the target enemy is afflicted with, the wearer will ignore 6% of target's DEF when dealing DMG to them. This effect is valid for a max of 3 DoTs.",
-    "image": "/set-images/Prisoner_in_Deep_Confinement.png"
+    "image": "../public/set-images/Prisoner_in_Deep_Confinement.png"
   },
   {
     "id": 23,
     "name": "Rutilant Arena",
     "type": "Planetary Ornament Set",
     "bonus2pc": "Increases the wearer's CRIT Rate by 8%. When the wearer's current CRIT Rate reaches 70% or higher, the wearer's Basic ATK and Skill DMG increase by 20%.",
-    "image": "/set-images/Rutilant_Arena.png"
+    "image": "../public/set-images/Rutilant_Arena.png"
   },
   {
     "id": 24,
@@ -193,21 +193,21 @@
     "name": "Space Sealing Station",
     "type": "Planetary Ornament Set",
     "bonus2pc": "Increases the wearer's ATK by 12%. When the wearer's SPD reaches 120 or higher, the wearer's ATK increases by an extra 12%.",
-    "image": "/set-images/Space_Sealing_Station.png"
+    "image": "../public/set-images/Space_Sealing_Station.png"
   },
   {
     "id": 26,
     "name": "Sprightly Vonwacq",
     "type": "Planetary Ornament Set",
     "bonus2pc": "Increases the wearer's Energy Regeneration Rate by 5%. When the wearer's SPD reaches 120 or higher, the wearer's action is Advanced Forward by 40% immediately upon entering battle.",
-    "image": "/set-images/Sprightly_Vonwacq.png"
+    "image": "../public/set-images/Sprightly_Vonwacq.png"
   },
   {
     "id": 27,
     "name": "Talia: Kingdom of Banditry",
     "type": "Planetary Ornament Set",
     "bonus2pc": "Increases the wearer's Break Effect by 16%. When the wearer's SPD reaches 145 or higher, the wearer's Break effect increases by an extra 20%.",
-    "image": "/set-images/Talia:_Kingdom_of_Banditry.png"
+    "image": "../public/set-images/Talia:_Kingdom_of_Banditry.png"
   },
   {
     "id": 28,
@@ -215,7 +215,7 @@
     "type": "Relic Set",
     "bonus2pc": "Increases follow-up attack DMG by 20%.",
     "bonus4pc": "When the wearer uses follow-up attacks against the target enemy, increase the wearer's ATK by 6% for every time the follow-up attack deals DMG. This effect can stack for a maximum of 8 times and lasts for 3 turns. This effect is removed the next time the wearer uses a follow-up attack.",
-    "image": "/set-images/The_Ashblazing_Grand_Duke.png"
+    "image": "../public/set-images/The_Ashblazing_Grand_Duke.png"
   },
   {
     "id": 29,
@@ -223,7 +223,7 @@
     "type": "Relic Set",
     "bonus2pc": "Increases Break Effect by 16%",
     "bonus4pc": "Increases the wearer's Break Effect by 16%. When the wearer inflicts Weakness Break on an enemy, regenerates 3 Energy.",
-    "image": "/set-images/Thief_of_Shooting_Meteor.png"
+    "image": "../public/set-images/Thief_of_Shooting_Meteor.png"
   },
   {
     "id": 30,
@@ -231,7 +231,7 @@
     "type": "Relic Set",
     "bonus2pc": "Increases Imaginary DMG by 10%.",
     "bonus4pc": "When attacking debuffed enemies, the wearer's CRIT Rate increases by 10%, and their CRIT DMG increases by 20% against Imprisoned enemies.",
-    "image": "/set-images/Wastelander_of_Banditry_Desert.png"
+    "image": "../public/set-images/Wastelander_of_Banditry_Desert.png"
   },
   {
     "id": 31,
@@ -239,6 +239,6 @@
     "type": "Relic Set",
     "bonus2pc": "Increases Break Effect by 16%.",
     "bonus4pc": "When the wearer uses their Ultimate on an ally, Break Effect for all allies increases by 30% for 2 turn(s). This effect cannot be stacked.",
-    "image": "/set-images/Watchmaker,_Master_of_Dream_Machinations.png"
+    "image": "../public/set-images/Watchmaker,_Master_of_Dream_Machinations.png"
   }
 ]
