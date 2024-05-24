@@ -22,7 +22,7 @@ function RelicCardTemplate({
         alt={relicName}
         width={100}
         height={100}
-        style={{ width: "auto", height: "100%" }}
+        style={{ width: "auto", height: "100%", padding: 10 }}
         priority
       />
 
@@ -51,7 +51,7 @@ function OrnamentCardTemplate({
         alt={ornamentName}
         width={100}
         height={100}
-        style={{ width: "auto", height: "100%" }}
+        style={{ width: "auto", height: "100%", padding: 10 }}
         priority
       />
 
@@ -94,10 +94,7 @@ export default function Page() {
         if (relic.type !== "Relic Set") {
           const ornamentName = relic.name;
           const ornament2Pc = relic.bonus2pc;
-          const ornamentImage = path.join(
-            "/set-images",
-            `${ornamentName.replace(/\s+/g, "_")}.png`,
-          );
+          const ornamentImage = relic.image;
           return (
             <OrnamentCardTemplate
               key={index}
