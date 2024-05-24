@@ -91,9 +91,11 @@ async function fetchRelicData(url) {
       }
 
       if (fullRelicImgUrl === "https://www.prydwen.gg/undefined") {
-        relic.image = placeholderImage;
+        relic.image = "null";
+        relic.local = placeholderImage;
       } else {
-        relic.image = imageLocation;
+        relic.image = fullRelicImgUrl;
+        relic.local = imageLocation;
       }
 
       relicID++;
