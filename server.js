@@ -3,9 +3,12 @@ const cheerio = require("cheerio");
 const fs = require("fs");
 const path = require("path");
 
+const imageFolder = path.join(__dirname, 'public/set-images');
+console.log(imageFolder);
+
 // Create the images directory if it doesn't exist
-if (!fs.existsSync(path.join(__dirname, 'images'))) {
-    fs.mkdirSync(path.join(__dirname, 'images'));
+if (!fs.existsSync(path.join(imageFolder))) {
+    fs.mkdirSync(path.join(imageFolder));
 }
 
 async function downloadImage(url, filename) {
@@ -74,7 +77,7 @@ async function fetchRelicData(url) {
 
             // Download and save the image only if it doesn't already exist
             if (relicImgUrl) {
-                const imageFilename = path.join(__dirname, 'images', `${relicName.replace(/\s+/g, '_')}.png`);
+                const imageFilename = path.join(imageFolder, `${relicName.replace(/\s+/g, '_')}.png`);
                 if (!fs.existsSync(imageFilename)) {
                     downloadImage(`https://www.prydwen.gg${relicImgUrl}`, imageFilename)
                         .then(() => console.log(`Image saved: ${imageFilename}`))
