@@ -1,6 +1,28 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
 const fs = require("fs");
+const path = require("path");
+
+// Create the images directory if it doesn't exist
+if (!fs.existsSync(path.join(__dirname, 'images'))) {
+    fs.mkdirSync(path.join(__dirname, 'images'));
+}
+
+async function downloadImage(url, filename) {
+    const writer = fs.createWriteStream(filename);
+    const response = await axios({
+        url,
+        method: 'GET',
+        responseType: 'stream',
+    });
+
+    response.data.pipe(writer);
+
+    return new Promise((resolve, reject) => {
+        writer.on('finish', resolve);
+        writer.on('error', reject);
+    });
+}
 
 async function fetchRelicData(url) {
     try {
@@ -49,8 +71,20 @@ async function fetchRelicData(url) {
                     type: relicType,
                     bonus2pc: bonus2.split("(2) ")[1]
                 });
+
+            // Download and save the image only if it doesn't already exist
+            if (relicImgUrl) {
+                const imageFilename = path.join(__dirname, 'images', `${relicName.replace(/\s+/g, '_')}.png`);
+                if (!fs.existsSync(imageFilename)) {
+                    downloadImage(`https://www.prydwen.gg${relicImgUrl}`, imageFilename)
+                        .then(() => console.log(`Image saved: ${imageFilename}`))
+                        .catch(err => console.error(`Error saving image ${imageFilename}:`, err));
+                } else {
+                    console.log(`Image already exists: ${imageFilename}`);
+                }
             }
-        });
+        }
+    });
         // Log the extracted relic data
         console.log(relics);
 
