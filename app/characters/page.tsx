@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Button from "@/components/Button";
 import Sidebar from "@/components/Sidebar";
 import Header from "@/components/Header";
 import Image from "next/image";
@@ -53,7 +52,7 @@ export default function Page() {
       <Header />
       <main className="flex flex-row">
         <Sidebar />
-        <div className="flex flex-col">
+        <div className="flex flex-col items-center min-h-screen py-2">
           <h3 className="text-3xl">Characters</h3>
           <div>
             {characters.map((character, index) => {
