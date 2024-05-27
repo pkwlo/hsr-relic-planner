@@ -1,13 +1,9 @@
 import React from "react";
 
-interface HeaderProps {
-  title: string;
-}
-
-const Header: React.FC<HeaderProps> = ({ title }) => {
+const Header = () => {
   return (
     <header>
-      <h1>{title}</h1>
+      <h1 className="text-3xl">HSR Relic Planner</h1>
     </header>
   );
 };

@@ -1,5 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import relics from "./relics.json";
+import Sidebar from "@/components/Sidebar";
+import Header from "@/components/Header";
 
 function RelicCardTemplate({
   relicName,
@@ -19,7 +23,7 @@ function RelicCardTemplate({
         alt={relicName}
         width={100}
         height={100}
-        style={{ width: "auto", height: "100%", padding: 10 }}
+        style={{ width: 120, height: 120, padding: 10 }}
         priority
       />
 
@@ -48,7 +52,7 @@ function OrnamentCardTemplate({
         alt={ornamentName}
         width={100}
         height={100}
-        style={{ width: "auto", height: "100%", padding: 10 }}
+        style={{ width: 120, height: 120, padding: 10 }}
         priority
       />
 
@@ -62,48 +66,52 @@ function OrnamentCardTemplate({
 
 export default function Page() {
   return (
-    <div className="flex flex-col items-center min-h-screen py-2">
-      <h4 className="text-3xl">Relic & Ornament Sets</h4>
-
-      <h4 className="text-3xl">Relics</h4>
-      {relics.map((relic, index) => {
-        if (relic.type === "Relic Set") {
-          const relicName = relic.name;
-          const relic2Pc = relic.bonus2pc || "";
-          const relic4Pc = relic.bonus4pc || "";
-          const relicImage = relic.local;
-          return (
-            <RelicCardTemplate
-              key={index}
-              relicName={relicName}
-              relic2Pc={relic2Pc}
-              relic4Pc={relic4Pc}
-              relicImage={relicImage}
-            />
-          );
-        } else {
-          return null;
-        }
-      })}
-
-      <h4 className="text-3xl">Ornaments</h4>
-      {relics.map((relic, index) => {
-        if (relic.type !== "Relic Set") {
-          const ornamentName = relic.name;
-          const ornament2Pc = relic.bonus2pc;
-          const ornamentImage = relic.local;
-          return (
-            <OrnamentCardTemplate
-              key={index}
-              ornamentName={ornamentName}
-              ornament2Pc={ornament2Pc}
-              ornamentImage={ornamentImage}
-            />
-          );
-        } else {
-          return null;
-        }
-      })}
-    </div>
+    <>
+      <Header />
+      <main className="flex flex-row">
+        <Sidebar />
+        <div className="flex flex-col items-center min-h-screen py-2">
+          <h4 className="text-3xl">Relic & Ornament Sets</h4>
+          <h4 className="text-3xl">Relics</h4>
+          {relics.map((relic, index) => {
+            if (relic.type === "Relic Set") {
+              const relicName = relic.name;
+              const relic2Pc = relic.bonus2pc || "";
+              const relic4Pc = relic.bonus4pc || "";
+              const relicImage = relic.local;
+              return (
+                <RelicCardTemplate
+                  key={index}
+                  relicName={relicName}
+                  relic2Pc={relic2Pc}
+                  relic4Pc={relic4Pc}
+                  relicImage={relicImage}
+                />
+              );
+            } else {
+              return null;
+            }
+          })}
+          <h4 className="text-3xl">Ornaments</h4>
+          {relics.map((relic, index) => {
+            if (relic.type !== "Relic Set") {
+              const ornamentName = relic.name;
+              const ornament2Pc = relic.bonus2pc;
+              const ornamentImage = relic.local;
+              return (
+                <OrnamentCardTemplate
+                  key={index}
+                  ornamentName={ornamentName}
+                  ornament2Pc={ornament2Pc}
+                  ornamentImage={ornamentImage}
+                />
+              );
+            } else {
+              return null;
+            }
+          })}
+        </div>
+      </main>
+    </>
   );
 }

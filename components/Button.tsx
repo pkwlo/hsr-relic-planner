@@ -10,10 +10,11 @@ const Button: React.FC<ButtonProps> = ({ onClick, text }) => {
     <button
       onClick={onClick}
       style={{
-        border: "2px solid #4A90E2", // Border color
+        border: "2px solid #FFFFFF", // Border color
         color: "#FFFFFF", // Text color
         backgroundColor: "#4A90E2", // Background color
         padding: "10px 20px", // Padding
+        margin: "10px", // Margin
         borderRadius: "5px", // Rounded corners
         cursor: "pointer", // Pointer cursor on hover
       }}
