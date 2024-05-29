@@ -2,408 +2,459 @@
   {
     "id": 0,
     "name": "Acheron",
-    "type": "Lightning",
+    "element": "Lightning",
     "rarity": "rarity-5",
+    "path": "The Nihility",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/3017.png",
     "local": "/char-images/Acheron.png"
   },
   {
     "id": 1,
     "name": "Argenti",
-    "type": "Physical",
+    "element": "Physical",
     "rarity": "rarity-5",
+    "path": "The Erudition",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/3009.png",
     "local": "/char-images/Argenti.png"
   },
   {
     "id": 2,
     "name": "Aventurine",
-    "type": "Imaginary",
+    "element": "Imaginary",
     "rarity": "rarity-5",
+    "path": "The Preservation",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/3018.png",
     "local": "/char-images/Aventurine.png"
   },
   {
     "id": 3,
     "name": "Bailu",
-    "type": "Lightning",
+    "element": "Lightning",
     "rarity": "rarity-5",
+    "path": "The Abundance",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/1211.png",
     "local": "/char-images/Bailu.png"
   },
   {
     "id": 4,
     "name": "Black Swan",
-    "type": "Wind",
+    "element": "Wind",
     "rarity": "rarity-5",
+    "path": "The Nihility",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/3014.png",
     "local": "/char-images/Black_Swan.png"
   },
   {
     "id": 5,
     "name": "Blade",
-    "type": "Wind",
+    "element": "Wind",
     "rarity": "rarity-5",
+    "path": "The Destruction",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/1205.png",
     "local": "/char-images/Blade.png"
   },
   {
     "id": 6,
     "name": "Boothiill",
-    "type": "Physical",
+    "element": "Physical",
     "rarity": "rarity-5",
+    "path": "The Hunt",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/3020.png",
     "local": "/char-images/Boothiill.png"
   },
   {
     "id": 7,
     "name": "Bronya",
-    "type": "Wind",
+    "element": "Wind",
     "rarity": "rarity-5",
+    "path": "The Harmony",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/1101.png",
     "local": "/char-images/Bronya.png"
   },
   {
     "id": 8,
     "name": "Clara",
-    "type": "Physical",
+    "element": "Physical",
     "rarity": "rarity-5",
+    "path": "The Destruction",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/1107.png",
     "local": "/char-images/Clara.png"
   },
   {
     "id": 9,
     "name": "Dan Heng - Imbibitor Lunae",
-    "type": "Imaginary",
+    "element": "Imaginary",
     "rarity": "rarity-5",
+    "path": "The Destruction",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/3002.png",
     "local": "/char-images/Dan_Heng_-_Imbibitor_Lunae.png"
   },
   {
     "id": 10,
     "name": "Dr. Ratio",
-    "type": "Imaginary",
+    "element": "Imaginary",
     "rarity": "rarity-5",
+    "path": "The Hunt",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/3012.png",
     "local": "/char-images/Dr._Ratio.png"
   },
   {
     "id": 11,
     "name": "Fu Xuan",
-    "type": "Quantum",
+    "element": "Quantum",
     "rarity": "rarity-5",
+    "path": "The Preservation",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/3003.png",
     "local": "/char-images/Fu_Xuan.png"
   },
   {
     "id": 12,
     "name": "Gepard",
-    "type": "Ice",
+    "element": "Ice",
     "rarity": "rarity-5",
+    "path": "The Preservation",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/1104.png",
     "local": "/char-images/Gepard.png"
   },
   {
     "id": 13,
     "name": "Himeko",
-    "type": "Fire",
+    "element": "Fire",
     "rarity": "rarity-5",
+    "path": "The Erudition",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/1003.png",
     "local": "/char-images/Himeko.png"
   },
   {
     "id": 14,
     "name": "Huohuo",
-    "type": "Wind",
+    "element": "Wind",
     "rarity": "rarity-5",
+    "path": "The Abundance",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/3008.png",
     "local": "/char-images/Huohuo.png"
   },
   {
     "id": 15,
     "name": "Jing Yuan",
-    "type": "Lightning",
+    "element": "Lightning",
     "rarity": "rarity-5",
+    "path": "The Erudition",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/1204.png",
     "local": "/char-images/Jing_Yuan.png"
   },
   {
     "id": 16,
     "name": "Jingliu",
-    "type": "Ice",
+    "element": "Ice",
     "rarity": "rarity-5",
+    "path": "The Destruction",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/3005.png",
     "local": "/char-images/Jingliu.png"
   },
   {
     "id": 17,
     "name": "Kafka",
-    "type": "Lightning",
+    "element": "Lightning",
     "rarity": "rarity-5",
+    "path": "The Nihility",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/1005.png",
     "local": "/char-images/Kafka.png"
   },
   {
     "id": 18,
     "name": "Luocha",
-    "type": "Imaginary",
+    "element": "Imaginary",
     "rarity": "rarity-5",
+    "path": "The Abundance",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/1203.png",
     "local": "/char-images/Luocha.png"
   },
   {
     "id": 19,
     "name": "Robin",
-    "type": "Physical",
+    "element": "Physical",
     "rarity": "rarity-5",
+    "path": "The Harmony",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/3021.png",
     "local": "/char-images/Robin.png"
   },
   {
     "id": 20,
     "name": "Ruan Mei",
-    "type": "Ice",
+    "element": "Ice",
     "rarity": "rarity-5",
+    "path": "The Harmony",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/3011.png",
     "local": "/char-images/Ruan_Mei.png"
   },
   {
     "id": 21,
     "name": "Seele",
-    "type": "Quantum",
+    "element": "Quantum",
     "rarity": "rarity-5",
+    "path": "The Hunt",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/1102.png",
     "local": "/char-images/Seele.png"
   },
   {
     "id": 22,
     "name": "Silver Wolf",
-    "type": "Quantum",
+    "element": "Quantum",
     "rarity": "rarity-5",
+    "path": "The Nihility",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/1006.png",
     "local": "/char-images/Silver_Wolf.png"
   },
   {
     "id": 23,
     "name": "Sparkle",
-    "type": "Quantum",
+    "element": "Quantum",
     "rarity": "rarity-5",
+    "path": "The Harmony",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/3016.png",
     "local": "/char-images/Sparkle.png"
   },
   {
     "id": 24,
     "name": "Topaz and Numby",
-    "type": "Fire",
+    "element": "Fire",
     "rarity": "rarity-5",
+    "path": "The Hunt",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/3006.png",
     "local": "/char-images/Topaz_and_Numby.png"
   },
   {
     "id": 25,
     "name": "Trailblazer (Fire)",
-    "type": "Fire",
+    "element": "Fire",
     "rarity": "rarity-5",
+    "path": "The Preservation",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/8003.png",
     "local": "/char-images/Trailblazer_(Fire).png"
   },
   {
     "id": 26,
     "name": "Trailblazer (Imaginary)",
-    "type": "Imaginary",
+    "element": "Imaginary",
     "rarity": "rarity-5",
+    "path": "The Harmony",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/3022.png",
     "local": "/char-images/Trailblazer_(Imaginary).png"
   },
   {
     "id": 27,
     "name": "Trailblazer (Physical)",
-    "type": "Physical",
+    "element": "Physical",
     "rarity": "rarity-5",
+    "path": "The Destruction",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/8001.png",
     "local": "/char-images/Trailblazer_(Physical).png"
   },
   {
     "id": 28,
     "name": "Welt",
-    "type": "Imaginary",
+    "element": "Imaginary",
     "rarity": "rarity-5",
+    "path": "The Nihility",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/1004.png",
     "local": "/char-images/Welt.png"
   },
   {
     "id": 29,
     "name": "Yanqing",
-    "type": "Ice",
+    "element": "Ice",
     "rarity": "rarity-5",
+    "path": "The Hunt",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/1209.png",
     "local": "/char-images/Yanqing.png"
   },
   {
     "id": 30,
     "name": "Arlan",
-    "type": "Lightning",
+    "element": "Lightning",
     "rarity": "rarity-4",
+    "path": "The Destruction",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/1008.png",
     "local": "/char-images/Arlan.png"
   },
   {
     "id": 31,
     "name": "Asta",
-    "type": "Fire",
+    "element": "Fire",
     "rarity": "rarity-4",
+    "path": "The Harmony",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/1009.png",
     "local": "/char-images/Asta.png"
   },
   {
     "id": 32,
     "name": "Dan Heng",
-    "type": "Wind",
+    "element": "Wind",
     "rarity": "rarity-4",
+    "path": "The Hunt",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/1002.png",
     "local": "/char-images/Dan_Heng.png"
   },
   {
     "id": 33,
     "name": "Gallagher",
-    "type": "Fire",
+    "element": "Fire",
     "rarity": "rarity-4",
+    "path": "The Abundance",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/3019.png",
     "local": "/char-images/Gallagher.png"
   },
   {
     "id": 34,
     "name": "Guinaifen",
-    "type": "Fire",
+    "element": "Fire",
     "rarity": "rarity-4",
+    "path": "The Nihility",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/3007.png",
     "local": "/char-images/Guinaifen.png"
   },
   {
     "id": 35,
     "name": "Hanya",
-    "type": "Physical",
+    "element": "Physical",
     "rarity": "rarity-4",
+    "path": "The Harmony",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/3010.png",
     "local": "/char-images/Hanya.png"
   },
   {
     "id": 36,
     "name": "Herta",
-    "type": "Ice",
+    "element": "Ice",
     "rarity": "rarity-4",
+    "path": "The Erudition",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/1013.png",
     "local": "/char-images/Herta.png"
   },
   {
     "id": 37,
     "name": "Hook",
-    "type": "Fire",
+    "element": "Fire",
     "rarity": "rarity-4",
+    "path": "The Destruction",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/1109.png",
     "local": "/char-images/Hook.png"
   },
   {
     "id": 38,
     "name": "Luka",
-    "type": "Physical",
+    "element": "Physical",
     "rarity": "rarity-4",
+    "path": "The Nihility",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/3000.png",
     "local": "/char-images/Luka.png"
   },
   {
     "id": 39,
     "name": "Lynx",
-    "type": "Quantum",
+    "element": "Quantum",
     "rarity": "rarity-4",
+    "path": "The Abundance",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/3004.png",
     "local": "/char-images/Lynx.png"
   },
   {
     "id": 40,
     "name": "March 7th",
-    "type": "Ice",
+    "element": "Ice",
     "rarity": "rarity-4",
+    "path": "The Preservation",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/1001.png",
     "local": "/char-images/March_7th.png"
   },
   {
     "id": 41,
     "name": "Misha",
-    "type": "Ice",
+    "element": "Ice",
     "rarity": "rarity-4",
+    "path": "The Destruction",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/3015.png",
     "local": "/char-images/Misha.png"
   },
   {
     "id": 42,
     "name": "Natasha",
-    "type": "Physical",
+    "element": "Physical",
     "rarity": "rarity-4",
+    "path": "The Abundance",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/1105.png",
     "local": "/char-images/Natasha.png"
   },
   {
     "id": 43,
     "name": "Pela",
-    "type": "Ice",
+    "element": "Ice",
     "rarity": "rarity-4",
+    "path": "The Nihility",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/1106.png",
     "local": "/char-images/Pela.png"
   },
   {
     "id": 44,
     "name": "Qingque",
-    "type": "Quantum",
+    "element": "Quantum",
     "rarity": "rarity-4",
+    "path": "The Erudition",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/1201.png",
     "local": "/char-images/Qingque.png"
   },
   {
     "id": 45,
     "name": "Sampo",
-    "type": "Wind",
+    "element": "Wind",
     "rarity": "rarity-4",
+    "path": "The Nihility",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/1108.png",
     "local": "/char-images/Sampo.png"
   },
   {
     "id": 46,
     "name": "Serval",
-    "type": "Lightning",
+    "element": "Lightning",
     "rarity": "rarity-4",
+    "path": "The Erudition",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/1103.png",
     "local": "/char-images/Serval.png"
   },
   {
     "id": 47,
     "name": "Sushang",
-    "type": "Physical",
+    "element": "Physical",
     "rarity": "rarity-4",
+    "path": "The Hunt",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/1206.png",
     "local": "/char-images/Sushang.png"
   },
   {
     "id": 48,
     "name": "Tingyun",
-    "type": "Lightning",
+    "element": "Lightning",
     "rarity": "rarity-4",
+    "path": "The Harmony",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/1202.png",
     "local": "/char-images/Tingyun.png"
   },
   {
     "id": 49,
     "name": "Xueyi",
-    "type": "Quantum",
+    "element": "Quantum",
     "rarity": "rarity-4",
+    "path": "The Destruction",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/3013.png",
     "local": "/char-images/Xueyi.png"
   },
   {
     "id": 50,
     "name": "Yukong",
-    "type": "Imaginary",
+    "element": "Imaginary",
     "rarity": "rarity-4",
+    "path": "The Harmony",
     "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/1207.png",
     "local": "/char-images/Yukong.png"
   }

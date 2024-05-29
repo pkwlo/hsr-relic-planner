@@ -11,11 +11,13 @@ function CharacterCardTemplate({
   characterImage,
   characterType,
   characterRarity,
+  characterPath,
 }: {
   characterName: string;
   characterImage: string;
   characterType: string;
   characterRarity: string;
+  characterPath: string;
 }) {
   return (
     <div className="flex flex-row">
@@ -39,7 +41,7 @@ function CharacterCardTemplate({
       <div className="flex flex-col py-4" style={{ width: 500 }}>
         <h6 className="text-xl">{characterName}</h6>
         <p className="mt-3">Element: {characterType}</p>
-        <p className="mt-3">Path: </p>
+        <p className="mt-3">Path: {characterPath}</p>
         <p className="mt-3">Best Sets: </p>
       </div>
     </div>
@@ -57,9 +59,10 @@ export default function Page() {
           <div>
             {characters.map((character, index) => {
               const characterName = character.name;
-              const characterType = character.type;
+              const characterType = character.element;
               const characterImage = character.local;
               const characterRarity = character.rarity;
+              const characterPath = character.path;
               return (
                 <CharacterCardTemplate
                   key={index}
@@ -67,6 +70,7 @@ export default function Page() {
                   characterType={characterType}
                   characterImage={characterImage}
                   characterRarity={characterRarity}
+                  characterPath={characterPath}
                 />
               );
             })}

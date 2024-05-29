@@ -1,9 +1,7 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
-const fs = require("fs");
 const path = require("path");
-
-const url = "https://genshin.gg/star-rail/";
+const fs = require("fs");
 
 const imageFolder = path.join(__dirname, "../public/char-images");
 if (!fs.existsSync(imageFolder)) {
@@ -26,48 +24,70 @@ async function downloadImage(url, filename) {
   });
 }
 
-async function fetchCharacterImage(url) {
-  try {
-    const { data: pageHTML } = await axios.get(url);
-    const $ = cheerio.load(pageHTML);
+async function fetchCharInfo(maxPages = 1) {
+  // initialized with the first webpage to visit
+  const paginationURLsToVisit = ["https://genshin.gg/star-rail"];
+  const visitedURLs = [];
+  const characterURLs = new Set();
 
-    const characters = [];
-    var charID = 0;
+  while (paginationURLsToVisit.length !== 0 && visitedURLs.length <= maxPages) {
+    const paginationURL = paginationURLsToVisit.pop();
+    const pageHTML = await axios.get(paginationURL);
+    visitedURLs.push(paginationURL);
+    const $ = cheerio.load(pageHTML.data);
 
+    $(".placeholder").each((index, element) => {
+      const paginationURL = $(element).attr("href");
+      if (
+        !visitedURLs.includes(paginationURL) &&
+        !paginationURLsToVisit.includes(paginationURL)
+      ) {
+        paginationURLsToVisit.push(paginationURL);
+      }
+    });
+
+    // retrieving the character URLs
     $(".character-list a").each((index, element) => {
-      const charName = $(element).find(".character-name").text().trim();
-      const charElement = $(element).find(".character-type").attr("alt");
-      const charRarity = $(element)
-        .find(".character-icon")
+      const rawcharacterURL = $(element).attr("href");
+      const characterURL = path.join("https://genshin.gg", rawcharacterURL);
+      characterURLs.add(characterURL);
+    });
+  }
+
+  // Fetch and extract character details from each character URL
+  const characters = [];
+  var charID = 0;
+
+  for (const characterURL of characterURLs) {
+    try {
+      const characterHTML = await axios.get(characterURL);
+      const $ = cheerio.load(characterHTML.data);
+
+      const charName = $(".character-info-portrait").attr("alt");
+      const charElement = $(".character-info-element").attr("alt");
+      const charRarity = $(".character-info-portrait")
         .attr("class")
         .split(" ")[1];
+      const charPath = $(".character-info-path").text().trim();
+      const charImage = $(".character-info-portrait")
+        .attr("src")
+        .replace("Full", "Thumb")
+        .replace(/-\d+(\.png)$/, "$1");
 
-      // Getting Image URL
-      const baseURL = "https://genshin.gg/";
-      const charImage = $(element).find(".character-icon").attr("src");
-      const fullCharImgUrl = new URL(charImage, baseURL).href;
-
-      const imgLocal = path.join(
-        "/char-images",
-        `${charName.replace(/\s+/g, "_")}.png`,
-      );
-      //   const imgElement = pictureElement.find("img");
-      //   const relicImgUrl = imgElement.attr("src") || imgElement.attr("data-src");
-      //   const fullRelicImgUrl = new URL(relicImgUrl, baseURL).href;
-      //   const placeholderImage = "/set-images/placeholder.png";
-      //   const imageLocation = path.join(
-      //     "/set-images",
-      //     `${relicName.replace(/\s+/g, "_")}.png`,
-      //   );
       const imageFilename = path.join(
         imageFolder,
         `${charName.replace(/\s+/g, "_")}.png`,
       );
 
+      const imgLocal = path.join(
+        "/char-images",
+        `${charName.replace(/\s+/g, "_")}.png`,
+      );
+
       // Download and save the image if it doesn't already exist
-      if (fullCharImgUrl && fullCharImgUrl !== "https://genshin.gg/undefined") {
+      if (charImage) {
         if (!fs.existsSync(imageFilename)) {
-          downloadImage(`${fullCharImgUrl}`, imageFilename)
+          downloadImage(`${charImage}`, imageFilename)
             .then(() => console.log(`Image saved: ${imageFilename}`))
             .catch((err) =>
               console.error(`Error saving image ${imageFilename}:`, err),
@@ -77,29 +97,28 @@ async function fetchCharacterImage(url) {
         }
       }
 
-      const character = {
+      characters.push({
         id: charID,
         name: charName,
-        type: charElement,
+        element: charElement,
         rarity: charRarity,
-        image: fullCharImgUrl,
+        path: charPath,
+        image: charImage,
         local: imgLocal,
-      };
-
+      });
       charID++;
-      characters.push(character);
-    });
 
-    const jsonString = JSON.stringify(characters, null, 2);
-    fs.writeFileSync(
-      path.join(__dirname, "../app/characters/characters.json"),
-      jsonString,
-      "utf-8",
-    );
-    console.log("Character data has been saved to /characters/characters.json");
-  } catch (error) {
-    console.error(`Error fetching data from ${url}`, error);
+      const jsonString = JSON.stringify(characters, null, 2);
+      fs.writeFileSync(
+        path.join(__dirname, "../app/characters/characters.json"),
+        jsonString,
+        "utf-8",
+      );
+      console.log("Character data has been saved.");
+    } catch (error) {
+      console.error(`Error fetching character page: ${characterURL}`, error);
+    }
   }
 }
 
-fetchCharacterImage(url);
+fetchCharInfo();
