@@ -7,11 +7,6 @@ const fetchRelics = require("./fetchRelics.js");
 
 async function initialize() {
   try {
-    // Option 1: Sequential execution
-    // await fetchCharacters();
-    // await fetchRelics();
-
-    // Option 2: Parallel execution
     await Promise.all([fetchCharacters(), fetchRelics()]);
 
     console.log("Characters and relics fetched successfully.");
