@@ -4,11 +4,81 @@
 
 ## Dashboard
 
-- populate with info saved from character page
-- sort by set
-- sidebar with links to character and relic-sets pages
+- character tab
+  - click to expand
+  - list of characters
+    - left click to open menu for that character
+      - edit / add / view relic set
+      - delete character
+      - check mark for done/not done on each piece
+      - mark all as complete button
+    - right click to toggle character on/off in the relic section
+- relic tab
+  - search bar
+    - filter by set name or character
+  - sort by set
+  - each set is expand/collapsable
+  - expand / collapse all button
+  - set 1, set 2, set 3...etc
+    - click to expand
+    - list of pieces + desired stats
+    - character icons to show which characters are farming for this set
+- sidebar with links to character and relic-sets pages (done)
+- user log in and log out
+  - create form
+  - function to check if the username exists in DB
+    - if yes, check if password matches
+      - if yes, log in
+      - if no, show error message incorrect password
+    - if no, prompt to register
+  - create a register page
+    - register with email and password
+    - check if email is already in use
+    - if not, create user
+  - store user info in DB
+- set up DB for user storage
+  - create a user schema
+- update design
+  - set up a theme
+  - beautify page
 
 ## Character Page
+
+- add characters button
+  - delete character button
+  - [future feature] char card infographic generation
+    - add character level, trace levels, eidolons
+    - add current lightcone button
+      - select lightcone
+      - select lightcone level
+    - add current relic set button
+      - select relic set
+      - select stats per piece
+    - calulate total stats
+    - save all info to autogenerate character card for display
+  - add new relic set button
+    - select relic set
+    - select stats per piece
+  - current relic set information with desired stats
+    - edit set
+    - delete set
+    - copy set (can copy into set 2 and change the set name but keep same stats)
+- search bar
+  - search by name
+- filter options
+
+  - rarity
+  - path
+  - element
+  - character section shows
+    - character name
+    - rarity
+    - path
+    - element
+    - current relic set
+    - desired stats
+    - check mark for done/not done on each piece
+    - mark all as complete button
 
 - select owned character -> save to user
 - for each character select relic set(s) + ornament set to farm -> save to user
@@ -32,7 +102,10 @@ eagle: {head:{main: , sub: {}}, arm: {main: , sub: {}}, feet: {main: {} , sub: {
 
 ## Relic Sets Page
 
+- update design
+  - responsive
 - search bar
+  - search by name or description
 - filter options
   - relic vs ornaments
 - filter options (search 2pc description)
@@ -56,8 +129,6 @@ eagle: {head:{main: , sub: {}}, arm: {main: , sub: {}}, feet: {main: {} , sub: {
   - follow-up
   - Imaginary DMG
 - or manually add tags and make it so that rerunning server.js does not overwrite relics that are already present
-- add css and beautify page
-- add responsiveness
 
 # Libraries Used
 
