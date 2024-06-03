@@ -32,13 +32,14 @@ function CharacterCardTemplate({
           border: "2px solid #FFFFFF",
           borderRadius: 20,
           margin: 10,
+          marginTop: 20,
           backgroundColor:
             characterRarity === "rarity-5" ? "#FCFD96" : "#DCACD8",
         }}
         priority
       />
 
-      <div className="flex flex-col py-4" style={{ width: 500 }}>
+      <div className="flex flex-col py-4" style={{ width: 300 }}>
         <h6 className="text-xl">{characterName}</h6>
         <p className="mt-3">Element: {characterType}</p>
         <p className="mt-3">Path: {characterPath}</p>
@@ -56,7 +57,7 @@ export default function Page() {
         <Sidebar />
         <div className="flex flex-col items-center min-h-screen py-2">
           <h3 className="text-3xl">Characters</h3>
-          <div>
+          <div className="flex flex-wrap">
             {characters.map((character, index) => {
               const characterName = character.name;
               const characterType = character.element;

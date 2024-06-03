@@ -73,43 +73,47 @@ export default function Page() {
         <div className="flex flex-col items-center min-h-screen py-2">
           <h4 className="text-3xl">Relic & Ornament Sets</h4>
           <h4 className="text-3xl">Relics</h4>
-          {relics.map((relic, index) => {
-            if (relic.type === "Relic Set") {
-              const relicName = relic.name;
-              const relic2Pc = relic.bonus2pc || "";
-              const relic4Pc = relic.bonus4pc || "";
-              const relicImage = relic.local;
-              return (
-                <RelicCardTemplate
-                  key={index}
-                  relicName={relicName}
-                  relic2Pc={relic2Pc}
-                  relic4Pc={relic4Pc}
-                  relicImage={relicImage}
-                />
-              );
-            } else {
-              return null;
-            }
-          })}
+          <div className="flex flex-wrap">
+            {relics.map((relic, index) => {
+              if (relic.type === "Relic Set") {
+                const relicName = relic.name;
+                const relic2Pc = relic.bonus2pc || "";
+                const relic4Pc = relic.bonus4pc || "";
+                const relicImage = relic.local;
+                return (
+                  <RelicCardTemplate
+                    key={index}
+                    relicName={relicName}
+                    relic2Pc={relic2Pc}
+                    relic4Pc={relic4Pc}
+                    relicImage={relicImage}
+                  />
+                );
+              } else {
+                return null;
+              }
+            })}
+          </div>
           <h4 className="text-3xl">Ornaments</h4>
-          {relics.map((relic, index) => {
-            if (relic.type !== "Relic Set") {
-              const ornamentName = relic.name;
-              const ornament2Pc = relic.bonus2pc;
-              const ornamentImage = relic.local;
-              return (
-                <OrnamentCardTemplate
-                  key={index}
-                  ornamentName={ornamentName}
-                  ornament2Pc={ornament2Pc}
-                  ornamentImage={ornamentImage}
-                />
-              );
-            } else {
-              return null;
-            }
-          })}
+          <div className="flex flex-wrap">
+            {relics.map((relic, index) => {
+              if (relic.type !== "Relic Set") {
+                const ornamentName = relic.name;
+                const ornament2Pc = relic.bonus2pc;
+                const ornamentImage = relic.local;
+                return (
+                  <OrnamentCardTemplate
+                    key={index}
+                    ornamentName={ornamentName}
+                    ornament2Pc={ornament2Pc}
+                    ornamentImage={ornamentImage}
+                  />
+                );
+              } else {
+                return null;
+              }
+            })}
+          </div>
         </div>
       </main>
     </>

@@ -1,13 +1,9 @@
 import React from "react";
 import Button from "./Button";
 
-interface SidebarProps {
-  // Define any props you need for the sidebar component
-}
-
-const Sidebar: React.FC<SidebarProps> = () => {
+const Sidebar = () => {
   return (
-    <div className="sidebar">
+    <div className="sidebar" style={{ width: "230px", minWidth: "230px" }}>
       <div className="flex flex-col">
         <Button onClick={() => goTo("/")} text={"Home"} />
         <Button onClick={() => goTo("/characters")} text={"Characters"} />

@@ -29,16 +29,16 @@ export default function Home() {
       <Header />
       <main className="flex flex-row">
         <Sidebar />
-        <div className="flex flex-col">
-          <div className="flex flex-row justify-center py-3">
-            <h3>Characters</h3>
+        <div className="flex flex-col px-3">
+          <div className="flex flex-row items-center py-3">
+            <h3 className="text-2xl pr-3">Characters</h3>
             <Button onClick={addCharacter} text={"Add a Character"} />
           </div>
           <div>
             {"You don't have any characters added. Start by adding some!"}
           </div>
-          <div className="flex flex-row justify-center py-3">
-            <h3>Relics</h3>
+          <div className="flex flex-row items-center py-3">
+            <h3 className="text-2xl pr-3">Relics</h3>
             <Button onClick={addRelic} text={"Add a Relic"} />
           </div>
           <div>{"You don't have any relics added. Start by adding some!"}</div>
