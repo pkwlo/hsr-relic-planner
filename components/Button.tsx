@@ -14,7 +14,7 @@ const Button: React.FC<ButtonProps> = ({ onClick, text }) => {
         color: "#FFFFFF", // Text color
         backgroundColor: "#7B67DF", // Background color
         padding: "10px", // Padding
-        margin: "10px", // Margin
+        margin: "10px 10px 0px 10px", // Margin
         borderRadius: "5px", // Rounded corners
         cursor: "pointer", // Pointer cursor on hover
       }}

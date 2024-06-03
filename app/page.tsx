@@ -29,8 +29,8 @@ export default function Home() {
       <Header />
       <main className="flex flex-row">
         <Sidebar />
-        <div className="flex flex-col px-3">
-          <div className="flex flex-row items-center py-3">
+        <div className="flex flex-col px-6">
+          <div className="flex flex-row items-center">
             <h3 className="text-2xl pr-3">Characters</h3>
             <Button onClick={addCharacter} text={"Add a Character"} />
           </div>
