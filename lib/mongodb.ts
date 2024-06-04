@@ -1,15 +1,18 @@
-// lib/mongodb.ts
 import { MongoClient } from "mongodb";
 
-if (!process.env.MONGODB_URI) {
-  throw new Error("Please add your MongoDB URI to .env.local");
-}
-
-const uri: string = process.env.MONGODB_URI;
+const uri = process.env.MONGODB_URI;
 const options = {};
 
-let client: MongoClient;
+let client;
 let clientPromise: Promise<MongoClient>;
+
+if (!uri) {
+  throw new Error("Please add your Mongo URI to .env.local");
+}
+
+declare global {
+  var _mongoClientPromise: Promise<MongoClient>;
+}
 
 if (process.env.NODE_ENV === "development") {
   // In development mode, use a global variable so we can reuse the same client across module reloads
@@ -24,6 +27,4 @@ if (process.env.NODE_ENV === "development") {
   clientPromise = client.connect();
 }
 
-// Export a module-scoped MongoClient promise. By doing this in a separate module,
-// the client can be shared across functions.
 export default clientPromise;
