@@ -43,7 +43,7 @@ function CharacterCardTemplate({
         <h6 className="text-xl">{characterName}</h6>
         <p className="mt-3">Element: {characterType}</p>
         <p className="mt-3">Path: {characterPath}</p>
-        <p className="mt-3">Best Sets: </p>
+        {/* <p className="mt-3">Best Sets: </p> */}
       </div>
     </div>
   );
