@@ -5,6 +5,7 @@ import Sidebar from "@/components/Sidebar";
 import Header from "@/components/Header";
 
 export default function Home() {
+  const version = "v0.0.1 Alpha";
   return (
     <>
       <Header />
@@ -14,7 +15,7 @@ export default function Home() {
           <h3 className="text-3xl">Welcome!</h3>
           <br />
           <p>
-            This is the HSR Relic Planner <b>v0.0.0 Alpha</b>
+            This is the HSR Relic Planner <b>{version}</b>
           </p>
           <p>
             Version 1.0 is anticipated to be completed in mid September 2024.
@@ -27,7 +28,7 @@ export default function Home() {
           </p>
           <br />
           <h3 className="text-xl">Change Log/Future Releases</h3>
-          <b>Current: v0.0.0 Alpha</b>
+          <b>Current: {version}</b>
           {/* <ul>
             <li>Release</li>
             <li>- MVP release (v1.0.0)</li>
@@ -41,9 +42,9 @@ export default function Home() {
           <ul>
             <li>Alpha</li>
             <li>- user log-in (v0.0.0)</li>
-            {/* <li>- user registration (v0.0.1)</li>
-            <li>- add characters to inventory (v0.0.2)</li>
-            <li>- add relics to inventory (v0.0.3)</li> */}
+            <li>- user registration (v0.0.1)</li>
+            {/* <li>- add characters to inventory (v0.0.2)</li> */}
+            {/* <li>- add relics to inventory (v0.0.3)</li> */}
           </ul>
         </div>
       </main>

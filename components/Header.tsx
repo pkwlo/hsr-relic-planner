@@ -30,6 +30,10 @@ const logOut = () => {
   window.location.reload();
 };
 
+function goTo(path: string) {
+  window.location.href = path;
+}
+
 const Header = () => {
   return (
     <header className="flex flex-row justify-between items-center">
@@ -49,9 +53,5 @@ const Header = () => {
     </header>
   );
 };
-
-function goTo(path: string) {
-  window.location.href = path;
-}
 
 export default Header;

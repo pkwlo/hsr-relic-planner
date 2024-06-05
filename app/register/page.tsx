@@ -53,11 +53,14 @@ export default function Home() {
         <Sidebar />
         <div className="flex flex-col items-center p-3 px-6">
           <h3 className="text-3xl">Register!</h3>
-          <p>
+          <p className="pb-2">
             {"Already have an account?"}{" "}
             <a href="/log-in" style={{ fontWeight: 500 }}>
               <u>Log-in now!</u>
             </a>
+          </p>
+          <p className="p-2 border border-2">
+            {"Make sure you use a password that you don't use anywhere else."}
           </p>
           <div className="flex flex-col pt-3">
             <label htmlFor="email" className="text-lg">
