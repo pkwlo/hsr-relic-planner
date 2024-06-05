@@ -24,16 +24,28 @@ const Button: React.FC<ButtonProps> = ({ onClick, text }) => {
   );
 };
 
+const logOut = () => {
+  localStorage.removeItem("loggedIn");
+  localStorage.removeItem("email");
+  window.location.reload();
+};
+
 const Header = () => {
   return (
     <header className="flex flex-row justify-between items-center">
       <h1 className="text-3xl" style={{ paddingLeft: "10px" }}>
         HSR Relic Planner
       </h1>
-      <div>
-        <Button text={"Log In"} onClick={() => goTo("/log-in")} />
-        <Button text={"Register"} onClick={() => goTo("/register")} />
-      </div>
+      {localStorage.getItem("loggedIn") ? (
+        <Button text={"Log Out"} onClick={() => logOut()} />
+      ) : (
+        <>
+          <div className="flex justify-end">
+            <Button text={"Log In"} onClick={() => goTo("/log-in")} />
+            <Button text={"Register"} onClick={() => goTo("/register")} />
+          </div>
+        </>
+      )}
     </header>
   );
 };

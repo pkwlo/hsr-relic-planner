@@ -5,6 +5,31 @@ import Sidebar from "@/components/Sidebar";
 import Header from "@/components/Header";
 import Button from "@/components/Button";
 
+const logIn = async (email: string, password: string) => {
+  try {
+    const res = await fetch("/api/logIn", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    });
+
+    const data = await res.json();
+
+    if (res.status === 200 && data.success) {
+      localStorage.setItem("loggedIn", "true");
+      localStorage.setItem("email", email);
+      window.location.href = "/";
+    } else {
+      alert(data.message);
+      console.error(data.message);
+    }
+  } catch (error) {
+    console.error("Error logging in:", error);
+  }
+};
+
 export default function Home() {
   const [email, setEmail] = React.useState<string>("");
   const [password, setPassword] = React.useState<string>("");
@@ -64,26 +89,3 @@ export default function Home() {
     </>
   );
 }
-
-const logIn = async (email: string, password: string) => {
-  try {
-    const res = await fetch("/api/logIn", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password }),
-    });
-
-    const data = await res.json();
-
-    if (res.status === 200 && data.success) {
-      window.location.href = "/";
-    } else {
-      alert(data.message);
-      console.error(data.message);
-    }
-  } catch (error) {
-    console.error("Error logging in:", error);
-  }
-};

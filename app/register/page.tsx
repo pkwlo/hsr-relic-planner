@@ -5,7 +5,47 @@ import Sidebar from "@/components/Sidebar";
 import Header from "@/components/Header";
 import Button from "@/components/Button";
 
+const checkPassword = (
+  password: string,
+  confirmPassword: string,
+  email: string,
+) => {
+  if (password === confirmPassword) {
+    register(email, password);
+  } else {
+    alert("Passwords do not match!");
+  }
+};
+
+const register = async (email: string, password: string) => {
+  try {
+    const res = await fetch("/api/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    });
+
+    const data = await res.json();
+
+    if (res.status === 200 && data.success) {
+      alert(data.message);
+      window.location.href = "/log-in";
+    } else {
+      alert(data.message);
+      console.error(data.message);
+    }
+  } catch (error) {
+    console.error("Error registering:", error);
+  }
+};
+
 export default function Home() {
+  const [email, setEmail] = React.useState<string>("");
+  const [password, setPassword] = React.useState<string>("");
+  const [confirmPassword, setConfirmPassword] = React.useState<string>("");
+
   return (
     <>
       <Header />
@@ -26,6 +66,8 @@ export default function Home() {
             <input
               type="email"
               id="email"
+              value={email as string}
+              onChange={(e) => setEmail(e.target.value)}
               name="email"
               className="p-2 border border-gray-300 rounded-md"
               style={{
@@ -41,6 +83,8 @@ export default function Home() {
             <input
               type="password"
               id="password"
+              value={password as string}
+              onChange={(e) => setPassword(e.target.value)}
               name="password"
               className="p-2 border border-gray-300 rounded-md"
               style={{ marginBottom: "1rem", color: "#272436" }}
@@ -53,18 +97,24 @@ export default function Home() {
             <input
               type="password"
               id="confirm-password"
+              value={confirmPassword as string}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  checkPassword(password, confirmPassword, email);
+                }
+              }}
               name="confirm-password"
               className="p-2 border border-gray-300 rounded-md"
               style={{ marginBottom: "1rem", color: "#272436" }}
             />
           </div>
-          <Button text={"Register"} onClick={() => register(email, password)} />
+          <Button
+            text={"Register"}
+            onClick={() => checkPassword(password, confirmPassword, email)}
+          />
         </div>
       </main>
     </>
   );
-
-  const register = async (email: string, password: string) => {
-    // Register logic here
-  };
 }
