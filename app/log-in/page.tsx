@@ -5,7 +5,7 @@ import Sidebar from "@/components/Sidebar";
 import Header from "@/components/Header";
 import Button from "@/components/Button";
 
-const logIn = async (email, password) => {
+const logIn = async (email: string, password: string) => {
   try {
     const res = await fetch("/api/logIn", {
       method: "POST",
