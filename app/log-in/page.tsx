@@ -5,7 +5,7 @@ import Sidebar from "@/components/Sidebar";
 import Header from "@/components/Header";
 import Button from "@/components/Button";
 
-const logIn = async (email: string, password: string) => {
+const logIn = async (email, password) => {
   try {
     const res = await fetch("/api/logIn", {
       method: "POST",
@@ -18,9 +18,11 @@ const logIn = async (email: string, password: string) => {
     const data = await res.json();
 
     if (res.status === 200 && data.success) {
-      localStorage.setItem("loggedIn", "true");
-      localStorage.setItem("email", email);
-      window.location.href = "/";
+      if (typeof window !== "undefined") {
+        localStorage.setItem("loggedIn", "true");
+        localStorage.setItem("email", email);
+        window.location.href = "/";
+      }
     } else {
       alert(data.message);
       console.error(data.message);

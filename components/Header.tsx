@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 
 interface ButtonProps {
@@ -25,9 +27,11 @@ const Button: React.FC<ButtonProps> = ({ onClick, text }) => {
 };
 
 const logOut = () => {
-  localStorage.removeItem("loggedIn");
-  localStorage.removeItem("email");
-  window.location.reload();
+  if (typeof window !== "undefined") {
+    localStorage.removeItem("loggedIn");
+    localStorage.removeItem("email");
+    window.location.reload();
+  }
 };
 
 function goTo(path: string) {
