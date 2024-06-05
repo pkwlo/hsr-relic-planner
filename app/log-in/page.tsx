@@ -15,7 +15,7 @@ export default function Home() {
       <main className="flex flex-row">
         <Sidebar />
         <div className="flex flex-col px-6 p-3 items-center">
-          <h3 className="text-3xl">Log-in to access your data!</h3>
+          <h3 className="text-3xl">Log-in!</h3>
           <p>
             {"Don't have an account?"}{" "}
             <a href="/register" style={{ fontWeight: 500 }}>
