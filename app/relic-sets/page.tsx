@@ -5,10 +5,6 @@ import relics from "./relics.json";
 import Sidebar from "@/components/Sidebar";
 import Header from "@/components/Header";
 
-if (localStorage.getItem("email")) {
-  const userEmail = localStorage.getItem("email");
-}
-
 function RelicCardTemplate({
   relicName,
   relic2Pc,

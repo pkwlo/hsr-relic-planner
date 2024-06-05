@@ -6,10 +6,6 @@ import Header from "@/components/Header";
 import Image from "next/image";
 import characters from "./characters.json";
 
-if (localStorage.getItem("email")) {
-  const userEmail = localStorage.getItem("email");
-}
-
 function CharacterCardTemplate({
   characterName,
   characterImage,

@@ -5,10 +5,6 @@ import Button from "@/components/Button";
 import Sidebar from "@/components/Sidebar";
 import Header from "@/components/Header";
 
-if (localStorage.getItem("email")) {
-  const userEmail = localStorage.getItem("email");
-}
-
 export default function Home() {
   const [charPopup, setCharPopup] = React.useState<boolean>(false);
   const [relicPopup, setRelicPopup] = React.useState<boolean>(false);

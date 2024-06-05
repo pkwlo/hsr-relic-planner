@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { useEffect, useState } from "react";
 
 interface ButtonProps {
   onClick: () => void;
@@ -39,12 +40,22 @@ function goTo(path: string) {
 }
 
 const Header = () => {
+  const [loggedIn, setLoggedIn] = React.useState<boolean>(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      if (localStorage.getItem("loggedIn")) {
+        setLoggedIn(true);
+      }
+    }
+  }, []);
+
   return (
     <header className="flex flex-row justify-between items-center">
       <h1 className="text-3xl" style={{ paddingLeft: "10px" }}>
         HSR Relic Planner
       </h1>
-      {localStorage.getItem("loggedIn") ? (
+      {loggedIn ? (
         <Button text={"Log Out"} onClick={() => logOut()} />
       ) : (
         <>
