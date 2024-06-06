@@ -104,10 +104,10 @@ const AddRelic = () => {
               <div className="text-3xl">{name}</div>
             </div>
             <div className="flex flex-row">
-              <Head />
-              <Arm />
-              <Body />
-              <Feet />
+              <PartSelector part={"hat"} stats={stats} />
+              <PartSelector part={"glove"} stats={stats} />
+              <PartSelector part={"shoes"} stats={stats} />
+              <PartSelector part={"body"} stats={stats} />
             </div>
           </div>
         </>
