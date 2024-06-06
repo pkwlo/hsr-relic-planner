@@ -5,7 +5,7 @@ import Sidebar from "@/components/Sidebar";
 import Header from "@/components/Header";
 import Button from "@/components/Button";
 
-const logIn = async (email: string, password: string) => {
+async function logIn(email: string, password: string) {
   try {
     const res = await fetch("/api/logIn", {
       method: "POST",
@@ -30,7 +30,7 @@ const logIn = async (email: string, password: string) => {
   } catch (error) {
     console.error("Error logging in:", error);
   }
-};
+}
 
 export default function Home() {
   const [email, setEmail] = React.useState<string>("");

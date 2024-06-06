@@ -5,19 +5,24 @@ import Sidebar from "@/components/Sidebar";
 import Header from "@/components/Header";
 import Button from "@/components/Button";
 
-const checkPassword = (
+// const checkPassword = (
+//   password: string,
+//   confirmPassword: string,
+//   email: string,
+// ) => {
+function checkPassword(
   password: string,
   confirmPassword: string,
   email: string,
-) => {
+) {
   if (password === confirmPassword) {
     register(email, password);
   } else {
     alert("Passwords do not match!");
   }
-};
+}
 
-const register = async (email: string, password: string) => {
+async function register(email: string, password: string) {
   try {
     const res = await fetch("/api/register", {
       method: "POST",
@@ -39,7 +44,7 @@ const register = async (email: string, password: string) => {
   } catch (error) {
     console.error("Error registering:", error);
   }
-};
+}
 
 export default function Home() {
   const [email, setEmail] = React.useState<string>("");
