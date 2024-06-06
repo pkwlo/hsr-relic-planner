@@ -14,17 +14,53 @@ const PartSelect = styled(Select)`
 const PartSelector = ({ part, stats }: { part: string; stats: any }) => {
   const main = getStatsByPart(part, "main", stats);
   const sub = getStatsByPart(part, "sub", stats);
+  const [mainS, setMainS] = useState(null);
+  const [sub1, setSub1] = useState(null);
+  const [sub2, setSub2] = useState(null);
+  const [sub3, setSub3] = useState(null);
+  const [sub4, setSub4] = useState(null);
 
   return (
     <div className="flex flex-col p-5">
-      {"Image Placeholder"} <br />
+      {part} Image Placeholder <br />
       {"Main Stat"}
-      <PartSelect options={main} isClearable={true} isSearchable={true} />
+      <PartSelect
+        options={main}
+        isClearable={true}
+        isSearchable={true}
+        isDisabled={part === "hat" || part === "glove" ? true : false}
+        value={part === "hat" || part === "glove" ? main[0] : mainS}
+        onChange={(selectedOption: any) => setMainS(selectedOption)}
+      />
       {"Sub Stats"}
-      <PartSelect options={sub} isClearable={true} isSearchable={true} />
-      <PartSelect options={sub} isClearable={true} isSearchable={true} />
-      <PartSelect options={sub} isClearable={true} isSearchable={true} />
-      <PartSelect options={sub} isClearable={true} isSearchable={true} />
+      <PartSelect
+        options={sub}
+        isClearable={true}
+        isSearchable={true}
+        value={sub1}
+        onChange={(selectedOption: any) => setSub1(selectedOption)}
+      />
+      <PartSelect
+        options={sub}
+        isClearable={true}
+        isSearchable={true}
+        value={sub2}
+        onChange={(selectedOption: any) => setSub2(selectedOption)}
+      />
+      <PartSelect
+        options={sub}
+        isClearable={true}
+        isSearchable={true}
+        value={sub3}
+        onChange={(selectedOption: any) => setSub3(selectedOption)}
+      />
+      <PartSelect
+        options={sub}
+        isClearable={true}
+        isSearchable={true}
+        value={sub4}
+        onChange={(selectedOption: any) => setSub4(selectedOption)}
+      />
     </div>
   );
 };
@@ -76,6 +112,7 @@ const AddRelic = () => {
   const [name, setName] = useState<string>("");
 
   useEffect(() => {
+    // setName("The Ashblazing Grand Duke");
     setName("Space Sealing Station");
   }, []);
 
