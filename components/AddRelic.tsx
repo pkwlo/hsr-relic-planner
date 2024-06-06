@@ -1,86 +1,33 @@
-// the relic pop up form
 import React, { useState } from "react";
+import Select from "react-select";
 import relics from "@/app/relic-sets/relics.json";
-// import Button from "@/components/Button";
+import stats from "@/app/relic-sets/stats.json";
 import { useEffect } from "react";
+import styled from "@emotion/styled";
 
-function Head() {
+const PartSelect = styled(Select)`
+  color: #000000;
+  width: 150px;
+  margin: 2px;
+`;
+
+const PartSelector = ({ part, stats }: { part: string; stats: any }) => {
+  const main = getStatsByPart(part, "main", stats);
+  const sub = getStatsByPart(part, "sub", stats);
+
   return (
     <div className="flex flex-col p-5">
-      {"image"} <br />
-      {"mainstat"} <br />
-      {"substat"} <br />
-      {"substat"} <br />
-      {"substat"} <br />
-      {"substat"}
+      {"Image Placeholder"} <br />
+      {"Main Stat"}
+      <PartSelect options={main} isClearable={true} isSearchable={true} />
+      {"Sub Stats"}
+      <PartSelect options={sub} isClearable={true} isSearchable={true} />
+      <PartSelect options={sub} isClearable={true} isSearchable={true} />
+      <PartSelect options={sub} isClearable={true} isSearchable={true} />
+      <PartSelect options={sub} isClearable={true} isSearchable={true} />
     </div>
   );
-}
-
-function Arm() {
-  return (
-    <div className="flex flex-col p-5">
-      {"image"} <br />
-      {"mainstat"} <br />
-      {"substat"} <br />
-      {"substat"} <br />
-      {"substat"} <br />
-      {"substat"}
-    </div>
-  );
-}
-
-function Feet() {
-  return (
-    <div className="flex flex-col p-5">
-      {"image"} <br />
-      {"mainstat"} <br />
-      {"substat"} <br />
-      {"substat"} <br />
-      {"substat"} <br />
-      {"substat"}
-    </div>
-  );
-}
-
-function Body() {
-  return (
-    <div className="flex flex-col p-5">
-      {"image"} <br />
-      {"mainstat"} <br />
-      {"substat"} <br />
-      {"substat"} <br />
-      {"substat"} <br />
-      {"substat"}
-    </div>
-  );
-}
-
-function Sphere() {
-  return (
-    <div className="flex flex-col p-5">
-      {"image"} <br />
-      {"mainstat"} <br />
-      {"substat"} <br />
-      {"substat"} <br />
-      {"substat"} <br />
-      {"substat"}
-    </div>
-  );
-}
-
-function Rope() {
-  return (
-    <div className="flex flex-col p-5">
-      {"image"} <br />
-      {"mainstat"} <br />
-      {"substat"} <br />
-      {"substat"} <br />
-      {"substat"} <br />
-      {"substat"}
-    </div>
-  );
-}
+};
 
 interface ButtonProps {
   onClick: () => void;
@@ -111,6 +58,15 @@ function getTypeByName(name: string, relics: any) {
   for (const key in relics) {
     if (relics[key].name === name) {
       return relics[key].type;
+    }
+  }
+  return null;
+}
+
+function getStatsByPart(part: string, query: string, stats: any) {
+  for (const key in stats) {
+    if (stats[key].part === part) {
+      return query === "main" ? stats[key].mainStat : stats[key].subStat;
     }
   }
   return null;
@@ -165,8 +121,8 @@ const AddRelic = () => {
               <div className="text-3xl">{name}</div>
             </div>
             <div className="flex flex-row">
-              <Sphere />
-              <Rope />
+              <PartSelector part={"sphere"} stats={stats} />
+              <PartSelector part={"rope"} stats={stats} />
             </div>
           </div>
         </>
