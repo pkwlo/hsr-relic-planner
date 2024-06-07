@@ -11,6 +11,17 @@ const PartSelect = styled(Select)`
   margin: 2px;
 `;
 
+const customStyles = {
+  menu: (provided) => ({
+    ...provided,
+    maxHeight: "200px", // Set a maximum height for the dropdown menu
+  }),
+  menuList: (provided) => ({
+    ...provided,
+    maxHeight: "200px", // Set a maximum height for the dropdown list
+  }),
+};
+
 const PartSelector = ({
   part,
   stats,
@@ -53,6 +64,7 @@ const PartSelector = ({
         // value={part === "hat" || part === "glove" ? main[0] : mainS}
         value={mainS}
         onChange={(selectedOption) => setMainS(selectedOption)}
+        styles={customStyles}
       />
       {"Sub Stats"}
       <PartSelect
@@ -61,6 +73,7 @@ const PartSelector = ({
         isSearchable={true}
         value={sub1}
         onChange={(selectedOption) => setSub1(selectedOption)}
+        styles={customStyles}
       />
       <PartSelect
         options={sub}
@@ -68,6 +81,7 @@ const PartSelector = ({
         isSearchable={true}
         value={sub2}
         onChange={(selectedOption) => setSub2(selectedOption)}
+        styles={customStyles}
       />
       <PartSelect
         options={sub}
@@ -75,6 +89,7 @@ const PartSelector = ({
         isSearchable={true}
         value={sub3}
         onChange={(selectedOption) => setSub3(selectedOption)}
+        styles={customStyles}
       />
       <PartSelect
         options={sub}
@@ -82,6 +97,7 @@ const PartSelector = ({
         isSearchable={true}
         value={sub4}
         onChange={(selectedOption) => setSub4(selectedOption)}
+        styles={customStyles}
       />
     </div>
   );
