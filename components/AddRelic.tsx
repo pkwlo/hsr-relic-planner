@@ -48,8 +48,9 @@ const PartSelector = ({
         options={main}
         isClearable={true}
         isSearchable={true}
-        isDisabled={part === "hat" || part === "glove"}
-        value={part === "hat" || part === "glove" ? main[0] : mainS}
+        // isDisabled={part === "hat" || part === "glove"}
+        // value={part === "hat" || part === "glove" ? main[0] : mainS}
+        value={mainS}
         onChange={(selectedOption) => setMainS(selectedOption)}
       />
       {"Sub Stats"}
@@ -169,7 +170,8 @@ const AddRelic = () => {
   });
 
   useEffect(() => {
-    setName("Space Sealing Station");
+    // setName("Space Sealing Station"); // test ornament
+    setName("The Ashblazing Grand Duke"); // test relic
   }, []);
 
   const clear = () => {
@@ -218,12 +220,20 @@ const AddRelic = () => {
   };
 
   const save = () => {
-    console.log("Hat Stats:", hatStats);
-    console.log("Glove Stats:", gloveStats);
-    console.log("Shoes Stats:", shoesStats);
-    console.log("Body Stats:", bodyStats);
-    console.log("Sphere Stats:", sphereStats);
-    console.log("Rope Stats:", ropeStats);
+    const extractValues = (stats) => ({
+      mainS: stats.mainS ? stats.mainS.value : null,
+      sub1: stats.sub1 ? stats.sub1.value : null,
+      sub2: stats.sub2 ? stats.sub2.value : null,
+      sub3: stats.sub3 ? stats.sub3.value : null,
+      sub4: stats.sub4 ? stats.sub4.value : null,
+    });
+
+    console.log("Hat Stats:", extractValues(hatStats));
+    console.log("Glove Stats:", extractValues(gloveStats));
+    console.log("Shoes Stats:", extractValues(shoesStats));
+    console.log("Body Stats:", extractValues(bodyStats));
+    console.log("Sphere Stats:", extractValues(sphereStats));
+    console.log("Rope Stats:", extractValues(ropeStats));
   };
 
   if (name === "") {
@@ -341,7 +351,7 @@ const AddRelic = () => {
               }
             />
           </div>
-          <div className="flex flex-row">
+          <div className="flex flex-row px-3 justify-center">
             <Button text={"Clear"} onClick={clear} />
             <Button text={"Save"} onClick={save} />
           </div>
@@ -404,7 +414,7 @@ const AddRelic = () => {
               }
             />
           </div>
-          <div className="flex flex-row">
+          <div className="flex flex-row px-3 justify-center">
             <Button text={"Clear"} onClick={clear} />
             <Button text={"Save"} onClick={save} />
           </div>
