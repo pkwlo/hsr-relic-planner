@@ -34,9 +34,7 @@ export default function Home() {
   const closePopup = (): void => {
     setCharPopup(false);
     setRelicPopup(false);
-    if (typeof window !== "undefined") {
-      setColumnWidth(window.innerWidth - 230);
-    }
+    setColumnWidth(window.innerWidth - 230);
   };
 
   return (
