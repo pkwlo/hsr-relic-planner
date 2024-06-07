@@ -6,13 +6,18 @@ import Sidebar from "@/components/Sidebar";
 import Header from "@/components/Header";
 import AddRelic from "@/components/AddRelic";
 import AddCharacter from "@/components/AddCharacter";
+import { useState, useEffect } from "react";
 
 export default function Home() {
-  const [charPopup, setCharPopup] = React.useState<boolean>(false);
-  const [relicPopup, setRelicPopup] = React.useState<boolean>(false);
-  const [columnWidth, setColumnWidth] = React.useState<number>(
-    window.innerWidth - 230,
-  );
+  const [charPopup, setCharPopup] = useState<boolean>(false);
+  const [relicPopup, setRelicPopup] = useState<boolean>(false);
+  const [columnWidth, setColumnWidth] = useState<number>(400);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setColumnWidth(window.innerWidth - 230);
+    }
+  }, []);
 
   const addCharacter = (): void => {
     setCharPopup(true);
@@ -29,7 +34,9 @@ export default function Home() {
   const closePopup = (): void => {
     setCharPopup(false);
     setRelicPopup(false);
-    setColumnWidth(window.innerWidth - 230);
+    if (typeof window !== "undefined") {
+      setColumnWidth(window.innerWidth - 230);
+    }
   };
 
   return (
