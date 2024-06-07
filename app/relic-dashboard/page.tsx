@@ -11,7 +11,7 @@ export default function Home() {
   const [charPopup, setCharPopup] = React.useState<boolean>(false);
   const [relicPopup, setRelicPopup] = React.useState<boolean>(false);
   const [columnWidth, setColumnWidth] = React.useState<number>(
-    window.innerWidth - 230,
+    typeof window !== undefined ? window.innerWidth - 230 : 400,
   );
 
   const addCharacter = (): void => {
@@ -29,7 +29,7 @@ export default function Home() {
   const closePopup = (): void => {
     setCharPopup(false);
     setRelicPopup(false);
-    setColumnWidth(window.innerWidth - 230);
+    setColumnWidth(typeof window !== undefined ? window.innerWidth - 230 : 400);
   };
 
   return (
