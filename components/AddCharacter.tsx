@@ -1,3 +1,5 @@
-// the character pop up form
+const AddCharacter = () => {
+  return <div>Character Form</div>;
+};
 
-export {};
+export default AddCharacter;

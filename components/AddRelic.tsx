@@ -12,11 +12,7 @@ const PartSelect = styled(Select)`
 `;
 
 const customStyles = {
-  menu: (provided) => ({
-    ...provided,
-    maxHeight: "200px", // Set a maximum height for the dropdown menu
-  }),
-  menuList: (provided) => ({
+  menuList: (provided: any) => ({
     ...provided,
     maxHeight: "200px", // Set a maximum height for the dropdown list
   }),
@@ -60,8 +56,6 @@ const PartSelector = ({
         options={main}
         isClearable={true}
         isSearchable={true}
-        // isDisabled={part === "hat" || part === "glove"}
-        // value={part === "hat" || part === "glove" ? main[0] : mainS}
         value={mainS}
         onChange={(selectedOption) => setMainS(selectedOption)}
         styles={customStyles}
