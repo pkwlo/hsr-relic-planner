@@ -220,7 +220,13 @@ const AddRelic = () => {
   };
 
   const save = () => {
-    const extractValues = (stats) => ({
+    const extractValues = (stats: {
+      mainS: any;
+      sub1: any;
+      sub2: any;
+      sub3: any;
+      sub4: any;
+    }) => ({
       mainS: stats.mainS ? stats.mainS.value : null,
       sub1: stats.sub1 ? stats.sub1.value : null,
       sub2: stats.sub2 ? stats.sub2.value : null,
