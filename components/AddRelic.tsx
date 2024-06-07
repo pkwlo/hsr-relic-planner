@@ -14,7 +14,7 @@ const PartSelect = styled(Select)`
 const customStyles = {
   menuList: (provided: any) => ({
     ...provided,
-    maxHeight: "200px", // Set a maximum height for the dropdown list
+    maxHeight: "200px",
   }),
 };
 
@@ -225,7 +225,8 @@ const AddRelic = () => {
     });
   };
 
-  const save = () => {
+  async function save() {
+    const user = localStorage.getItem("email");
     const extractValues = (stats: {
       mainS: any;
       sub1: any;
@@ -247,7 +248,35 @@ const AddRelic = () => {
     console.log("Body Stats:", extractValues(bodyStats));
     console.log("Sphere Stats:", extractValues(sphereStats));
     console.log("Rope Stats:", extractValues(ropeStats));
-  };
+
+    try {
+      const res = await fetch("/api/saveRelic", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          user,
+          name,
+          hatStats: extractValues(hatStats),
+          gloveStats: extractValues(gloveStats),
+          shoesStats: extractValues(shoesStats),
+          bodyStats: extractValues(bodyStats),
+          sphereStats: extractValues(sphereStats),
+          ropeStats: extractValues(ropeStats),
+          character: null,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (data) {
+        window.location.href = "/relic-dashboard";
+      }
+    } catch (error) {
+      console.error("Error saving relic:", error);
+    }
+  }
 
   if (name === "") {
     return (
