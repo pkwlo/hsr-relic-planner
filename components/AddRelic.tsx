@@ -3,6 +3,7 @@ import Select from "react-select";
 import relics from "@/app/relic-sets/relics.json";
 import stats from "@/app/relic-sets/stats.json";
 import styled from "@emotion/styled";
+import Image from "next/image";
 
 const PartSelect = styled(Select)`
   color: #000000;
@@ -169,11 +170,6 @@ const AddRelic = () => {
     sub4: null,
   });
 
-  useEffect(() => {
-    // setName("Space Sealing Station"); // test ornament
-    setName("The Ashblazing Grand Duke"); // test relic
-  }, []);
-
   const clear = () => {
     setHatStats({
       mainS: null,
@@ -234,6 +230,7 @@ const AddRelic = () => {
       sub4: stats.sub4 ? stats.sub4.value : null,
     });
 
+    console.log("Name:", name);
     console.log("Hat Stats:", extractValues(hatStats));
     console.log("Glove Stats:", extractValues(gloveStats));
     console.log("Shoes Stats:", extractValues(shoesStats));
@@ -244,9 +241,54 @@ const AddRelic = () => {
 
   if (name === "") {
     return (
-      <div className="p-2 border">
+      <div className="p-2 flex flex-col">
         <h1 className="text-3xl">Select a set to add</h1>
-        {/* Render the options for selecting a relic set */}
+        <h1 className="text-3xl">Relics</h1>
+        <div className="flex flex-wrap">
+          {relics.map((relic: any) =>
+            relic.type === "Relic Set" ? (
+              <div
+                key={relic.name}
+                className="flex flex-col items-center p-2 cursor-pointer"
+                onClick={() => setName(relic.name)}
+              >
+                <Image
+                  src={relic.local}
+                  alt={relic.name}
+                  width={50}
+                  height={50}
+                  style={{ width: "100px", height: "100px" }}
+                />
+                <div className="text-sm ml-3" style={{ width: 120 }}>
+                  {relic.name}
+                </div>
+              </div>
+            ) : null,
+          )}
+        </div>
+        <h1 className="text-3xl">Ornaments</h1>
+        <div className="flex flex-wrap">
+          {relics.map((relic: any) =>
+            relic.type === "Planetary Ornament Set" ? (
+              <div
+                key={relic.name}
+                className="flex flex-col items-center p-2 cursor-pointer"
+                onClick={() => setName(relic.name)}
+              >
+                <Image
+                  src={relic.local}
+                  alt={relic.name}
+                  width={50}
+                  height={50}
+                  style={{ width: "100px", height: "100px" }}
+                />
+                <div className="text-sm ml-3" style={{ width: 120 }}>
+                  {relic.name}
+                </div>
+              </div>
+            ) : null,
+          )}
+        </div>
       </div>
     );
   } else {
