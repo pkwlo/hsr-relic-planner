@@ -271,7 +271,9 @@ const AddRelic = () => {
       const data = await res.json();
 
       if (data) {
-        window.location.href = "/relic-dashboard";
+        if (typeof window !== "undefined") {
+          window.location.href = "/relic-dashboard";
+        }
       }
     } catch (error) {
       console.error("Error saving relic:", error);
