@@ -241,14 +241,6 @@ const AddRelic = () => {
       sub4: stats.sub4 ? stats.sub4.value : null,
     });
 
-    console.log("Name:", name);
-    console.log("Hat Stats:", extractValues(hatStats));
-    console.log("Glove Stats:", extractValues(gloveStats));
-    console.log("Shoes Stats:", extractValues(shoesStats));
-    console.log("Body Stats:", extractValues(bodyStats));
-    console.log("Sphere Stats:", extractValues(sphereStats));
-    console.log("Rope Stats:", extractValues(ropeStats));
-
     try {
       const res = await fetch("/api/saveRelic", {
         method: "POST",
@@ -258,6 +250,7 @@ const AddRelic = () => {
         body: JSON.stringify({
           user,
           name,
+          type: getTypeByName(name, relics),
           hatStats: extractValues(hatStats),
           gloveStats: extractValues(gloveStats),
           shoesStats: extractValues(shoesStats),

@@ -13,6 +13,12 @@ interface RelicSet {
   gloveStats: any;
   shoesStats: any;
   bodyStats: any;
+  character: string;
+}
+
+interface OrnamentSet {
+  setId: number;
+  name: string;
   sphereStats: any;
   ropeStats: any;
   character: string;
@@ -25,6 +31,7 @@ export default async function handler(
   const {
     user,
     name,
+    type,
     hatStats,
     gloveStats,
     shoesStats,
@@ -39,7 +46,7 @@ export default async function handler(
     const db = client.db("user-info");
 
     const usersCollection = db.collection<User>("users");
-    const relicsCollection = db.collection<RelicSet>("relics");
+    const relicsCollection = db.collection<RelicSet | OrnamentSet>("relics");
 
     const setId = (await relicsCollection.countDocuments()) + 1;
 
@@ -50,17 +57,22 @@ export default async function handler(
       gloveStats,
       shoesStats,
       bodyStats,
+      character,
+    };
+
+    const newOrnamentSet: OrnamentSet = {
+      setId,
+      name,
       sphereStats,
       ropeStats,
       character,
     };
 
-    // Insert the new relic set into the relics collection
-    await relicsCollection.insertOne(newRelicSet);
+    if (type === "Relic Set") await relicsCollection.insertOne(newRelicSet);
+    else await relicsCollection.insertOne(newOrnamentSet);
 
-    // Add the new relic set ID to the user's setId array
     await usersCollection.updateOne(
-      { email: user }, // Adjust the filter according to your user schema
+      { email: user },
       { $push: { setId: setId } },
     );
 
