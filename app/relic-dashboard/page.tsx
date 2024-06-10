@@ -8,15 +8,53 @@ import AddRelic from "@/components/AddRelic";
 import AddCharacter from "@/components/AddCharacter";
 import { useState, useEffect } from "react";
 
+async function getRelics() {
+  const user = localStorage.getItem("user");
+
+  try {
+    const res = await fetch("/api/getRelics", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ user }),
+    });
+
+    const data = await res.json();
+
+    if (res.status === 200) {
+      return data;
+    } else {
+      console.error(data.message);
+      return null;
+    }
+  } catch (error) {
+    console.error("Error getting relics:", error);
+  }
+}
+
+function RelicCard({ relic }: any) {}
+
 export default function Home() {
   const [charPopup, setCharPopup] = useState<boolean>(false);
   const [relicPopup, setRelicPopup] = useState<boolean>(false);
   const [columnWidth, setColumnWidth] = useState<number>(400);
+  const [relicData, setRelicData] = useState<any[]>([]);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       setColumnWidth(window.innerWidth - 230);
     }
+  }, []);
+
+  useEffect(() => {
+    const fetchRelics = async () => {
+      const data = await getRelics();
+      console.log(data);
+      setRelicData(data);
+    };
+
+    fetchRelics();
   }, []);
 
   const addCharacter = (): void => {
@@ -57,7 +95,19 @@ export default function Home() {
             <h3 className="text-2xl pr-3">Relics</h3>
             <Button onClick={addRelic} text={"Add a Relic"} />
           </div>
-          <div>{"You don't have any relics added. Start by adding some!"}</div>
+          {relicData ? (
+            <div>
+              {relicData.map((relic: any, index: number) => (
+                <div key={index}>
+                  <h4>{relic.name}</h4>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div>
+              {"You don't have any relics added. Start by adding some!"}
+            </div>
+          )}
         </div>
         <div className="flex flex-col">
           {charPopup && (
