@@ -27,14 +27,14 @@ export default async function handler(
         const relicTarget = await db.collection("relics").findOne({ setId });
         if (relicTarget) {
           return {
-            name: relicTarget.name || "",
-            character: relicTarget.character || "",
-            hatStats: relicTarget.hatStats || {},
-            gloveStats: relicTarget.gloveStats || {},
-            shoesStats: relicTarget.shoesStats || {},
-            bodyStats: relicTarget.bodyStats || {},
-            sphereStats: relicTarget.sphereStats || {},
-            ropeStats: relicTarget.ropeStats || {},
+            name: relicTarget.name || null,
+            character: relicTarget.character || null,
+            hatStats: relicTarget.hatStats || null,
+            gloveStats: relicTarget.gloveStats || null,
+            shoesStats: relicTarget.shoesStats || null,
+            bodyStats: relicTarget.bodyStats || null,
+            sphereStats: relicTarget.sphereStats || null,
+            ropeStats: relicTarget.ropeStats || null,
           };
         } else {
           return null;

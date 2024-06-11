@@ -7,9 +7,13 @@ import Header from "@/components/Header";
 import AddRelic from "@/components/AddRelic";
 import AddCharacter from "@/components/AddCharacter";
 import { useState, useEffect } from "react";
+import Image from "next/image";
+import chevronUp from "@/public/icons/KAup.png";
+import chevronDown from "@/public/icons/KAdown.png";
 
 async function getRelics() {
-  const user = localStorage.getItem("user");
+  const user = localStorage.getItem("email");
+  console.log(user);
 
   try {
     const res = await fetch("/api/getRelics", {
@@ -33,13 +37,63 @@ async function getRelics() {
   }
 }
 
-function RelicCard({ relic }: any) {}
+const RelicCardMini = ({ part, name }: { part: any; name: string }) =>
+  part ? (
+    <div className="flex flex-col m-2" style={{ maxWidth: 120 }}>
+      <h3 className="font-semibold ml-1"> {name}</h3>
+      <h3 className="font-semibold ml-1">Main Stat</h3>
+      <p className="border-2 border-gray-500 rounded-md p-1 m-0.5">
+        {part.mainS}
+      </p>
+      <h4 className="font-semibold ml-1">Sub Stats</h4>
+      <p className="border-2 border-gray-500 rounded-md p-1 m-0.5">
+        {part.sub1}
+      </p>
+      <p className="border-2 border-gray-500 rounded-md p-1 m-0.5">
+        {part.sub2}
+      </p>
+      <p className="border-2 border-gray-500 rounded-md p-1 m-0.5">
+        {part.sub3}
+      </p>
+      <p className="border-2 border-gray-500 rounded-md p-1 m-0.5">
+        {part.sub4}
+      </p>
+    </div>
+  ) : null;
+
+const RelicCard = ({ relicData }: any) =>
+  relicData && relicData.length > 0 ? (
+    <div>
+      {relicData.map((relic: any, index: number) => (
+        <div key={index}>
+          <div
+            className="flex border-2 p-2 rounded-md items-center justify-between"
+            style={{ backgroundColor: "#4c437a", maxWidth: 800 }}
+          >
+            <h4 className="text-xl">{relic.name}</h4>
+            <Image src={chevronUp} alt={"Right Arrow"} height={30} width={30} />
+          </div>
+          <div className="flex flex-row">
+            <RelicCardMini part={relic.hatStats} name={"Hat"} />
+            <RelicCardMini part={relic.gloveStats} name={"Glove"} />
+            <RelicCardMini part={relic.shoesStats} name={"Shoes"} />
+            <RelicCardMini part={relic.bodyStats} name={"Body"} />
+            <RelicCardMini part={relic.sphereStats} name={"Sphere"} />
+            <RelicCardMini part={relic.ropeStats} name={"Rope"} />
+          </div>
+        </div>
+      ))}
+    </div>
+  ) : (
+    <div>{"You don't have any relics added. Start by adding some!"}</div>
+  );
 
 export default function Home() {
   const [charPopup, setCharPopup] = useState<boolean>(false);
   const [relicPopup, setRelicPopup] = useState<boolean>(false);
   const [columnWidth, setColumnWidth] = useState<number>(400);
   const [relicData, setRelicData] = useState<any[]>([]);
+  const user = localStorage.getItem("email");
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -75,7 +129,7 @@ export default function Home() {
     setColumnWidth(window.innerWidth - 230);
   };
 
-  return (
+  return user ? (
     <>
       <Header />
       <main className="flex flex-row">
@@ -95,19 +149,7 @@ export default function Home() {
             <h3 className="text-2xl pr-3">Relics</h3>
             <Button onClick={addRelic} text={"Add a Relic"} />
           </div>
-          {relicData ? (
-            <div>
-              {relicData.map((relic: any, index: number) => (
-                <div key={index}>
-                  <h4>{relic.name}</h4>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div>
-              {"You don't have any relics added. Start by adding some!"}
-            </div>
-          )}
+          <RelicCard relicData={relicData} />
         </div>
         <div className="flex flex-col">
           {charPopup && (
@@ -136,6 +178,21 @@ export default function Home() {
               </div>
             </div>
           )}
+        </div>
+      </main>
+    </>
+  ) : (
+    <>
+      <Header />
+      <main className="flex flex-row">
+        <Sidebar />
+        <div className="p-6">
+          <h1>
+            <a href="/log-in" style={{ fontWeight: 500 }}>
+              <u>Log in</u>
+            </a>{" "}
+            {"to start saving relics!"}
+          </h1>
         </div>
       </main>
     </>
