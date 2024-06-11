@@ -11,10 +11,7 @@ import Image from "next/image";
 import chevronUp from "@/public/icons/KAup.png";
 import chevronDown from "@/public/icons/KAdown.png";
 
-async function getRelics() {
-  const user = localStorage.getItem("email");
-  console.log(user);
-
+async function getRelics(user: any) {
   try {
     const res = await fetch("/api/getRelics", {
       method: "POST",
@@ -37,8 +34,8 @@ async function getRelics() {
   }
 }
 
-const RelicCardMini = ({ part, name }: { part: any; name: string }) =>
-  part ? (
+const RelicCardMini = ({ part, name }: { part: any; name: string }) => {
+  return part ? (
     <div className="flex flex-col m-2" style={{ maxWidth: 120 }}>
       <h3 className="font-semibold ml-1"> {name}</h3>
       <h3 className="font-semibold ml-1">Main Stat</h3>
@@ -60,9 +57,10 @@ const RelicCardMini = ({ part, name }: { part: any; name: string }) =>
       </p>
     </div>
   ) : null;
+};
 
-const RelicCard = ({ relicData }: any) =>
-  relicData && relicData.length > 0 ? (
+const RelicCard = ({ relicData }: any) => {
+  return relicData && relicData.length > 0 ? (
     <div>
       {relicData.map((relic: any, index: number) => (
         <div key={index}>
@@ -87,29 +85,32 @@ const RelicCard = ({ relicData }: any) =>
   ) : (
     <div>{"You don't have any relics added. Start by adding some!"}</div>
   );
+};
 
 export default function Home() {
   const [charPopup, setCharPopup] = useState<boolean>(false);
   const [relicPopup, setRelicPopup] = useState<boolean>(false);
   const [columnWidth, setColumnWidth] = useState<number>(400);
   const [relicData, setRelicData] = useState<any[]>([]);
-  const user = localStorage.getItem("email");
+  const [user, setUser] = useState<string | null>(null);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       setColumnWidth(window.innerWidth - 230);
+      setUser(localStorage.getItem("email"));
     }
   }, []);
 
   useEffect(() => {
-    const fetchRelics = async () => {
-      const data = await getRelics();
-      console.log(data);
-      setRelicData(data);
-    };
+    if (typeof window !== "undefined") {
+      const fetchRelics = async () => {
+        const data = await getRelics(user);
+        setRelicData(data);
+      };
 
-    fetchRelics();
-  }, []);
+      fetchRelics();
+    }
+  }, [user]);
 
   const addCharacter = (): void => {
     setCharPopup(true);
