@@ -1,6 +1,5 @@
 [
   {
-    "id": 0,
     "name": "Band of Sizzling Thunder",
     "type": "Relic Set",
     "bonus2pc": "Increases Lightning DMG by 10%.",
@@ -9,7 +8,6 @@
     "local": "/set-images/Band_of_Sizzling_Thunder.png"
   },
   {
-    "id": 1,
     "name": "Belobog of the Architects",
     "type": "Planetary Ornament Set",
     "bonus2pc": "Increases the wearer's DEF by 15%. When the wearer's Effect Hit Rate is 50% or higher, the wearer gains an extra 15% DEF.",
@@ -17,7 +15,6 @@
     "local": "/set-images/Belobog_of_the_Architects.png"
   },
   {
-    "id": 2,
     "name": "Broken Keel",
     "type": "Planetary Ornament Set",
     "bonus2pc": "Increases the wearer's Effect RES by 10%. When the wearer's Effect RES is at 30% or higher, all allies' CRIT DMG increases by 10%.",
@@ -25,7 +22,6 @@
     "local": "/set-images/Broken_Keel.png"
   },
   {
-    "id": 3,
     "name": "Celestial Differentiator",
     "type": "Planetary Ornament Set",
     "bonus2pc": "Increases the wearer's CRIT DMG by 16%. When the wearer's current CRIT DMG reaches 120% or higher, after entering battle, the wearer's CRIT Rate increases by 60% until the end of their first attack.",
@@ -33,7 +29,6 @@
     "local": "/set-images/Celestial_Differentiator.png"
   },
   {
-    "id": 4,
     "name": "Champion of Streetwise Boxing",
     "type": "Relic Set",
     "bonus2pc": "Increases Physical DMG by 10%.",
@@ -42,7 +37,13 @@
     "local": "/set-images/Champion_of_Streetwise_Boxing.png"
   },
   {
-    "id": 5,
+    "name": "Duran, Dynasty of Running Wolves",
+    "type": "Planetary Ornament Set",
+    "bonus2pc": "Unknown",
+    "image": "null",
+    "local": "/set-images/placeholder.png"
+  },
+  {
     "name": "Eagle of Twilight Line",
     "type": "Relic Set",
     "bonus2pc": "Increases Wind DMG by 10%.",
@@ -51,7 +52,6 @@
     "local": "/set-images/Eagle_of_Twilight_Line.png"
   },
   {
-    "id": 6,
     "name": "Firesmith of Lava-Forging",
     "type": "Relic Set",
     "bonus2pc": "Increases Fire DMG by 10%.",
@@ -60,7 +60,6 @@
     "local": "/set-images/Firesmith_of_Lava-Forging.png"
   },
   {
-    "id": 7,
     "name": "Firmament Frontline: Glamoth",
     "type": "Planetary Ornament Set",
     "bonus2pc": "Increases the wearer's ATK by 12%. When the wearer's SPD is equal to or higher than 135/160, the wearer deals 12%/18% more DMG.",
@@ -68,7 +67,6 @@
     "local": "/set-images/Firmament_Frontline:_Glamoth.png"
   },
   {
-    "id": 8,
     "name": "Fleet of the Ageless",
     "type": "Planetary Ornament Set",
     "bonus2pc": "Increases the wearer's Max HP by 12%. When the wearer's SPD reaches 120 or higher, all allies' ATK increases by 8%.",
@@ -76,7 +74,13 @@
     "local": "/set-images/Fleet_of_the_Ageless.png"
   },
   {
-    "id": 9,
+    "name": "Forge of the Kalpagni Lantern",
+    "type": "Planetary Ornament Set",
+    "bonus2pc": "Increase the wearer's SPD by 6%. When the wearer hits enemy targets with Fire Weakness, the wearer's Break Effect increases by 40%, lasting for 1 turn(s).",
+    "image": "null",
+    "local": "/set-images/placeholder.png"
+  },
+  {
     "name": "Genius of Brilliant Stars",
     "type": "Relic Set",
     "bonus2pc": "Increases Quantum DMG by 10%.",
@@ -85,7 +89,6 @@
     "local": "/set-images/Genius_of_Brilliant_Stars.png"
   },
   {
-    "id": 10,
     "name": "Guard of Wuthering Snow",
     "type": "Relic Set",
     "bonus2pc": "Reduces DMG taken by 8%.",
@@ -94,7 +97,6 @@
     "local": "/set-images/Guard_of_Wuthering_Snow.png"
   },
   {
-    "id": 11,
     "name": "Hunter of Glacial Forest",
     "type": "Relic Set",
     "bonus2pc": "Increases Ice DMG by 10%.",
@@ -103,7 +105,6 @@
     "local": "/set-images/Hunter_of_Glacial_Forest.png"
   },
   {
-    "id": 12,
     "name": "Inert Salsotto",
     "type": "Planetary Ornament Set",
     "bonus2pc": "Increases the wearer's CRIT Rate by 8%. When the wearer's current CRIT Rate reaches 50% or higher, the wearer's Ultimate and follow-up attack DMG increases by 15%.",
@@ -111,7 +112,14 @@
     "local": "/set-images/Inert_Salsotto.png"
   },
   {
-    "id": 13,
+    "name": "Iron Cavalry Against the Scourge",
+    "type": "Relic Set",
+    "bonus2pc": "Increases Break Effect by 16%.",
+    "bonus4pc": "If the wearer's Break Effect is 150% or higher, ignores 10% of the enemy target's DEF when dealing Break DMG to them. When the wearer's Break Effect is 250% or higher, the Super Break DMG they deal to enemy targets additionally ignores 15% of the targets' DEF.",
+    "image": "null",
+    "local": "/set-images/placeholder.png"
+  },
+  {
     "name": "Izumo Gensei and Takama Divine Realm",
     "type": "Planetary Ornament Set",
     "bonus2pc": "Increases the wearer's ATK by 12%. When entering battle, if at least one other ally follows the same Path as the wearer, then the wearer's CRIT Rate increases by 12%.",
@@ -119,7 +127,6 @@
     "local": "/set-images/placeholder.png"
   },
   {
-    "id": 14,
     "name": "Knight of Purity Palace",
     "type": "Relic Set",
     "bonus2pc": "Increases DEF by 15%.",
@@ -128,7 +135,6 @@
     "local": "/set-images/Knight_of_Purity_Palace.png"
   },
   {
-    "id": 15,
     "name": "Longevous Disciple",
     "type": "Relic Set",
     "bonus2pc": "Increases Max HP by 12%.",
@@ -137,7 +143,6 @@
     "local": "/set-images/Longevous_Disciple.png"
   },
   {
-    "id": 16,
     "name": "Messenger Traversing Hackerspace",
     "type": "Relic Set",
     "bonus2pc": "Increases SPD by 6%.",
@@ -146,7 +151,6 @@
     "local": "/set-images/Messenger_Traversing_Hackerspace.png"
   },
   {
-    "id": 17,
     "name": "Musketeer of Wild Wheat",
     "type": "Relic Set",
     "bonus2pc": "ATK increases by 12%.",
@@ -155,7 +159,6 @@
     "local": "/set-images/Musketeer_of_Wild_Wheat.png"
   },
   {
-    "id": 18,
     "name": "Pan-Cosmic Commercial Enterprise",
     "type": "Planetary Ornament Set",
     "bonus2pc": "Increases the wearer's Effect Hit Rate by 10%. Meanwhile, the wearer's ATK increases by an amount that is equal to 25% of the current Effect Hit Rate, up to a maximum of 25%.",
@@ -163,7 +166,6 @@
     "local": "/set-images/Pan-Cosmic_Commercial_Enterprise.png"
   },
   {
-    "id": 19,
     "name": "Passerby of Wandering Cloud",
     "type": "Relic Set",
     "bonus2pc": "Increases Outgoing Healing by 10%.",
@@ -172,7 +174,6 @@
     "local": "/set-images/Passerby_of_Wandering_Cloud.png"
   },
   {
-    "id": 20,
     "name": "Penacony, Land of the Dreams",
     "type": "Planetary Ornament Set",
     "bonus2pc": "Increases wearer's Energy Regeneration Rate by 5%. Increases DMG for all other allies with the same DMG Type as the wearer by 10%.",
@@ -180,7 +181,6 @@
     "local": "/set-images/Penacony,_Land_of_the_Dreams.png"
   },
   {
-    "id": 21,
     "name": "Pioneer Diver of Dead Waters",
     "type": "Relic Set",
     "bonus2pc": "Increases DMG dealt to enemies with debuff by 12%.",
@@ -189,7 +189,6 @@
     "local": "/set-images/Pioneer_Diver_of_Dead_Waters.png"
   },
   {
-    "id": 22,
     "name": "Prisoner in Deep Confinement",
     "type": "Relic Set",
     "bonus2pc": "Increases ATK by 12%.",
@@ -198,7 +197,6 @@
     "local": "/set-images/Prisoner_in_Deep_Confinement.png"
   },
   {
-    "id": 23,
     "name": "Rutilant Arena",
     "type": "Planetary Ornament Set",
     "bonus2pc": "Increases the wearer's CRIT Rate by 8%. When the wearer's current CRIT Rate reaches 70% or higher, the wearer's Basic ATK and Skill DMG increase by 20%.",
@@ -206,7 +204,6 @@
     "local": "/set-images/Rutilant_Arena.png"
   },
   {
-    "id": 24,
     "name": "Sigonia, the Unclaimed Desolation",
     "type": "Planetary Ornament Set",
     "bonus2pc": "Increases the wearer's CRIT Rate by 4%. When an enemy target gets defeated, the wearer's CRIT DMG increases by 4%, stacking up to 10 time(s).",
@@ -214,7 +211,6 @@
     "local": "/set-images/placeholder.png"
   },
   {
-    "id": 25,
     "name": "Space Sealing Station",
     "type": "Planetary Ornament Set",
     "bonus2pc": "Increases the wearer's ATK by 12%. When the wearer's SPD reaches 120 or higher, the wearer's ATK increases by an extra 12%.",
@@ -222,7 +218,6 @@
     "local": "/set-images/Space_Sealing_Station.png"
   },
   {
-    "id": 26,
     "name": "Sprightly Vonwacq",
     "type": "Planetary Ornament Set",
     "bonus2pc": "Increases the wearer's Energy Regeneration Rate by 5%. When the wearer's SPD reaches 120 or higher, the wearer's action is Advanced Forward by 40% immediately upon entering battle.",
@@ -230,7 +225,6 @@
     "local": "/set-images/Sprightly_Vonwacq.png"
   },
   {
-    "id": 27,
     "name": "Talia: Kingdom of Banditry",
     "type": "Planetary Ornament Set",
     "bonus2pc": "Increases the wearer's Break Effect by 16%. When the wearer's SPD reaches 145 or higher, the wearer's Break effect increases by an extra 20%.",
@@ -238,7 +232,6 @@
     "local": "/set-images/Talia:_Kingdom_of_Banditry.png"
   },
   {
-    "id": 28,
     "name": "The Ashblazing Grand Duke",
     "type": "Relic Set",
     "bonus2pc": "Increases follow-up attack DMG by 20%.",
@@ -247,7 +240,14 @@
     "local": "/set-images/The_Ashblazing_Grand_Duke.png"
   },
   {
-    "id": 29,
+    "name": "The Wind-Soaring Valorous",
+    "type": "Relic Set",
+    "bonus2pc": "ATK increases by 12%.",
+    "bonus4pc": "Increases the wearer's CRIT Rate by 6%. When the wearer uses a follow-up attack, increase the DMG dealt by their Ultimate by 36%, lasting for 1 turn(s).",
+    "image": "null",
+    "local": "/set-images/placeholder.png"
+  },
+  {
     "name": "Thief of Shooting Meteor",
     "type": "Relic Set",
     "bonus2pc": "Increases Break Effect by 16%",
@@ -256,7 +256,6 @@
     "local": "/set-images/Thief_of_Shooting_Meteor.png"
   },
   {
-    "id": 30,
     "name": "Wastelander of Banditry Desert",
     "type": "Relic Set",
     "bonus2pc": "Increases Imaginary DMG by 10%.",
@@ -265,7 +264,6 @@
     "local": "/set-images/Wastelander_of_Banditry_Desert.png"
   },
   {
-    "id": 31,
     "name": "Watchmaker, Master of Dream Machinations",
     "type": "Relic Set",
     "bonus2pc": "Increases Break Effect by 16%.",

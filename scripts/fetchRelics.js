@@ -32,7 +32,6 @@ async function fetchRelicData(url) {
     const $ = cheerio.load(pageHTML);
 
     const relics = [];
-    var relicID = 0;
 
     $(".col").each((index, element) => {
       const relicName = $(element).find(".hsr-relic-data h4").text().trim();
@@ -80,7 +79,6 @@ async function fetchRelicData(url) {
 
       // Add the relic data to the array
       const relic = {
-        id: relicID,
         name: relicName,
         type: relicType,
         bonus2pc: bonus2.split("(2) ")[1],
@@ -98,7 +96,6 @@ async function fetchRelicData(url) {
         relic.local = imageLocation;
       }
 
-      relicID++;
       relics.push(relic);
     });
 
