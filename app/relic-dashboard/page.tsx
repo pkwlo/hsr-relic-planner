@@ -34,6 +34,29 @@ async function getRelics(user: any) {
   }
 }
 
+async function getChars(user: any) {
+  try {
+    const res = await fetch("/api/getChars", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ user }),
+    });
+
+    const data = await res.json();
+
+    if (res.status === 200) {
+      return data;
+    } else {
+      console.error(data.message);
+      return null;
+    }
+  } catch (error) {
+    console.error("Error getting characters:", error);
+  }
+}
+
 const RelicCardMini = ({ part, name }: { part: any; name: string }) => {
   return part ? (
     <div className="flex flex-col m-2" style={{ maxWidth: 120 }}>
@@ -87,11 +110,27 @@ const RelicCard = ({ relicData }: any) => {
   );
 };
 
+const CharacterCard = ({ charData }: any) => {
+  return charData && charData.length > 0 ? (
+    <div>
+      {charData.map((char: any, index: number) => (
+        <div key={index} className="flex flex-wrap">
+          {/* <Image src={char.char + ".png"} alt={char.char} /> */}
+          <h3>{char.char}</h3>
+        </div>
+      ))}
+    </div>
+  ) : (
+    <div>{"You don't have any characters added. Start by adding some!"}</div>
+  );
+};
+
 export default function Home() {
   const [charPopup, setCharPopup] = useState<boolean>(false);
   const [relicPopup, setRelicPopup] = useState<boolean>(false);
   const [columnWidth, setColumnWidth] = useState<number>(400);
   const [relicData, setRelicData] = useState<any[]>([]);
+  const [charData, setCharData] = useState<any[]>([]);
   const [user, setUser] = useState<string | null>(null);
 
   useEffect(() => {
@@ -102,13 +141,27 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const fetchRelics = async () => {
+    const fetchRelics = async () => {
+      try {
         const data = await getRelics(user);
         setRelicData(data);
-      };
+      } catch (error) {
+        console.error("Error fetching relics:", error);
+      }
+    };
 
+    const fetchChars = async () => {
+      try {
+        const data = await getChars(user);
+        setCharData(data);
+      } catch (error) {
+        console.error("Error fetching characters:", error);
+      }
+    };
+
+    if (user) {
       fetchRelics();
+      fetchChars();
     }
   }, [user]);
 
@@ -131,6 +184,7 @@ export default function Home() {
   };
 
   return user ? (
+    // User is logged in
     <>
       <Header />
       <main className="flex flex-row">
@@ -144,15 +198,18 @@ export default function Home() {
             <Button onClick={addCharacter} text={"Add a Character"} />
           </div>
           <div>
-            {"You don't have any characters added. Start by adding some!"}
+            {/* All characters user added will show up here */}
+            <CharacterCard charData={charData} />
           </div>
           <div className="flex flex-row items-center py-3">
             <h3 className="text-2xl pr-3">Relics</h3>
             <Button onClick={addRelic} text={"Add a Relic"} />
           </div>
+          {/* All relics user added will show up here */}
           <RelicCard relicData={relicData} />
         </div>
         <div className="flex flex-col">
+          {/* Add character popup that shows up after clicking Add Character*/}
           {charPopup && (
             <div className="popup">
               <div className="popup-content">
@@ -166,6 +223,7 @@ export default function Home() {
               </div>
             </div>
           )}
+          {/* Add relic popup that shows up after clicking Add Relic*/}
           {relicPopup && (
             <div className="popup">
               <div className="popup-content">
@@ -183,6 +241,7 @@ export default function Home() {
       </main>
     </>
   ) : (
+    // User is not logged in
     <>
       <Header />
       <main className="flex flex-row">
