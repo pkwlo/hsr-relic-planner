@@ -135,7 +135,7 @@ function getStatsByPart(part: string, query: string, stats: any) {
   return null;
 }
 
-const AddRelic = () => {
+const AddRelic = ({ charSelected }: { charSelected: string }) => {
   const [name, setName] = useState("");
   const [hatStats, setHatStats] = useState({
     mainS: null,
@@ -257,7 +257,7 @@ const AddRelic = () => {
           bodyStats: extractValues(bodyStats),
           sphereStats: extractValues(sphereStats),
           ropeStats: extractValues(ropeStats),
-          character: null,
+          character: charSelected,
         }),
       });
 

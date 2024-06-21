@@ -48,7 +48,11 @@ export default async function handler(
     const usersCollection = db.collection<User>("users");
     const relicsCollection = db.collection<RelicSet | OrnamentSet>("relics");
 
-    const setId = (await relicsCollection.countDocuments()) + 1;
+    const rc = await client
+      .db("counters")
+      .collection("relicSetId")
+      .findOne({ name: "relicCounter" });
+    const setId = rc?.counter + 1;
 
     const newRelicSet: RelicSet = {
       setId,
@@ -73,8 +77,13 @@ export default async function handler(
 
     await usersCollection.updateOne(
       { email: user },
-      { $push: { setId: setId } },
+      { $addToSet: { setId: setId, charList: character } },
     );
+
+    await client
+      .db("counters")
+      .collection("relicSetId")
+      .updateOne({ name: "relicCounter" }, { $inc: { counter: 1 } });
 
     return res.status(201).json({ success: true, message: "Relic saved." });
   } catch (e) {

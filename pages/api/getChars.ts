@@ -25,7 +25,9 @@ export default async function handler(
     const characterList: { char: string }[] = [];
 
     userDoc.charList.map((char) => {
-      characterList.push({ char });
+      if (char !== "") {
+        characterList.push({ char });
+      }
     });
 
     return res.status(200).json(characterList);

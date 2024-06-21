@@ -10,6 +10,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import chevronUp from "@/public/icons/KAup.png";
 import chevronDown from "@/public/icons/KAdown.png";
+import styled from "styled-components";
 
 async function getRelics(user: any) {
   try {
@@ -115,25 +116,22 @@ const CharacterCard = ({ charData }: any) => {
     <div className="flex flex-wrap">
       {charData.map((char: any, index: number) => (
         <div key={index}>
-          <Button
+          <Image
+            src={"/char-images/" + char.char.replaceAll(" ", "_") + ".png"}
+            alt={char.char}
+            width={160}
+            height={188}
+            style={{
+              width: 50,
+              height: 57.5,
+              border: "2px solid #FFFFFF",
+              borderRadius: 20,
+              margin: 5,
+              cursor: "pointer",
+            }}
             onClick={characterClick}
-            text={
-              <Image
-                src={"/char-images/" + char.char + ".png"}
-                alt={char.char}
-                width={160}
-                height={188}
-                style={{
-                  width: 50,
-                  height: 57.5,
-                  border: "2px solid #FFFFFF",
-                  borderRadius: 20,
-                  margin: 5,
-                }}
-                priority
-              />
-            }
-          ></Button>
+            onContextMenu={characterClick}
+          />
         </div>
       ))}
     </div>
@@ -142,8 +140,15 @@ const CharacterCard = ({ charData }: any) => {
   );
 };
 
-function characterClick() {
-  console.log("Character clicked");
+function characterClick(e: React.MouseEvent<HTMLImageElement>) {
+  e.preventDefault();
+  // Left click - edit character
+  if (e.button === 0) {
+    console.log("Left click");
+    // Right click - enable / disable character
+  } else if (e.button === 2) {
+    console.log("Right click");
+  }
 }
 
 export default function Home() {
@@ -240,7 +245,7 @@ export default function Home() {
                 >
                   &times;
                 </span>
-                <AddCharacter />
+                <AddCharacter charData={charData} />
               </div>
             </div>
           )}
@@ -254,7 +259,7 @@ export default function Home() {
                 >
                   &times;
                 </span>
-                <AddRelic />
+                <AddRelic charSelected={""} />
               </div>
             </div>
           )}
