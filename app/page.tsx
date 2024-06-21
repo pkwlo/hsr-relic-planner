@@ -5,7 +5,7 @@ import Sidebar from "@/components/Sidebar";
 import Header from "@/components/Header";
 
 export default function Home() {
-  const version = "v0.0.2 Alpha";
+  const version = "v0.0.3 Alpha";
   return (
     <>
       <Header />
@@ -44,7 +44,7 @@ export default function Home() {
             <li>- user log-in (v0.0.0)</li>
             <li>- user registration (v0.0.1)</li>
             <li>- add relics to inventory (v0.0.2)</li>
-            {/* <li>- add characters to inventory (v0.0.3)</li> */}
+            <li>- add characters to inventory (v0.0.3)</li>
           </ul>
         </div>
       </main>

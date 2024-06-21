@@ -23,21 +23,6 @@
     - click to expand
     - list of pieces + desired stats
     - character icons to show which characters are farming for this set
-- sidebar with links to character and relic-sets pages (done)
-- user log in and log out
-  - create form
-  - function to check if the username exists in DB
-    - if yes, check if password matches
-      - if yes, log in
-      - if no, show error message incorrect password
-    - if no, prompt to register
-  - create a register page
-    - register with email and password
-    - check if email is already in use
-    - if not, create user
-  - store user info in DB
-- set up DB for user storage
-  - create a user schema
 - update design
   - set up a theme
   - beautify page
@@ -79,26 +64,6 @@
     - desired stats
     - check mark for done/not done on each piece
     - mark all as complete button
-
-- select owned character -> save to user
-- for each character select relic set(s) + ornament set to farm -> save to user
-
-1. select set
-2. select stats per part
-
-for each user: (example)
-{'character': Dan Heng,
-'relic': {musketeer: {head:{main: , sub: {}}, arm: {main: , sub: {}}, feet: {main: {}, sub: {}}, body: {main: {}, sub: {}}},
-eagle: {head:{main: , sub: {}}, arm: {main: , sub: {}}, feet: {main: {} , sub: {}}, body: {main: {} , sub: {}}}},
-'ornament': {hss: {orb: {main: {atk%,wind dmg%}},substats: {atk%,spd,crit rate,crit dmg}rope: {main: {atk%}},substats: {atk%,spd,crit rate,crit dmg}}, salsotto {orb: {main:{}, sub:{}} ,rope: {main:{}, sub:{}}}}
-}
-
-- show list of chars
-- click to expand
-- list of relic sets (set 1, set 2...etc)
-- click to expand to see each piece with the stats you are farming for
-- check mark for done/not done on each piece
-- mark all as complete button
 
 ## Relic Sets Page
 
