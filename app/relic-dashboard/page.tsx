@@ -112,11 +112,28 @@ const RelicCard = ({ relicData }: any) => {
 
 const CharacterCard = ({ charData }: any) => {
   return charData && charData.length > 0 ? (
-    <div>
+    <div className="flex flex-wrap">
       {charData.map((char: any, index: number) => (
-        <div key={index} className="flex flex-wrap">
-          {/* <Image src={char.char + ".png"} alt={char.char} /> */}
-          <h3>{char.char}</h3>
+        <div key={index}>
+          <Button
+            onClick={characterClick}
+            text={
+              <Image
+                src={"/char-images/" + char.char + ".png"}
+                alt={char.char}
+                width={160}
+                height={188}
+                style={{
+                  width: 50,
+                  height: 57.5,
+                  border: "2px solid #FFFFFF",
+                  borderRadius: 20,
+                  margin: 5,
+                }}
+                priority
+              />
+            }
+          ></Button>
         </div>
       ))}
     </div>
@@ -124,6 +141,10 @@ const CharacterCard = ({ charData }: any) => {
     <div>{"You don't have any characters added. Start by adding some!"}</div>
   );
 };
+
+function characterClick() {
+  console.log("Character clicked");
+}
 
 export default function Home() {
   const [charPopup, setCharPopup] = useState<boolean>(false);
