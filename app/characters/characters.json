@@ -100,6 +100,15 @@
   },
   {
     "id": 11,
+    "name": "Firefly",
+    "element": "Fire",
+    "rarity": "rarity-5",
+    "path": "The Destruction",
+    "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/3025.png",
+    "local": "/char-images/Firefly.png"
+  },
+  {
+    "id": 12,
     "name": "Fu Xuan",
     "element": "Quantum",
     "rarity": "rarity-5",
@@ -108,7 +117,7 @@
     "local": "/char-images/Fu_Xuan.png"
   },
   {
-    "id": 12,
+    "id": 13,
     "name": "Gepard",
     "element": "Ice",
     "rarity": "rarity-5",
@@ -117,7 +126,7 @@
     "local": "/char-images/Gepard.png"
   },
   {
-    "id": 13,
+    "id": 14,
     "name": "Himeko",
     "element": "Fire",
     "rarity": "rarity-5",
@@ -126,7 +135,7 @@
     "local": "/char-images/Himeko.png"
   },
   {
-    "id": 14,
+    "id": 15,
     "name": "Huohuo",
     "element": "Wind",
     "rarity": "rarity-5",
@@ -135,7 +144,16 @@
     "local": "/char-images/Huohuo.png"
   },
   {
-    "id": 15,
+    "id": 16,
+    "name": "Jade",
+    "element": "Quantum",
+    "rarity": "rarity-5",
+    "path": "The Erudition",
+    "image": "https://rerollcdn.com/STARRAIL/Characters/Thumb/3026.png",
+    "local": "/char-images/Jade.png"
+  },
+  {
+    "id": 17,
     "name": "Jing Yuan",
     "element": "Lightning",
     "rarity": "rarity-5",
@@ -144,7 +162,7 @@
     "local": "/char-images/Jing_Yuan.png"
   },
   {
-    "id": 16,
+    "id": 18,
     "name": "Jingliu",
     "element": "Ice",
     "rarity": "rarity-5",
@@ -153,7 +171,7 @@
     "local": "/char-images/Jingliu.png"
   },
   {
-    "id": 17,
+    "id": 19,
     "name": "Kafka",
     "element": "Lightning",
     "rarity": "rarity-5",
@@ -162,7 +180,7 @@
     "local": "/char-images/Kafka.png"
   },
   {
-    "id": 18,
+    "id": 20,
     "name": "Luocha",
     "element": "Imaginary",
     "rarity": "rarity-5",
@@ -171,7 +189,7 @@
     "local": "/char-images/Luocha.png"
   },
   {
-    "id": 19,
+    "id": 21,
     "name": "Robin",
     "element": "Physical",
     "rarity": "rarity-5",
@@ -180,7 +198,7 @@
     "local": "/char-images/Robin.png"
   },
   {
-    "id": 20,
+    "id": 22,
     "name": "Ruan Mei",
     "element": "Ice",
     "rarity": "rarity-5",
@@ -189,7 +207,7 @@
     "local": "/char-images/Ruan_Mei.png"
   },
   {
-    "id": 21,
+    "id": 23,
     "name": "Seele",
     "element": "Quantum",
     "rarity": "rarity-5",
@@ -198,7 +216,7 @@
     "local": "/char-images/Seele.png"
   },
   {
-    "id": 22,
+    "id": 24,
     "name": "Silver Wolf",
     "element": "Quantum",
     "rarity": "rarity-5",
@@ -207,7 +225,7 @@
     "local": "/char-images/Silver_Wolf.png"
   },
   {
-    "id": 23,
+    "id": 25,
     "name": "Sparkle",
     "element": "Quantum",
     "rarity": "rarity-5",
@@ -216,7 +234,7 @@
     "local": "/char-images/Sparkle.png"
   },
   {
-    "id": 24,
+    "id": 26,
     "name": "Topaz and Numby",
     "element": "Fire",
     "rarity": "rarity-5",
@@ -225,7 +243,7 @@
     "local": "/char-images/Topaz_and_Numby.png"
   },
   {
-    "id": 25,
+    "id": 27,
     "name": "Trailblazer (Fire)",
     "element": "Fire",
     "rarity": "rarity-5",
@@ -234,7 +252,7 @@
     "local": "/char-images/Trailblazer_(Fire).png"
   },
   {
-    "id": 26,
+    "id": 28,
     "name": "Trailblazer (Imaginary)",
     "element": "Imaginary",
     "rarity": "rarity-5",
@@ -243,7 +261,7 @@
     "local": "/char-images/Trailblazer_(Imaginary).png"
   },
   {
-    "id": 27,
+    "id": 29,
     "name": "Trailblazer (Physical)",
     "element": "Physical",
     "rarity": "rarity-5",
@@ -252,7 +270,7 @@
     "local": "/char-images/Trailblazer_(Physical).png"
   },
   {
-    "id": 28,
+    "id": 30,
     "name": "Welt",
     "element": "Imaginary",
     "rarity": "rarity-5",
@@ -261,7 +279,7 @@
     "local": "/char-images/Welt.png"
   },
   {
-    "id": 29,
+    "id": 31,
     "name": "Yanqing",
     "element": "Ice",
     "rarity": "rarity-5",
@@ -270,7 +288,7 @@
     "local": "/char-images/Yanqing.png"
   },
   {
-    "id": 30,
+    "id": 32,
     "name": "Arlan",
     "element": "Lightning",
     "rarity": "rarity-4",
@@ -279,7 +297,7 @@
     "local": "/char-images/Arlan.png"
   },
   {
-    "id": 31,
+    "id": 33,
     "name": "Asta",
     "element": "Fire",
     "rarity": "rarity-4",
@@ -288,7 +306,7 @@
     "local": "/char-images/Asta.png"
   },
   {
-    "id": 32,
+    "id": 34,
     "name": "Dan Heng",
     "element": "Wind",
     "rarity": "rarity-4",
@@ -297,7 +315,7 @@
     "local": "/char-images/Dan_Heng.png"
   },
   {
-    "id": 33,
+    "id": 35,
     "name": "Gallagher",
     "element": "Fire",
     "rarity": "rarity-4",
@@ -306,7 +324,7 @@
     "local": "/char-images/Gallagher.png"
   },
   {
-    "id": 34,
+    "id": 36,
     "name": "Guinaifen",
     "element": "Fire",
     "rarity": "rarity-4",
@@ -315,7 +333,7 @@
     "local": "/char-images/Guinaifen.png"
   },
   {
-    "id": 35,
+    "id": 37,
     "name": "Hanya",
     "element": "Physical",
     "rarity": "rarity-4",
@@ -324,7 +342,7 @@
     "local": "/char-images/Hanya.png"
   },
   {
-    "id": 36,
+    "id": 38,
     "name": "Herta",
     "element": "Ice",
     "rarity": "rarity-4",
@@ -333,7 +351,7 @@
     "local": "/char-images/Herta.png"
   },
   {
-    "id": 37,
+    "id": 39,
     "name": "Hook",
     "element": "Fire",
     "rarity": "rarity-4",
@@ -342,7 +360,7 @@
     "local": "/char-images/Hook.png"
   },
   {
-    "id": 38,
+    "id": 40,
     "name": "Luka",
     "element": "Physical",
     "rarity": "rarity-4",
@@ -351,7 +369,7 @@
     "local": "/char-images/Luka.png"
   },
   {
-    "id": 39,
+    "id": 41,
     "name": "Lynx",
     "element": "Quantum",
     "rarity": "rarity-4",
@@ -360,7 +378,7 @@
     "local": "/char-images/Lynx.png"
   },
   {
-    "id": 40,
+    "id": 42,
     "name": "March 7th",
     "element": "Ice",
     "rarity": "rarity-4",
@@ -369,7 +387,7 @@
     "local": "/char-images/March_7th.png"
   },
   {
-    "id": 41,
+    "id": 43,
     "name": "Misha",
     "element": "Ice",
     "rarity": "rarity-4",
@@ -378,7 +396,7 @@
     "local": "/char-images/Misha.png"
   },
   {
-    "id": 42,
+    "id": 44,
     "name": "Natasha",
     "element": "Physical",
     "rarity": "rarity-4",
@@ -387,7 +405,7 @@
     "local": "/char-images/Natasha.png"
   },
   {
-    "id": 43,
+    "id": 45,
     "name": "Pela",
     "element": "Ice",
     "rarity": "rarity-4",
@@ -396,7 +414,7 @@
     "local": "/char-images/Pela.png"
   },
   {
-    "id": 44,
+    "id": 46,
     "name": "Qingque",
     "element": "Quantum",
     "rarity": "rarity-4",
@@ -405,7 +423,7 @@
     "local": "/char-images/Qingque.png"
   },
   {
-    "id": 45,
+    "id": 47,
     "name": "Sampo",
     "element": "Wind",
     "rarity": "rarity-4",
@@ -414,7 +432,7 @@
     "local": "/char-images/Sampo.png"
   },
   {
-    "id": 46,
+    "id": 48,
     "name": "Serval",
     "element": "Lightning",
     "rarity": "rarity-4",
@@ -423,7 +441,7 @@
     "local": "/char-images/Serval.png"
   },
   {
-    "id": 47,
+    "id": 49,
     "name": "Sushang",
     "element": "Physical",
     "rarity": "rarity-4",
@@ -432,7 +450,7 @@
     "local": "/char-images/Sushang.png"
   },
   {
-    "id": 48,
+    "id": 50,
     "name": "Tingyun",
     "element": "Lightning",
     "rarity": "rarity-4",
@@ -441,7 +459,7 @@
     "local": "/char-images/Tingyun.png"
   },
   {
-    "id": 49,
+    "id": 51,
     "name": "Xueyi",
     "element": "Quantum",
     "rarity": "rarity-4",
@@ -450,7 +468,7 @@
     "local": "/char-images/Xueyi.png"
   },
   {
-    "id": 50,
+    "id": 52,
     "name": "Yukong",
     "element": "Imaginary",
     "rarity": "rarity-4",
