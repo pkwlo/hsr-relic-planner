@@ -56,7 +56,6 @@ async function fetchCharInfo(maxPages = 1) {
 
   // Fetch and extract character details from each character URL
   const characters = [];
-  var charID = 0;
 
   for (const characterURL of characterURLs) {
     try {
@@ -98,7 +97,6 @@ async function fetchCharInfo(maxPages = 1) {
       }
 
       characters.push({
-        id: charID,
         name: charName,
         element: charElement,
         rarity: charRarity,
@@ -106,7 +104,6 @@ async function fetchCharInfo(maxPages = 1) {
         image: charImage,
         local: imgLocal,
       });
-      charID++;
 
       const jsonString = JSON.stringify(characters, null, 2);
       fs.writeFileSync(

@@ -6,6 +6,7 @@ import AddRelic from "@/components/AddRelic";
 const AddCharacter = ({ charData }: any) => {
   const [charSelected, setCharSelected] = useState("");
   const [filteredCharacters, setFilteredCharacters] = useState(characters);
+  const [unfilteredCharacters, setUnfilteredCharacters] = useState(characters);
 
   useEffect(() => {
     if (charData && charData.length > 0) {
@@ -13,6 +14,11 @@ const AddCharacter = ({ charData }: any) => {
       setFilteredCharacters(
         characters.filter(
           (character) => !charNamesToExclude.includes(character.name),
+        ),
+      );
+      setUnfilteredCharacters(
+        characters.filter((character) =>
+          charNamesToExclude.includes(character.name),
         ),
       );
     }
@@ -26,18 +32,41 @@ const AddCharacter = ({ charData }: any) => {
     return (
       <div className="flex flex-col p-2">
         <h1 className="text-3xl py-3">Select a character to add</h1>
+        <h1 className="text-xl py-3">Add a new set</h1>
         <div className="flex flex-wrap">
           {filteredCharacters.map((character) => (
-            <div key={character.id}>
+            <div key={character.name}>
               <Image
                 src={`/char-images/${character.name.replaceAll(" ", "_")}.png`}
                 alt={character.name}
                 width={160}
                 height={188}
                 style={{
-                  width: 50,
-                  height: 57.5,
-                  border: "2px solid #FFFFFF",
+                  width: 75,
+                  height: 86.25,
+                  border: "1px solid #FFFFFF",
+                  borderRadius: 20,
+                  margin: 5,
+                  cursor: "pointer",
+                }}
+                onClick={() => handleCharacterSelect(character.name)}
+              />
+            </div>
+          ))}
+        </div>
+        <h1 className="text-xl py-3">Add another set</h1>
+        <div className="flex flex-wrap">
+          {unfilteredCharacters.map((character) => (
+            <div key={character.name}>
+              <Image
+                src={`/char-images/${character.name.replaceAll(" ", "_")}.png`}
+                alt={character.name}
+                width={160}
+                height={188}
+                style={{
+                  width: 75,
+                  height: 86.25,
+                  border: "1px solid #FFFFFF",
                   borderRadius: 20,
                   margin: 5,
                   cursor: "pointer",
