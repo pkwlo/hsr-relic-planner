@@ -429,11 +429,13 @@ const RelicListLengthTwo = ({
   const name = Object.keys(selectedRelics)[0];
   const name2 = Object.keys(selectedRelics)[1];
 
-  for (let relic in selectedRelics) {
-    if (getTypeByName(relic, relics) === "Relic Set") {
-      setRelicCounter((prev) => prev + 1);
+  useEffect(() => {
+    for (let relic in selectedRelics) {
+      if (getTypeByName(relic, relics) === "Relic Set") {
+        setRelicCounter((prev) => prev + 1);
+      }
     }
-  }
+  }, [selectedRelics]);
 
   async function saveAll(
     charSelected: any,
