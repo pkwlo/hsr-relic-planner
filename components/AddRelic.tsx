@@ -1316,7 +1316,6 @@ async function save(
   });
 
   try {
-    console.log("saving info for", name);
     const res = await fetch("/api/saveRelic", {
       method: "POST",
       headers: {

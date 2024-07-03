@@ -15,6 +15,7 @@ const Sidebar = () => {
           onClick={() => goTo("/relic-sets")}
           text={"Relic & Ornament Sets"}
         />
+        <Button onClick={() => goTo("/report")} text={"Report a Bug"} />
       </div>
     </div>
   );
