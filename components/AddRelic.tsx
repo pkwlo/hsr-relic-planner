@@ -166,7 +166,11 @@ const RelicListLengthOne = ({
     return (
       <div className="flex flex-col">
         <div className="flex flex-row m-3 items-center">
-          <Button text={"< Back"} onClick={() => setNext(false)} />
+          <Button
+            text={"< Back"}
+            onClick={() => setNext(false)}
+            disable={false}
+          />
           <div className="text-2xl">{name}</div>
         </div>
         <div className="flex flex-row">
@@ -280,6 +284,7 @@ const RelicListLengthOne = ({
                 setRopeStats,
               )
             }
+            disable={false}
           />
           <Button
             text={"Save"}
@@ -295,6 +300,7 @@ const RelicListLengthOne = ({
                 ropeStats,
               )
             }
+            disable={false}
           />
         </div>
       </div>
@@ -303,7 +309,11 @@ const RelicListLengthOne = ({
     return (
       <div className="flex flex-col">
         <div className="flex flex-row m-3 items-center">
-          <Button text={"< Back"} onClick={() => setNext(false)} />
+          <Button
+            text={"< Back"}
+            onClick={() => setNext(false)}
+            disable={false}
+          />
           <div className="text-2xl">{name}</div>
         </div>
         <div className="flex flex-row">
@@ -369,6 +379,7 @@ const RelicListLengthOne = ({
                 setRopeStats,
               )
             }
+            disable={false}
           />
           <Button
             text={"Save"}
@@ -384,6 +395,7 @@ const RelicListLengthOne = ({
                 ropeStats,
               )
             }
+            disable={false}
           />
         </div>
       </div>
@@ -479,7 +491,11 @@ const RelicListLengthTwo = ({
       !nextSection ? (
         <div className="flex flex-col">
           <div className="flex flex-row m-3 items-center">
-            <Button text={"< Back"} onClick={() => setNext(false)} />
+            <Button
+              text={"< Back"}
+              onClick={() => setNext(false)}
+              disable={false}
+            />
             <div className="text-2xl">{name}</div>
           </div>
           <div className="flex flex-row">
@@ -593,14 +609,23 @@ const RelicListLengthTwo = ({
                   setRopeStats,
                 )
               }
+              disable={false}
             />
-            <Button text={"Next"} onClick={() => setNextSection(true)} />
+            <Button
+              text={"Next"}
+              onClick={() => setNextSection(true)}
+              disable={false}
+            />
           </div>
         </div>
       ) : (
         <div className="flex flex-col">
           <div className="flex flex-row m-3 items-center">
-            <Button text={"< Back"} onClick={() => setNextSection(false)} />
+            <Button
+              text={"< Back"}
+              onClick={() => setNextSection(false)}
+              disable={false}
+            />
             <div className="text-2xl">{name2}</div>
           </div>
           <div className="flex flex-row">
@@ -666,6 +691,7 @@ const RelicListLengthTwo = ({
                   setRopeStats,
                 )
               }
+              disable={false}
             />
             <Button
               text={"Save"}
@@ -680,6 +706,7 @@ const RelicListLengthTwo = ({
                   ropeStats,
                 )
               }
+              disable={false}
             />
           </div>
         </div>
@@ -690,7 +717,11 @@ const RelicListLengthTwo = ({
       // relic 2pc -> save both
       <div className="flex flex-col">
         <div className="flex flex-row m-3 items-center">
-          <Button text={"< Back"} onClick={() => setNext(false)} />
+          <Button
+            text={"< Back"}
+            onClick={() => setNext(false)}
+            disable={false}
+          />
           <div className="text-2xl">{"2pc " + name + " / 2pc " + name2}</div>
         </div>
         <div className="flex flex-row">
@@ -804,6 +835,7 @@ const RelicListLengthTwo = ({
                 setRopeStats,
               )
             }
+            disable={false}
           />
           <Button
             text={"Save"}
@@ -818,6 +850,7 @@ const RelicListLengthTwo = ({
                 ropeStats,
               )
             }
+            disable={false}
           />
         </div>
       </div>
@@ -917,7 +950,11 @@ const RelicListLengthThree = ({
     !nextSection ? (
       <div className="flex flex-col">
         <div className="flex flex-row m-3 items-center">
-          <Button text={"< Back"} onClick={() => setNext(false)} />
+          <Button
+            text={"< Back"}
+            onClick={() => setNext(false)}
+            disable={false}
+          />
           <div className="text-2xl">{"2pc " + name + " / 2pc " + name2}</div>
         </div>
         <div className="flex flex-row">
@@ -1031,14 +1068,23 @@ const RelicListLengthThree = ({
                 setRopeStats,
               )
             }
+            disable={false}
           />
-          <Button text={"Next"} onClick={() => setNextSection(true)} />
+          <Button
+            text={"Next"}
+            onClick={() => setNextSection(true)}
+            disable={false}
+          />
         </div>
       </div>
     ) : (
       <div className="flex flex-col">
         <div className="flex flex-row m-3 items-center">
-          <Button text={"< Back"} onClick={() => setNextSection(false)} />
+          <Button
+            text={"< Back"}
+            onClick={() => setNextSection(false)}
+            disable={false}
+          />
           <div className="text-2xl">{name3}</div>
         </div>
         <div className="flex flex-row">
@@ -1104,6 +1150,7 @@ const RelicListLengthThree = ({
                 setRopeStats,
               )
             }
+            disable={false}
           />
           <Button
             text={"Save"}
@@ -1118,6 +1165,7 @@ const RelicListLengthThree = ({
                 ropeStats,
               )
             }
+            disable={false}
           />
         </div>
       </div>
@@ -1125,20 +1173,29 @@ const RelicListLengthThree = ({
   );
 };
 
-const Button = ({ onClick, text }: { onClick: () => void; text: string }) => {
+const Button = ({
+  onClick,
+  text,
+  disable,
+}: {
+  onClick: () => void;
+  text: string;
+  disable: boolean;
+}) => {
   return (
     <button
       onClick={onClick}
       style={{
         border: "2px solid #FFFFFF",
         color: "#FFFFFF",
-        backgroundColor: "#7B67DF",
+        backgroundColor: disable ? "grey" : "#7B67DF",
         padding: "5px",
         margin: "10px",
         borderRadius: "5px",
-        cursor: "pointer",
+        cursor: disable ? "default" : "pointer",
         width: "70px",
       }}
+      disabled={disable}
     >
       {text}
     </button>
@@ -1465,7 +1522,11 @@ const AddRelic = ({ charSelected }: { charSelected: string }) => {
             ) : null,
           )}
         </div>
-        <Button text={"Next"} onClick={() => handleNextClick()} />
+        <Button
+          text={"Next"}
+          onClick={() => handleNextClick()}
+          disable={Object.keys(selectedRelics).length === 0}
+        />
       </div>
     );
   } else {
