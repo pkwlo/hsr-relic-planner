@@ -4,6 +4,7 @@ import relics from "@/app/relic-sets/relics.json";
 import stats from "@/app/relic-sets/stats.json";
 import styled from "@emotion/styled";
 import Image from "next/image";
+import Button from "@/components/ButtonWithDisable";
 
 const PartSelect = styled(Select)`
   color: #000000;
@@ -1173,35 +1174,6 @@ const RelicListLengthThree = ({
   );
 };
 
-const Button = ({
-  onClick,
-  text,
-  disable,
-}: {
-  onClick: () => void;
-  text: string;
-  disable: boolean;
-}) => {
-  return (
-    <button
-      onClick={onClick}
-      style={{
-        border: "2px solid #FFFFFF",
-        color: "#FFFFFF",
-        backgroundColor: disable ? "grey" : "#7B67DF",
-        padding: "5px",
-        margin: "10px",
-        borderRadius: "5px",
-        cursor: disable ? "default" : "pointer",
-        width: "70px",
-      }}
-      disabled={disable}
-    >
-      {text}
-    </button>
-  );
-};
-
 const clear = (
   setHatStats: (arg0: {
     mainS: null;
@@ -1457,7 +1429,7 @@ const AddRelic = ({ charSelected }: { charSelected: string }) => {
             relic.type === "Relic Set" ? (
               <div
                 key={relic.name}
-                className="flex flex-col items-center p-2 cursor-pointer"
+                className="flex flex-row items-center p-2 cursor-pointer"
                 onClick={() =>
                   clickImage(
                     relic.name,
@@ -1466,6 +1438,15 @@ const AddRelic = ({ charSelected }: { charSelected: string }) => {
                     ornamentCounter,
                   )
                 }
+                style={{
+                  background: selectedRelics[relic.name] ? "#5d737e" : "none",
+                  border: selectedRelics[relic.name]
+                    ? "1px solid #fcfcfc"
+                    : "none",
+                  borderRadius: 20,
+                  padding: 2,
+                  margin: 2,
+                }}
               >
                 <Image
                   src={relic.local}
@@ -1475,11 +1456,9 @@ const AddRelic = ({ charSelected }: { charSelected: string }) => {
                   style={{
                     width: "80px",
                     height: "80px",
-                    background: selectedRelics[relic.name] ? "#7B67DF" : "none",
-                    borderRadius: 20,
                   }}
                 />
-                <div className="text-xs ml-3" style={{ width: 120 }}>
+                <div className="text-xs ml-3" style={{ width: 80 }}>
                   {relic.name}
                 </div>
               </div>
@@ -1492,7 +1471,7 @@ const AddRelic = ({ charSelected }: { charSelected: string }) => {
             relic.type === "Planetary Ornament Set" ? (
               <div
                 key={relic.name}
-                className="flex flex-col items-center p-2 cursor-pointer"
+                className="flex flex-row items-center p-2 cursor-pointer"
                 onClick={() =>
                   clickImage(
                     relic.name,
@@ -1501,6 +1480,15 @@ const AddRelic = ({ charSelected }: { charSelected: string }) => {
                     ornamentCounter,
                   )
                 }
+                style={{
+                  background: selectedRelics[relic.name] ? "#5d737e" : "none",
+                  border: selectedRelics[relic.name]
+                    ? "1px solid #fcfcfc"
+                    : "none",
+                  borderRadius: 20,
+                  padding: 2,
+                  margin: 2,
+                }}
               >
                 <Image
                   src={relic.local}
@@ -1510,11 +1498,9 @@ const AddRelic = ({ charSelected }: { charSelected: string }) => {
                   style={{
                     width: "80px",
                     height: "80px",
-                    background: selectedRelics[relic.name] ? "#7B67DF" : "none",
-                    borderRadius: 20,
                   }}
                 />
-                <div className="text-xs ml-3" style={{ width: 120 }}>
+                <div className="text-xs ml-3" style={{ width: 80 }}>
                   {relic.name}
                 </div>
               </div>

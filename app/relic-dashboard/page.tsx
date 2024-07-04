@@ -99,11 +99,12 @@ const RelicCard = ({ relicData }: any) => {
       {relicData.map((relic: any, index: number) => (
         <div key={index}>
           <div
-            className="flex border-2 p-2 rounded-md items-center justify-between"
+            className="flex p-2 rounded-md items-center justify-between"
             style={{
-              color: "#30292f",
               backgroundColor: "#5d737e",
               maxWidth: 800,
+              border: "1px solid #c3c3c3",
+              color: "white",
             }}
           >
             <h4 className="text-xl">{relic.name}</h4>
