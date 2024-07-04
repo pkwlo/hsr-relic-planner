@@ -24,26 +24,24 @@ body {
 }
 
 :root {
-  --foreground-color: #c3c3c3;
-  --background-start-color: #4c4b63;
-  --background-end-color: #272436;
-  --primary-color: #aba8b2;
-  --secondary-color: #949396;
-  --accent-color: #5386e4;
+  --foreground-color: #fcfcfc;
+  --background-start-color: #30292f;
+  --background-end-color: #30292f;
+  --primary-color: #5d737e;
+  --secondary-color: #30292f;
+  --accent-color: #3f4045;
   --muted-color: #858585;
-  --border-color: #c3c3c3;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-color: #c3c3c3;
-    --background-start-color: #4c4b63;
-    --background-end-color: #272436;
-    --primary-color: #aba8b2;
-    --secondary-color: #949396;
-    --accent-color: #5386e4;
+    --foreground-color: #fcfcfc;
+    --background-start-color: #30292f;
+    --background-end-color: #30292f;
+    --primary-color: #5d737e;
+    --secondary-color: #30292f;
+    --accent-color: #3f4045;
     --muted-color: #858585;
-    --border-color: #c3c3c3;
   }
 }
 

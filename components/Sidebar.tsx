@@ -1,21 +1,21 @@
 import React from "react";
-import Button from "./Button";
+import SideButton from "./SideButton";
 
 const Sidebar = () => {
   return (
     <div className="sidebar" style={{ width: "230px", minWidth: "230px" }}>
       <div className="flex flex-col">
-        <Button onClick={() => goTo("/")} text={"Home"} />
-        <Button
+        <SideButton onClick={() => goTo("/")} text={"Home"} />
+        <SideButton
           onClick={() => goTo("/relic-dashboard")}
           text={"Relic Dashboard"}
         />
-        <Button onClick={() => goTo("/characters")} text={"Characters"} />
-        <Button
+        <SideButton onClick={() => goTo("/characters")} text={"Characters"} />
+        <SideButton
           onClick={() => goTo("/relic-sets")}
           text={"Relic & Ornament Sets"}
         />
-        <Button onClick={() => goTo("/report")} text={"Report a Bug"} />
+        <SideButton onClick={() => goTo("/report")} text={"Report a Bug"} />
       </div>
     </div>
   );

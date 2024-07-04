@@ -14,14 +14,13 @@ const Button: React.FC<ButtonProps> = ({ onClick, text }) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       style={{
-        border: "2px solid #c3c3c3", // Border color
-        color: isHovered ? "#c3c3c3" : "#4c4b63", // Text color
-        backgroundColor: isHovered ? "#5386e4" : "#aba8b2", // Background color
-        padding: "10px", // Padding
-        margin: "10px 10px 0px 10px", // Margin
-        borderRadius: "5px", // Rounded corners
-        cursor: "pointer", // Pointer cursor on hover
-        transition: "background-color 0.3s", // Smooth transition
+        color: isHovered ? "#c3c3c3" : "#fcfcfc",
+        backgroundColor: isHovered ? "#5d737e" : "#3f4045",
+        padding: "5px 10px 5px 10px",
+        margin: "0px",
+        cursor: "pointer",
+        transition: "background-color 0.3s",
+        borderRadius: "5px",
       }}
     >
       {text}

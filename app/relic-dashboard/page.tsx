@@ -100,7 +100,11 @@ const RelicCard = ({ relicData }: any) => {
         <div key={index}>
           <div
             className="flex border-2 p-2 rounded-md items-center justify-between"
-            style={{ backgroundColor: "#4c437a", maxWidth: 800 }}
+            style={{
+              color: "#30292f",
+              backgroundColor: "#5d737e",
+              maxWidth: 800,
+            }}
           >
             <h4 className="text-xl">{relic.name}</h4>
             <Image src={chevronUp} alt={"Right Arrow"} height={30} width={30} />
