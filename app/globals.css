@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+/* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 39, 36, 54;
   --background-end-rgb: 39, 36, 54;
@@ -14,16 +14,49 @@
     --background-start-rgb: 39, 36, 54;
     --background-end-rgb: 39, 36, 54;
   }
+} */
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --foreground-color: #c3c3c3;
+  --background-start-color: #4c4b63;
+  --background-end-color: #272436;
+  --primary-color: #aba8b2;
+  --secondary-color: #949396;
+  --accent-color: #5386e4;
+  --muted-color: #858585;
+  --border-color: #c3c3c3;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-color: #c3c3c3;
+    --background-start-color: #4c4b63;
+    --background-end-color: #272436;
+    --primary-color: #aba8b2;
+    --secondary-color: #949396;
+    --accent-color: #5386e4;
+    --muted-color: #858585;
+    --border-color: #c3c3c3;
+  }
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
+  min-height: 100%;
   background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    to bottom,
+    var(--background-start-color),
+    var(--background-end-color)
+  );
+  background-attachment: fixed;
+  color: var(--foreground-color);
+  font-family: Arial, sans-serif;
 }
 
 @layer utilities {
