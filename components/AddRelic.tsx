@@ -5,6 +5,7 @@ import stats from "@/app/relic-sets/stats.json";
 import styled from "@emotion/styled";
 import Image from "next/image";
 import Button from "@/components/ButtonWithDisable";
+import AddCharacter from "@/components/AddCharacter";
 
 const PartSelect = styled(Select)`
   color: #000000;
@@ -1331,7 +1332,15 @@ function getStatsByPart(part: string, query: string, stats: any) {
   return null;
 }
 
-const AddRelic = ({ charSelected }: { charSelected: string }) => {
+const AddRelic = ({
+  charSelected,
+  closePopup,
+  backToChar,
+}: {
+  charSelected: string;
+  closePopup: any;
+  backToChar: any;
+}) => {
   const [next, setNext] = useState(false); // false = select relics page, true = add relic page
   const [hatStats, setHatStats] = useState({
     mainS: null,
@@ -1380,6 +1389,9 @@ const AddRelic = ({ charSelected }: { charSelected: string }) => {
   }>({});
   const [relicCounter, setRelicCounter] = useState(1);
   const [ornamentCounter, setOrnamentCounter] = useState(1);
+  const [hoveredRelic, setHoveredRelic] = useState<string | undefined>(
+    undefined,
+  );
 
   const handleNextClick = () => {
     setNext(true);
@@ -1410,16 +1422,32 @@ const AddRelic = ({ charSelected }: { charSelected: string }) => {
           setOrnamentCounter(ornamentCounter + 1);
         }
       }
-      console.log(relicCounter);
-      console.log(ornamentCounter);
-      console.log(newSelectedRelics);
       return newSelectedRelics;
     });
   };
 
+  const clearRelicSelect = () => {
+    setSelectedRelics({});
+    setRelicCounter(1);
+    setOrnamentCounter(1);
+  };
+
+  function BackToCharSelect() {
+    if (charSelected === "") {
+      console.log("Close popup");
+      closePopup();
+    } else {
+      console.log("Back to char select");
+      backToChar();
+    }
+  }
+
   if (next === false) {
     return (
       <div className="p-2 flex flex-col">
+        <div style={{ marginBottom: 5 }}>
+          <Button text={"< Back"} onClick={BackToCharSelect} disable={false} />
+        </div>
         <h1 className="text-3xl">
           Select up to 2 relics and 1 ornament to add.
         </h1>
@@ -1438,12 +1466,17 @@ const AddRelic = ({ charSelected }: { charSelected: string }) => {
                     ornamentCounter,
                   )
                 }
+                onMouseEnter={() => setHoveredRelic(relic.name)}
+                onMouseLeave={() => setHoveredRelic(undefined)}
                 style={{
-                  background: selectedRelics[relic.name] ? "#5d737e" : "none",
+                  background:
+                    selectedRelics[relic.name] || hoveredRelic === relic.name
+                      ? "#5d737e"
+                      : "none",
                   border: selectedRelics[relic.name]
                     ? "1px solid #fcfcfc"
                     : "none",
-                  borderRadius: 20,
+                  borderRadius: 10,
                   padding: 2,
                   margin: 2,
                 }}
@@ -1480,12 +1513,17 @@ const AddRelic = ({ charSelected }: { charSelected: string }) => {
                     ornamentCounter,
                   )
                 }
+                onMouseEnter={() => setHoveredRelic(relic.name)}
+                onMouseLeave={() => setHoveredRelic(undefined)}
                 style={{
-                  background: selectedRelics[relic.name] ? "#5d737e" : "none",
+                  background:
+                    selectedRelics[relic.name] || hoveredRelic === relic.name
+                      ? "#5d737e"
+                      : "none",
                   border: selectedRelics[relic.name]
                     ? "1px solid #fcfcfc"
                     : "none",
-                  borderRadius: 20,
+                  borderRadius: 10,
                   padding: 2,
                   margin: 2,
                 }}
@@ -1507,11 +1545,18 @@ const AddRelic = ({ charSelected }: { charSelected: string }) => {
             ) : null,
           )}
         </div>
-        <Button
-          text={"Next"}
-          onClick={() => handleNextClick()}
-          disable={Object.keys(selectedRelics).length === 0}
-        />
+        <div className="flex justify-center">
+          <Button
+            text={"Clear"}
+            onClick={() => clearRelicSelect()}
+            disable={false}
+          />
+          <Button
+            text={"Next"}
+            onClick={() => handleNextClick()}
+            disable={Object.keys(selectedRelics).length === 0}
+          />
+        </div>
       </div>
     );
   } else {

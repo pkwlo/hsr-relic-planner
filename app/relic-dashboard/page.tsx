@@ -260,7 +260,11 @@ export default function Home() {
                 >
                   &times;
                 </span>
-                <AddCharacter charData={charData} />
+                <AddCharacter
+                  charData={charData}
+                  closePopup={closePopup}
+                  backToChar={addCharacter}
+                />
               </div>
             </div>
           )}
@@ -274,7 +278,11 @@ export default function Home() {
                 >
                   &times;
                 </span>
-                <AddRelic charSelected={""} />
+                <AddRelic
+                  charSelected={""}
+                  closePopup={closePopup}
+                  backToChar={addCharacter}
+                />
               </div>
             </div>
           )}

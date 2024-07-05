@@ -3,10 +3,13 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import AddRelic from "@/components/AddRelic";
 
-const AddCharacter = ({ charData }: any) => {
+const AddCharacter = ({ charData, closePopup, backToChar }: any) => {
   const [charSelected, setCharSelected] = useState("");
   const [filteredCharacters, setFilteredCharacters] = useState(characters);
   const [unfilteredCharacters, setUnfilteredCharacters] = useState(characters);
+  const [hoveredCharacter, setHoveredCharacter] = useState<string | undefined>(
+    undefined,
+  );
 
   useEffect(() => {
     if (charData && charData.length > 0) {
@@ -24,10 +27,6 @@ const AddCharacter = ({ charData }: any) => {
     }
   }, [charData]); // Run this effect only when charData changes
 
-  const handleCharacterSelect = (characterName: string) => {
-    setCharSelected(characterName);
-  };
-
   if (charSelected === "") {
     return (
       <div className="flex flex-col p-2">
@@ -44,12 +43,16 @@ const AddCharacter = ({ charData }: any) => {
                 style={{
                   width: 75,
                   height: 86.25,
-                  border: "1px solid #FFFFFF",
                   borderRadius: 20,
-                  margin: 5,
+                  margin: 2.5,
                   cursor: "pointer",
+                  backgroundColor:
+                    hoveredCharacter === character.name ? "#5d737e" : undefined,
+                  transition: "background-color 0.3s",
                 }}
-                onClick={() => handleCharacterSelect(character.name)}
+                onClick={() => setCharSelected(character.name)}
+                onMouseEnter={() => setHoveredCharacter(character.name)}
+                onMouseLeave={() => setHoveredCharacter(undefined)}
               />
             </div>
           ))}
@@ -66,12 +69,16 @@ const AddCharacter = ({ charData }: any) => {
                 style={{
                   width: 75,
                   height: 86.25,
-                  border: "1px solid #FFFFFF",
                   borderRadius: 20,
                   margin: 5,
                   cursor: "pointer",
+                  backgroundColor:
+                    hoveredCharacter === character.name ? "#5d737e" : undefined,
+                  transition: "background-color 0.3s",
                 }}
-                onClick={() => handleCharacterSelect(character.name)}
+                onClick={() => setCharSelected(character.name)}
+                onMouseEnter={() => setHoveredCharacter(character.name)}
+                onMouseLeave={() => setHoveredCharacter(undefined)}
               />
             </div>
           ))}
@@ -79,7 +86,13 @@ const AddCharacter = ({ charData }: any) => {
       </div>
     );
   } else {
-    return <AddRelic charSelected={charSelected} />;
+    return (
+      <AddRelic
+        charSelected={charSelected}
+        closePopup={closePopup}
+        backToChar={backToChar}
+      />
+    );
   }
 };
 
