@@ -1432,12 +1432,11 @@ const AddRelic = ({
     setOrnamentCounter(1);
   };
 
-  function BackToCharSelect() {
+  async function BackToCharSelect() {
     if (charSelected === "") {
-      console.log("Close popup");
       closePopup();
     } else {
-      console.log("Back to char select");
+      await closePopup();
       backToChar();
     }
   }
