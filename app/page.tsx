@@ -41,11 +41,12 @@ export default function Home() {
           </ul> */}
           <ul>
             <li>Alpha</li>
+            {/* <li>- add ability to edit and delete relics (v0.0.5)</li> */}
             <li>- add report bugs page (v0.0.4)</li>
             <li>- add characters to inventory (v0.0.3)</li>
             <li>- add relics to inventory (v0.0.2)</li>
-            <li>- user registration (v0.0.1)</li>
-            <li>- user log-in (v0.0.0)</li>
+            <li>- user log-in (v0.0.1)</li>
+            <li>- user registration (v0.0.0)</li>
           </ul>
         </div>
       </main>

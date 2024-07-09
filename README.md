@@ -1,6 +1,37 @@
 # HSR Relic Manager
 
-# To Do
+# Roadmap
+
+The HSR Relic Manager is currently in the Alpha Phase.
+
+## Alpha
+
+Goal: complete the core features and initial testing
+
+- [x] registration
+- [x] login/logout
+- [ ] password/email update
+- [x] add characters to inventory
+- [x] add relics to inventory
+- [x] bug report
+- [x] delete relics from inventory
+- [ ] edit relics in inventory
+
+## Beta
+
+Goal: in depth test of the core features and bug fixes
+
+## Release
+
+Goal: first version release and user feedback
+
+## Future Versions
+
+Goal: add additional features and improvements based on user feedback, work on the feature backlog, and update the UI/UX and design of the site
+
+- [ ] mobile design
+- [ ] account delete
+- [ ] password reset
 
 ## Dashboard
 
@@ -115,3 +146,14 @@ Key features of cheerio:
 DOM Manipulation: Enables manipulation of DOM elements with a syntax similar to jQuery.
 HTML Parsing: Parses HTML and XML documents, allowing you to traverse and extract elements.
 Lightweight: Designed for server-side operations, without the overhead of a full browser environment.
+
+# Database
+
+## MongoDB
+
+Used to:
+
+- READ stored user and relic data and populate the relic planner with each user's saved information.
+- WRITE new user data from new registrations and relic data from adding a new character and relic set to farm to the user's account.
+- UPDATE user email and password and already saved relic data that the user wants to edit.
+- DELETE user account and relic data that the user no longer wants.

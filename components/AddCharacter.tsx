@@ -24,6 +24,9 @@ const AddCharacter = ({ charData, closePopup, backToChar }: any) => {
           charNamesToExclude.includes(character.name),
         ),
       );
+    } else {
+      setFilteredCharacters(characters);
+      setUnfilteredCharacters([]);
     }
   }, [charData]); // Run this effect only when charData changes
 
@@ -57,32 +60,38 @@ const AddCharacter = ({ charData, closePopup, backToChar }: any) => {
             </div>
           ))}
         </div>
-        <h1 className="text-xl py-3">Add another set</h1>
-        <div className="flex flex-wrap">
-          {unfilteredCharacters.map((character) => (
-            <div key={character.name}>
-              <Image
-                src={`/char-images/${character.name.replaceAll(" ", "_")}.png`}
-                alt={character.name}
-                width={160}
-                height={188}
-                style={{
-                  width: 75,
-                  height: 86.25,
-                  borderRadius: 20,
-                  margin: 5,
-                  cursor: "pointer",
-                  backgroundColor:
-                    hoveredCharacter === character.name ? "#5d737e" : undefined,
-                  transition: "background-color 0.3s",
-                }}
-                onClick={() => setCharSelected(character.name)}
-                onMouseEnter={() => setHoveredCharacter(character.name)}
-                onMouseLeave={() => setHoveredCharacter(undefined)}
-              />
+        {unfilteredCharacters.length > 0 && (
+          <>
+            <h1 className="text-xl py-3">Add another set</h1>
+            <div className="flex flex-wrap">
+              {unfilteredCharacters.map((character) => (
+                <div key={character.name}>
+                  <Image
+                    src={`/char-images/${character.name.replaceAll(" ", "_")}.png`}
+                    alt={character.name}
+                    width={160}
+                    height={188}
+                    style={{
+                      width: 75,
+                      height: 86.25,
+                      borderRadius: 20,
+                      margin: 5,
+                      cursor: "pointer",
+                      backgroundColor:
+                        hoveredCharacter === character.name
+                          ? "#5d737e"
+                          : undefined,
+                      transition: "background-color 0.3s",
+                    }}
+                    onClick={() => setCharSelected(character.name)}
+                    onMouseEnter={() => setHoveredCharacter(character.name)}
+                    onMouseLeave={() => setHoveredCharacter(undefined)}
+                  />
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+          </>
+        )}
       </div>
     );
   } else {

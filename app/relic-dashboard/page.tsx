@@ -69,26 +69,30 @@ const RelicCardMini = ({ part, name }: { part: any; name: string }) => {
           {part.mainS}
         </p>
       )}
-      <h4 className="font-semibold ml-1">Sub Stats</h4>
-      {part.sub1 && (
-        <p className="border-2 border-gray-500 rounded-md p-1 m-0.5">
-          {part.sub1}
-        </p>
-      )}
-      {part.sub2 && (
-        <p className="border-2 border-gray-500 rounded-md p-1 m-0.5">
-          {part.sub2}
-        </p>
-      )}
-      {part.sub3 && (
-        <p className="border-2 border-gray-500 rounded-md p-1 m-0.5">
-          {part.sub3}
-        </p>
-      )}
-      {part.sub4 && (
-        <p className="border-2 border-gray-500 rounded-md p-1 m-0.5">
-          {part.sub4}
-        </p>
+      {(part.sub1 || part.sub2 || part.sub3 || part.sub4) && (
+        <>
+          <h4 className="font-semibold ml-1">Sub Stats</h4>
+          {part.sub1 && (
+            <p className="border-2 border-gray-500 rounded-md p-1 m-0.5">
+              {part.sub1}
+            </p>
+          )}
+          {part.sub2 && (
+            <p className="border-2 border-gray-500 rounded-md p-1 m-0.5">
+              {part.sub2}
+            </p>
+          )}
+          {part.sub3 && (
+            <p className="border-2 border-gray-500 rounded-md p-1 m-0.5">
+              {part.sub3}
+            </p>
+          )}
+          {part.sub4 && (
+            <p className="border-2 border-gray-500 rounded-md p-1 m-0.5">
+              {part.sub4}
+            </p>
+          )}
+        </>
       )}
     </div>
   ) : null;
