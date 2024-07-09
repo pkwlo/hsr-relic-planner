@@ -18,17 +18,20 @@ export default async function handler(
       return res.status(404).json({ message: "User not found." });
     }
 
-    if (!Array.isArray(userDoc.charList) || userDoc.charList.length === 0) {
-      return res.status(404).json({ message: "No characters found." });
-    }
-
     const characterList: { char: string }[] = [];
 
-    userDoc.charList.map((char) => {
-      if (char !== "") {
-        characterList.push({ char });
+    for (let i = 0; i < userDoc.setId.length; i++) {
+      const setId = userDoc.setId[i];
+      const foundRelic = await db.collection("relics").findOne({ setId });
+      if (!foundRelic) {
+        return res.status(404).json({ message: "Relic not found." });
+      } else {
+        const character = foundRelic.character;
+        if (!characterList.some((item) => item.char === character)) {
+          characterList.push({ char: character });
+        }
       }
-    });
+    }
 
     return res.status(200).json(characterList);
   } catch (error) {

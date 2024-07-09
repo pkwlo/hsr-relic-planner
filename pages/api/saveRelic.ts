@@ -77,7 +77,7 @@ export default async function handler(
 
     await usersCollection.updateOne(
       { email: user },
-      { $addToSet: { setId: setId, charList: character } },
+      { $addToSet: { setId: setId } },
     );
 
     await client

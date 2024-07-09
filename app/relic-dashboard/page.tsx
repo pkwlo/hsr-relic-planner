@@ -10,7 +10,8 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import chevronUp from "@/public/icons/KAup.png";
 import chevronDown from "@/public/icons/KAdown.png";
-import styled from "styled-components";
+import deleteIcon from "@/public/icons/delete.png";
+import edit from "@/public/icons/edit.png";
 
 async function getRelics(user: any) {
   try {
@@ -93,6 +94,44 @@ const RelicCardMini = ({ part, name }: { part: any; name: string }) => {
   ) : null;
 };
 
+function editRelic() {
+  console.log("Edit relic");
+}
+
+async function deleteRelic(relicId: number) {
+  console.log("Delete relic: " + relicId);
+  const user = localStorage.getItem("email");
+  try {
+    const res = await fetch("/api/deleteRelic", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ user, relicId }),
+    });
+
+    const data = await res.json();
+
+    if (res.status === 200) {
+      if (typeof window !== "undefined") {
+        window.location.reload();
+      }
+    } else {
+      console.error(data.message);
+    }
+  } catch (error) {
+    console.error("Error deleting relic:", error);
+  }
+}
+
+function expandRelic() {
+  console.log("Expand relic");
+}
+
+function hideRelic() {
+  console.log("Hide relic");
+}
+
 const RelicCard = ({ relicData }: any) => {
   return relicData && relicData.length > 0 ? (
     <div>
@@ -108,7 +147,46 @@ const RelicCard = ({ relicData }: any) => {
             }}
           >
             <h4 className="text-xl">{relic.name}</h4>
-            <Image src={chevronUp} alt={"Right Arrow"} height={30} width={30} />
+            <div className="flex flex-row">
+              <Image
+                src={edit}
+                alt={"Edit"}
+                height={20}
+                width={20}
+                style={{
+                  height: 20,
+                  width: 20,
+                  marginRight: 10,
+                  marginTop: 5,
+                  cursor: "pointer",
+                }}
+                onClick={editRelic}
+              />
+              <Image
+                src={deleteIcon}
+                alt="Delete"
+                height={20}
+                width={20}
+                style={{
+                  height: 20,
+                  width: 20,
+                  marginRight: 10,
+                  marginTop: 5,
+                  cursor: "pointer",
+                }}
+                onClick={() => deleteRelic(relic.setId)}
+              />
+              <Image
+                src={chevronUp}
+                alt={"Up Arrow"}
+                height={30}
+                width={30}
+                style={{
+                  cursor: "pointer",
+                }}
+                onClick={hideRelic}
+              />
+            </div>
           </div>
           <div className="flex flex-row">
             <RelicCardMini part={relic.hatStats} name={"Hat"} />

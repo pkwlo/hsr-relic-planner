@@ -27,6 +27,7 @@ export default async function handler(
         const relicTarget = await db.collection("relics").findOne({ setId });
         if (relicTarget) {
           return {
+            setId: relicTarget.setId || null,
             name: relicTarget.name || null,
             character: relicTarget.character || null,
             hatStats: relicTarget.hatStats || null,
