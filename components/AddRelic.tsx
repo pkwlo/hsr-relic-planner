@@ -290,7 +290,7 @@ const RelicListLengthOne = ({
           <Button
             text={"Save"}
             onClick={() =>
-              save(
+              saveAll(
                 name,
                 charSelected,
                 hatStats,
@@ -385,7 +385,7 @@ const RelicListLengthOne = ({
           <Button
             text={"Save"}
             onClick={() =>
-              save(
+              saveAll(
                 name,
                 charSelected,
                 hatStats,
@@ -1309,12 +1309,8 @@ async function save(
 
     const data = await res.json();
 
-    if (res.status === 200) {
-      if (typeof window !== "undefined") {
-        window.location.reload();
-      }
-    } else {
-      console.error(data.message);
+    if (data.error) {
+      console.error("Error saving relic:", data.error);
     }
   } catch (error) {
     console.error("Error saving relic:", error);
