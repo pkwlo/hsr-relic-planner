@@ -49,7 +49,7 @@ function CharacterCardTemplate({
   );
 }
 
-export default function Page() {
+export default function CharacterPage() {
   return (
     <>
       <Header />

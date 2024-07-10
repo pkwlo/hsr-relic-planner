@@ -5,7 +5,6 @@ import stats from "@/app/relic-sets/stats.json";
 import styled from "@emotion/styled";
 import Image from "next/image";
 import Button from "@/components/ButtonWithDisable";
-import AddCharacter from "@/components/AddCharacter";
 
 const PartSelect = styled(Select)`
   color: #000000;

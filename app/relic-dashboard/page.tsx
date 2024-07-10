@@ -1,63 +1,26 @@
 "use client";
 
 import React from "react";
+import { useState, useEffect } from "react";
 import Button from "@/components/Button";
 import Sidebar from "@/components/Sidebar";
 import Header from "@/components/Header";
-import AddRelic from "@/components/AddRelic";
-import AddCharacter from "@/components/AddCharacter";
-import { useState, useEffect } from "react";
+// images
 import Image from "next/image";
 import chevronUp from "@/public/icons/KAup.png";
 import chevronDown from "@/public/icons/KAdown.png";
 import deleteIcon from "@/public/icons/delete.png";
+// page specific components
+import AddRelic from "@/components/AddRelic";
+import AddCharacter from "@/components/AddCharacter";
 import edit from "@/public/icons/edit.png";
-
-async function getRelics(user: any) {
-  try {
-    const res = await fetch("/api/getRelics", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ user }),
-    });
-
-    const data = await res.json();
-
-    if (res.status === 200) {
-      return data;
-    } else {
-      console.error(data.message);
-      return null;
-    }
-  } catch (error) {
-    console.error("Error getting relics:", error);
-  }
-}
-
-async function getChars(user: any) {
-  try {
-    const res = await fetch("/api/getChars", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ user }),
-    });
-
-    const data = await res.json();
-
-    if (res.status === 200) {
-      return data;
-    } else {
-      console.error(data.message);
-      return null;
-    }
-  } catch (error) {
-    console.error("Error getting characters:", error);
-  }
-}
+import deleteRelic from "./deleteRelic";
+import getRelics from "./getRelics";
+import getChars from "./getChars";
+import editRelic from "./editRelic";
+import expandRelic from "./expandRelic";
+import hideRelic from "./hideRelic";
+import characterClick from "./characterClick";
 
 const RelicCardMini = ({ part, name }: { part: any; name: string }) => {
   return part ? (
@@ -97,44 +60,6 @@ const RelicCardMini = ({ part, name }: { part: any; name: string }) => {
     </div>
   ) : null;
 };
-
-function editRelic() {
-  console.log("Edit relic");
-}
-
-async function deleteRelic(relicId: number) {
-  console.log("Delete relic: " + relicId);
-  const user = localStorage.getItem("email");
-  try {
-    const res = await fetch("/api/deleteRelic", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ user, relicId }),
-    });
-
-    const data = await res.json();
-
-    if (res.status === 200) {
-      if (typeof window !== "undefined") {
-        window.location.reload();
-      }
-    } else {
-      console.error(data.message);
-    }
-  } catch (error) {
-    console.error("Error deleting relic:", error);
-  }
-}
-
-function expandRelic() {
-  console.log("Expand relic");
-}
-
-function hideRelic() {
-  console.log("Hide relic");
-}
 
 const RelicCard = ({ relicData }: any) => {
   return relicData && relicData.length > 0 ? (
@@ -237,18 +162,7 @@ const CharacterCard = ({ charData }: any) => {
   );
 };
 
-function characterClick(e: React.MouseEvent<HTMLImageElement>) {
-  e.preventDefault();
-  // Left click - edit character
-  if (e.button === 0) {
-    console.log("Left click");
-    // Right click - enable / disable character
-  } else if (e.button === 2) {
-    console.log("Right click");
-  }
-}
-
-export default function Home() {
+export default function RelicDashboard() {
   const [charPopup, setCharPopup] = useState<boolean>(false);
   const [relicPopup, setRelicPopup] = useState<boolean>(false);
   const [columnWidth, setColumnWidth] = useState<number>(400);

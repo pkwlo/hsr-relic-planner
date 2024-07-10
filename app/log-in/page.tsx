@@ -32,7 +32,7 @@ async function logIn(email: string, password: string) {
   }
 }
 
-export default function Home() {
+export default function LogInPage() {
   const [email, setEmail] = React.useState<string>("");
   const [password, setPassword] = React.useState<string>("");
 

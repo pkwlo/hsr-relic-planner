@@ -5,11 +5,6 @@ import Sidebar from "@/components/Sidebar";
 import Header from "@/components/Header";
 import Button from "@/components/Button";
 
-// const checkPassword = (
-//   password: string,
-//   confirmPassword: string,
-//   email: string,
-// ) => {
 function checkPassword(
   password: string,
   confirmPassword: string,
@@ -46,7 +41,7 @@ async function register(email: string, password: string) {
   }
 }
 
-export default function Home() {
+export default function RegisterPage() {
   const [email, setEmail] = React.useState<string>("");
   const [password, setPassword] = React.useState<string>("");
   const [confirmPassword, setConfirmPassword] = React.useState<string>("");

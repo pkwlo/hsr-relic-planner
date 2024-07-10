@@ -13,13 +13,30 @@ Goal: complete the core features and initial testing
 - [ ] password/email update
 - [x] add characters to inventory
 - [x] add relics to inventory
-- [x] bug report
+- [ ] bug report/contanct us
 - [x] delete relics from inventory
 - [ ] edit relics in inventory
+- [ ] left click to open menu for that character
+- [ ] right click to toggle character on/off in the relic section
 
 ## Beta
 
 Goal: in depth test of the core features and bug fixes
+
+Test scenarios:
+
+- [ ] registration
+- [ ] login/logout
+- [ ] password/email update
+- [ ] add characters to inventory
+- [ ] add relics to inventory
+  - [ ] 4pc relic
+  - [ ] 2pc ornament
+  - [ ] 4pc relic/ornament
+  - [ ] 2pc relic/relic
+  - [ ] 2pc relic/relic/ornament
+- [ ] delete relics from inventory
+- [ ] edit relics in inventory
 
 ## Release
 
@@ -33,73 +50,38 @@ Goal: add additional features and improvements based on user feedback, work on t
 - [ ] account delete
 - [ ] password reset
 
-## Dashboard
+### Dashboard
 
-- character tab
-  - click to expand
-  - list of characters
-    - left click to open menu for that character
-      - edit / add / view relic set
-      - delete character
-      - check mark for done/not done on each piece
-      - mark all as complete button
-    - right click to toggle character on/off in the relic section
 - relic tab
   - search bar
     - filter by set name or character
-  - sort by set
-  - each set is expand/collapsable
-  - expand / collapse all button
-  - set 1, set 2, set 3...etc
-    - click to expand
-    - list of pieces + desired stats
-    - character icons to show which characters are farming for this set
-- update design
-  - set up a theme
-  - beautify page
+  - sort by set name
+- add character and add relic
+  - search bar with interactive filtering
+  - if character selected: recommended relic/oranment sets show up first
 
-## Character Page
+### Character Page
 
-- add characters button
-  - delete character button
-  - [future feature] char card infographic generation
-    - add character level, trace levels, eidolons
-    - add current lightcone button
-      - select lightcone
-      - select lightcone level
-    - add current relic set button
-      - select relic set
-      - select stats per piece
-    - calulate total stats
-    - save all info to autogenerate character card for display
-  - add new relic set button
+- char card infographic generation
+  - add character level, trace levels, eidolons
+  - add current lightcone button
+    - select lightcone
+    - select lightcone level
+  - add current relic set button
     - select relic set
     - select stats per piece
-  - current relic set information with desired stats
-    - edit set
-    - delete set
-    - copy set (can copy into set 2 and change the set name but keep same stats)
+  - calulate total stats
+  - save all info to autogenerate character card for display
+  - character info shows char best sets and target stat goals/lc from prydwen
 - search bar
   - search by name
 - filter options
-
   - rarity
   - path
   - element
-  - character section shows
-    - character name
-    - rarity
-    - path
-    - element
-    - current relic set
-    - desired stats
-    - check mark for done/not done on each piece
-    - mark all as complete button
 
-## Relic Sets Page
+### Relic Sets Page
 
-- update design
-  - responsive
 - search bar
   - search by name or description
 - filter options
@@ -124,7 +106,6 @@ Goal: add additional features and improvements based on user feedback, work on t
   - Break Effect
   - follow-up
   - Imaginary DMG
-- or manually add tags and make it so that rerunning server.js does not overwrite relics that are already present
 
 # Libraries Used
 

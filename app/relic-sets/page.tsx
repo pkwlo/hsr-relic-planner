@@ -64,7 +64,7 @@ function OrnamentCardTemplate({
   );
 }
 
-export default function Page() {
+export default function RelicPage() {
   return (
     <>
       <Header />
