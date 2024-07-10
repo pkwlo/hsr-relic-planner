@@ -1308,6 +1308,14 @@ async function save(
     });
 
     const data = await res.json();
+
+    if (res.status === 200) {
+      if (typeof window !== "undefined") {
+        window.location.reload();
+      }
+    } else {
+      console.error(data.message);
+    }
   } catch (error) {
     console.error("Error saving relic:", error);
   }

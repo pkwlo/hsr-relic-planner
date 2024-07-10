@@ -85,7 +85,7 @@ export default async function handler(
       .collection("relicSetId")
       .updateOne({ name: "relicCounter" }, { $inc: { counter: 1 } });
 
-    return res.status(201).json({ success: true, message: "Relic saved." });
+    return res.status(200).json({ success: true, message: "Relic saved." });
   } catch (e) {
     console.error(e);
     return res.status(500).json({ error: "An error occurred" });
