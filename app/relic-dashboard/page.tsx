@@ -11,8 +11,8 @@ import chevronUp from "@/public/icons/KAup.png";
 import chevronDown from "@/public/icons/KAdown.png";
 import deleteIcon from "@/public/icons/delete.png";
 // page specific components
-import AddRelic from "@/components/AddRelic";
-import AddCharacter from "@/components/AddCharacter";
+import AddRelic from "@/app/relic-dashboard/AddRelic";
+import AddCharacter from "@/app/relic-dashboard/AddCharacter";
 import edit from "@/public/icons/edit.png";
 import deleteRelic from "./deleteRelic";
 import getRelics from "./getRelics";

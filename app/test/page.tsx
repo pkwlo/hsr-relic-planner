@@ -3,7 +3,6 @@
 import React from "react";
 import Sidebar from "@/components/Sidebar";
 import Header from "@/components/Header";
-import AddRelic from "@/components/AddRelic";
 
 export default function Home() {
   return (

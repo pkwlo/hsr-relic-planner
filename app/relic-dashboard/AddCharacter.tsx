@@ -1,7 +1,7 @@
 import characters from "@/app/characters/characters.json";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import AddRelic from "@/components/AddRelic";
+import AddRelic from "@/app/relic-dashboard/AddRelic";
 
 const AddCharacter = ({ charData, closePopup, backToChar }: any) => {
   const [charSelected, setCharSelected] = useState("");
