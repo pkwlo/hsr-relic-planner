@@ -250,12 +250,6 @@ export default function RelicDashboard() {
           {charPopup && (
             <div className="popup">
               <div className="popup-content">
-                <span
-                  className="close text-3xl px-2 pb-1 border-2 border-white rounded-full ml-5"
-                  onClick={closePopup}
-                >
-                  &times;
-                </span>
                 <AddCharacter
                   charData={charData}
                   closePopup={closePopup}
@@ -268,12 +262,6 @@ export default function RelicDashboard() {
           {relicPopup && (
             <div className="popup">
               <div className="popup-content">
-                <span
-                  className="close text-3xl px-2 pb-1 border-2 border-white rounded-full ml-5"
-                  onClick={closePopup}
-                >
-                  &times;
-                </span>
                 <AddRelic
                   charSelected={""}
                   closePopup={closePopup}

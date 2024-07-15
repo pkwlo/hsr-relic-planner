@@ -2,6 +2,7 @@ import characters from "@/app/characters/characters.json";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import AddRelic from "@/app/relic-dashboard/AddRelic";
+import Button from "@/components/Button";
 
 const AddCharacter = ({ charData, closePopup, backToChar }: any) => {
   const [charSelected, setCharSelected] = useState("");
@@ -33,6 +34,9 @@ const AddCharacter = ({ charData, closePopup, backToChar }: any) => {
   if (charSelected === "") {
     return (
       <div className="flex flex-col p-2">
+        <div style={{ marginBottom: 5 }}>
+          <Button text={"Close"} onClick={closePopup} />
+        </div>
         <h1 className="text-3xl py-3">Select a character to add</h1>
         <h1 className="text-xl py-3">Add a new set</h1>
         <div className="flex flex-wrap">

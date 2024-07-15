@@ -118,6 +118,7 @@ const RelicListLengthOne = ({
   setHatStats,
   setGloveStats,
   setNext,
+  closePopup,
 }: {
   charSelected: string;
   selectedRelics: any;
@@ -134,6 +135,7 @@ const RelicListLengthOne = ({
   setHatStats: any;
   setGloveStats: any;
   setNext: any;
+  closePopup: any;
 }) => {
   const name = Object.keys(selectedRelics)[0];
   const name2 = "";
@@ -157,8 +159,15 @@ const RelicListLengthOne = ({
 
   return (
     <div className="flex flex-col">
-      <div className="flex flex-row m-3 items-center">
-        <Button text="< Back" onClick={() => setNext(false)} disable={false} />
+      <div className="flex flex-col m-3">
+        <div className="flex justify-start pb-2">
+          <Button
+            text="< Back"
+            onClick={() => setNext(false)}
+            disable={false}
+          />
+          <Button text={"Close"} onClick={closePopup} disable={false} />
+        </div>
         <div className="text-2xl">{name}</div>
       </div>
       <div className="flex flex-row">
@@ -251,6 +260,7 @@ const RelicListLengthTwo = ({
   setHatStats,
   setGloveStats,
   setNext,
+  closePopup,
 }: {
   charSelected: string;
   selectedRelics: any;
@@ -267,6 +277,7 @@ const RelicListLengthTwo = ({
   setHatStats: any;
   setGloveStats: any;
   setNext: any;
+  closePopup: any;
 }) => {
   const [nextSection, setNextSection] = useState(false);
   const [relicCounter, setRelicCounter] = useState(0);
@@ -314,12 +325,15 @@ const RelicListLengthTwo = ({
       // !nextSection = relic, nextSection = ornament
       !nextSection ? (
         <div className="flex flex-col">
-          <div className="flex flex-row m-3 items-center">
-            <Button
-              text="< Back"
-              onClick={() => setNext(false)}
-              disable={false}
-            />
+          <div className="flex flex-col m-3">
+            <div className="flex justify-start pb-2">
+              <Button
+                text="< Back"
+                onClick={() => setNext(false)}
+                disable={false}
+              />
+              <Button text={"Close"} onClick={closePopup} disable={false} />
+            </div>
             <div className="text-2xl">{name}</div>
           </div>
           <div className="flex flex-row">
@@ -382,12 +396,15 @@ const RelicListLengthTwo = ({
         </div>
       ) : (
         <div className="flex flex-col">
-          <div className="flex flex-row m-3 items-center">
-            <Button
-              text={"< Back"}
-              onClick={() => setNextSection(false)}
-              disable={false}
-            />
+          <div className="flex flex-col m-3">
+            <div className="flex justify-start pb-2">
+              <Button
+                text={"< Back"}
+                onClick={() => setNextSection(false)}
+                disable={false}
+              />
+              <Button text={"Close"} onClick={closePopup} disable={false} />
+            </div>
             <div className="text-2xl">{name2}</div>
           </div>
           <div className="flex flex-row">
@@ -467,12 +484,15 @@ const RelicListLengthTwo = ({
     return (
       // relic 2pc -> save both
       <div className="flex flex-col">
-        <div className="flex flex-row m-3 items-center">
-          <Button
-            text={"< Back"}
-            onClick={() => setNext(false)}
-            disable={false}
-          />
+        <div className="flex flex-col m-3">
+          <div className="flex justify-start pb-2">
+            <Button
+              text={"< Back"}
+              onClick={() => setNext(false)}
+              disable={false}
+            />
+            <Button text={"Close"} onClick={closePopup} disable={false} />
+          </div>
           <div className="text-2xl">{"2pc " + name + " / 2pc " + name2}</div>
         </div>
         <div className="flex flex-row">
@@ -566,6 +586,7 @@ const RelicListLengthThree = ({
   setHatStats,
   setGloveStats,
   setNext,
+  closePopup,
 }: {
   charSelected: string;
   selectedRelics: any;
@@ -582,6 +603,7 @@ const RelicListLengthThree = ({
   setHatStats: any;
   setGloveStats: any;
   setNext: any;
+  closePopup: any;
 }) => {
   const [nextSection, setNextSection] = useState(false);
   const [name, setName] = useState("");
@@ -626,12 +648,15 @@ const RelicListLengthThree = ({
     // !nextSection = relic, nextSection = ornament
     !nextSection ? (
       <div className="flex flex-col">
-        <div className="flex flex-row m-3 items-center">
-          <Button
-            text={"< Back"}
-            onClick={() => setNext(false)}
-            disable={false}
-          />
+        <div className="flex flex-col m-3">
+          <div className="flex justify-start pb-2">
+            <Button
+              text={"< Back"}
+              onClick={() => setNext(false)}
+              disable={false}
+            />
+            <Button text={"Close"} onClick={closePopup} disable={false} />
+          </div>
           <div className="text-2xl">{"2pc " + name + " / 2pc " + name2}</div>
         </div>
         <div className="flex flex-row">
@@ -692,12 +717,15 @@ const RelicListLengthThree = ({
       </div>
     ) : (
       <div className="flex flex-col">
-        <div className="flex flex-row m-3 items-center">
-          <Button
-            text={"< Back"}
-            onClick={() => setNextSection(false)}
-            disable={false}
-          />
+        <div className="flex flex-col m-3">
+          <div className="flex justify-start pb-2">
+            <Button
+              text={"< Back"}
+              onClick={() => setNextSection(false)}
+              disable={false}
+            />
+            <Button text={"Close"} onClick={closePopup} disable={false} />
+          </div>
           <div className="text-2xl">{name3}</div>
         </div>
         <div className="flex flex-row">
@@ -1098,6 +1126,7 @@ const AddRelic = ({
       <div className="p-2 flex flex-col">
         <div style={{ marginBottom: 5 }}>
           <Button text={"< Back"} onClick={BackToCharSelect} disable={false} />
+          <Button text={"Close"} onClick={closePopup} disable={false} />
         </div>
         <h1 className="text-3xl">
           Select up to 2 relics and 1 ornament to add.
@@ -1230,6 +1259,7 @@ const AddRelic = ({
           setHatStats={setHatStats}
           setGloveStats={setGloveStats}
           setNext={setNext}
+          closePopup={closePopup}
         />
       );
     } else if (numberOfRelics === 2) {
@@ -1250,6 +1280,7 @@ const AddRelic = ({
           setHatStats={setHatStats}
           setGloveStats={setGloveStats}
           setNext={setNext}
+          closePopup={closePopup}
         />
       );
     } else {
@@ -1270,6 +1301,7 @@ const AddRelic = ({
           setHatStats={setHatStats}
           setGloveStats={setGloveStats}
           setNext={setNext}
+          closePopup={closePopup}
         />
       );
     }
