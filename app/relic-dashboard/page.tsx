@@ -105,25 +105,63 @@ const RelicCard = ({ relicData }: any) => {
                 }}
                 onClick={() => deleteRelic(relic.setId)}
               />
-              <Image
-                src={chevronUp}
-                alt={"Up Arrow"}
-                height={30}
-                width={30}
-                style={{
-                  cursor: "pointer",
-                }}
-                onClick={hideRelic}
-              />
+              {relic.character !== "" && (
+                <Image
+                  src={chevronUp}
+                  alt={"Up Arrow"}
+                  height={30}
+                  width={30}
+                  style={{
+                    cursor: "pointer",
+                  }}
+                  onClick={hideRelic}
+                />
+              )}
             </div>
           </div>
-          <div className="flex flex-row">
-            <RelicCardMini part={relic.hatStats} name={"Hat"} />
-            <RelicCardMini part={relic.gloveStats} name={"Glove"} />
-            <RelicCardMini part={relic.shoesStats} name={"Shoes"} />
-            <RelicCardMini part={relic.bodyStats} name={"Body"} />
-            <RelicCardMini part={relic.sphereStats} name={"Sphere"} />
-            <RelicCardMini part={relic.ropeStats} name={"Rope"} />
+          <div className="flex flex-row p-3">
+            <div
+              className="flex flex-row"
+              style={{ paddingRight: relic.hatStats === null ? 185 : 0 }}
+            >
+              <RelicCardMini part={relic.hatStats} name={"Hat"} />
+              <RelicCardMini part={relic.gloveStats} name={"Glove"} />
+              <RelicCardMini part={relic.shoesStats} name={"Shoes"} />
+              <RelicCardMini part={relic.bodyStats} name={"Body"} />
+              <RelicCardMini part={relic.sphereStats} name={"Sphere"} />
+              <RelicCardMini part={relic.ropeStats} name={"Rope"} />
+            </div>
+            <div
+              className="p-4 ml-2"
+              style={{
+                borderLeft: 2,
+                borderLeftColor: "#b5b5b5",
+                borderLeftStyle: "solid",
+              }}
+            >
+              <p className="text-xl">Character</p>
+              {relic.character !== null ? (
+                <Image
+                  src={
+                    "/char-images/" +
+                    relic.character.replaceAll(" ", "_") +
+                    ".png"
+                  }
+                  alt={relic.character}
+                  width={160}
+                  height={188}
+                  style={{
+                    width: 50,
+                    height: 57.5,
+                    border: "2px solid grey",
+                    borderRadius: 20,
+                    margin: 5,
+                  }}
+                />
+              ) : (
+                <div>{"This set is not linked to any characters."}</div>
+              )}
+            </div>
           </div>
         </div>
       ))}
@@ -138,22 +176,24 @@ const CharacterCard = ({ charData }: any) => {
     <div className="flex flex-wrap">
       {charData.map((char: any, index: number) => (
         <div key={index}>
-          <Image
-            src={"/char-images/" + char.char.replaceAll(" ", "_") + ".png"}
-            alt={char.char}
-            width={160}
-            height={188}
-            style={{
-              width: 50,
-              height: 57.5,
-              border: "2px solid #FFFFFF",
-              borderRadius: 20,
-              margin: 5,
-              cursor: "pointer",
-            }}
-            onClick={characterClick}
-            onContextMenu={characterClick}
-          />
+          {char.char !== "" && (
+            <Image
+              src={"/char-images/" + char.char.replaceAll(" ", "_") + ".png"}
+              alt={char.char}
+              width={160}
+              height={188}
+              style={{
+                width: 50,
+                height: 57.5,
+                border: "2px solid #FFFFFF",
+                borderRadius: 20,
+                margin: 5,
+                cursor: "pointer",
+              }}
+              onClick={characterClick}
+              onContextMenu={characterClick}
+            />
+          )}
         </div>
       ))}
     </div>
