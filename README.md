@@ -2,7 +2,7 @@
 
 # Roadmap
 
-The HSR Relic Manager is currently in the Alpha Phase.
+The HSR Relic Manager is currently in the Alpha Phase. Production of this site is currently on hiatus due to other life priorities.
 
 ## Alpha
 
