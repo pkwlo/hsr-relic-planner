@@ -16,7 +16,7 @@ import relicSets from "@/app/relic-sets/relics.json";
 import deleteRelic from "./deleteRelic";
 import getRelics from "./getRelics";
 import getChars from "./getChars";
-import editRelic from "./editRelic";
+import EditRelic from "./EditRelic";
 import characterClick from "./characterClick";
 
 function getRelicImage(name: string): string | null {
@@ -100,7 +100,7 @@ function groupRelicsByName(relics: any[]): Record<string, any[]> {
   return groups;
 }
 
-const RelicGroupEntry = ({ relic }: { relic: any }) => {
+const RelicGroupEntry = ({ relic, onEdit }: { relic: any; onEdit: (relic: any) => void }) => {
   return (
     <div
       className="flex gap-4 p-5"
@@ -147,7 +147,7 @@ const RelicGroupEntry = ({ relic }: { relic: any }) => {
           height={16}
           width={16}
           style={{ cursor: "pointer", opacity: 0.6 }}
-          onClick={editRelic}
+          onClick={() => onEdit(relic)}
           className="hover:opacity-100 transition-opacity"
         />
         <Image
@@ -168,10 +168,12 @@ const RelicGroupCard = ({
   name,
   relics,
   globalExpanded,
+  onEdit,
 }: {
   name: string;
   relics: any[];
   globalExpanded: boolean;
+  onEdit: (relic: any) => void;
 }) => {
   const [expanded, setExpanded] = useState(true);
   const relicImage = getRelicImage(name);
@@ -228,7 +230,7 @@ const RelicGroupCard = ({
       {expanded && (
         <div>
           {relics.map((relic: any, index: number) => (
-            <RelicGroupEntry key={relic.setId || index} relic={relic} />
+            <RelicGroupEntry key={relic.setId || index} relic={relic} onEdit={onEdit} />
           ))}
         </div>
       )}
@@ -240,10 +242,12 @@ const RelicList = ({
   items,
   emptyMessage,
   globalExpanded,
+  onEdit,
 }: {
   items: any[];
   emptyMessage: string;
   globalExpanded: boolean;
+  onEdit: (relic: any) => void;
 }) => {
   if (!items || items.length === 0) {
     return (
@@ -266,6 +270,7 @@ const RelicList = ({
           name={name}
           relics={relics}
           globalExpanded={globalExpanded}
+          onEdit={onEdit}
         />
       ))}
     </div>
@@ -344,6 +349,7 @@ const TabButton = ({
 export default function RelicDashboard() {
   const [charPopup, setCharPopup] = useState<boolean>(false);
   const [relicPopup, setRelicPopup] = useState<boolean>(false);
+  const [editingRelic, setEditingRelic] = useState<any | null>(null);
   const [relicData, setRelicData] = useState<any[]>([]);
   const [charData, setCharData] = useState<any[]>([]);
   const [activeTab, setActiveTab] = useState<Tab>("relics");
@@ -359,16 +365,25 @@ export default function RelicDashboard() {
   const addCharacter = (): void => {
     setCharPopup(true);
     setRelicPopup(false);
+    setEditingRelic(null);
   };
 
   const addRelic = (): void => {
     setRelicPopup(true);
     setCharPopup(false);
+    setEditingRelic(null);
+  };
+
+  const openEditRelic = (relic: any): void => {
+    setEditingRelic(relic);
+    setCharPopup(false);
+    setRelicPopup(false);
   };
 
   const closePopup = (): void => {
     setCharPopup(false);
     setRelicPopup(false);
+    setEditingRelic(null);
   };
 
   return (
@@ -425,16 +440,18 @@ export default function RelicDashboard() {
               items={relics}
               emptyMessage="No relic sets added yet. Add one to get started!"
               globalExpanded={allExpanded}
+              onEdit={openEditRelic}
             />
           ) : (
             <RelicList
               items={ornaments}
               emptyMessage="No ornament sets added yet. Add one to get started!"
               globalExpanded={allExpanded}
+              onEdit={openEditRelic}
             />
           )}
         </div>
-        {(charPopup || relicPopup) && (
+        {(charPopup || relicPopup || editingRelic) && (
           <div
             className="fixed inset-0 z-50 flex items-center justify-center"
             style={{ backgroundColor: "rgba(0, 0, 0, 0.6)", backdropFilter: "blur(4px)" }}
@@ -463,6 +480,12 @@ export default function RelicDashboard() {
                   charSelected=""
                   closePopup={closePopup}
                   backToChar={addCharacter}
+                />
+              )}
+              {editingRelic && (
+                <EditRelic
+                  relic={editingRelic}
+                  closePopup={closePopup}
                 />
               )}
             </div>

@@ -59,6 +59,15 @@ export function saveRelic(relic: Omit<RelicData, "setId">): RelicData {
   return newRelic;
 }
 
+export function updateRelic(updated: RelicData): boolean {
+  const relics = getAllRelics();
+  const index = relics.findIndex((r) => r.setId === updated.setId);
+  if (index === -1) return false;
+  relics[index] = updated;
+  localStorage.setItem(RELICS_KEY, JSON.stringify(relics));
+  return true;
+}
+
 export function deleteRelicById(setId: number): boolean {
   const relics = getAllRelics();
   const filtered = relics.filter((r) => r.setId !== setId);
