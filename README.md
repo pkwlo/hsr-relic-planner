@@ -12,7 +12,7 @@ Goal: complete the core features and initial testing
 - [x] add relics to inventory
 - [x] bug report/contanct us
 - [x] delete relics from inventory
-- [ ] edit relics in inventory
+- [x] edit relics in inventory
 - [ ] left click to open menu for that character
 - [ ] right click to toggle character on/off in the relic section
 
