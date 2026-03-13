@@ -13,7 +13,7 @@ Goal: complete the core features and initial testing
 - [ ] password/email update
 - [x] add characters to inventory
 - [x] add relics to inventory
-- [ ] bug report/contanct us
+- [x] bug report/contanct us
 - [x] delete relics from inventory
 - [ ] edit relics in inventory
 - [ ] left click to open menu for that character
