@@ -1,0 +1,140 @@
+[
+  {
+    "part": "hat",
+    "mainStat": [{ "value": "HP", "label": "HP" }],
+    "subStat": [
+      { "value": "HP%", "label": "HP%" },
+      { "value": "ATK%", "label": "ATK%" },
+      { "value": "DEF%", "label": "DEF%" },
+      { "value": "SPD", "label": "SPD" },
+      { "value": "HP", "label": "HP" },
+      { "value": "ATK", "label": "ATK" },
+      { "value": "DEF", "label": "DEF" },
+      { "value": "BE", "label": "BE" },
+      { "value": "EHR", "label": "EHR" },
+      { "value": "ERES", "label": "ERES" },
+      { "value": "CR", "label": "CR" },
+      { "value": "CDMG", "label": "CDMG" }
+    ]
+  },
+  {
+    "part": "glove",
+    "mainStat": [{ "value": "ATK", "label": "ATK" }],
+    "subStat": [
+      { "value": "HP%", "label": "HP%" },
+      { "value": "ATK%", "label": "ATK%" },
+      { "value": "DEF%", "label": "DEF%" },
+      { "value": "SPD", "label": "SPD" },
+      { "value": "HP", "label": "HP" },
+      { "value": "ATK", "label": "ATK" },
+      { "value": "DEF", "label": "DEF" },
+      { "value": "BE", "label": "BE" },
+      { "value": "EHR", "label": "EHR" },
+      { "value": "ERES", "label": "ERES" },
+      { "value": "CR", "label": "CR" },
+      { "value": "CDMG", "label": "CDMG" }
+    ]
+  },
+  {
+    "part": "shoes",
+    "mainStat": [
+      { "value": "HP%", "label": "HP%" },
+      { "value": "ATK%", "label": "ATK%" },
+      { "value": "DEF%", "label": "DEF%" },
+      { "value": "SPD", "label": "SPD" }
+    ],
+    "subStat": [
+      { "value": "HP%", "label": "HP%" },
+      { "value": "ATK%", "label": "ATK%" },
+      { "value": "DEF%", "label": "DEF%" },
+      { "value": "SPD", "label": "SPD" },
+      { "value": "HP", "label": "HP" },
+      { "value": "ATK", "label": "ATK" },
+      { "value": "DEF", "label": "DEF" },
+      { "value": "BE", "label": "BE" },
+      { "value": "EHR", "label": "EHR" },
+      { "value": "ERES", "label": "ERES" },
+      { "value": "CR", "label": "CR" },
+      { "value": "CDMG", "label": "CDMG" }
+    ]
+  },
+  {
+    "part": "body",
+    "mainStat": [
+      { "value": "HP%", "label": "HP%" },
+      { "value": "ATK%", "label": "ATK%" },
+      { "value": "DEF%", "label": "DEF%" },
+      { "value": "EHR", "label": "EHR" },
+      { "value": "HEAL%", "label": "HEAL%" },
+      { "value": "CR", "label": "CR" },
+      { "value": "CDMG", "label": "CDMG" }
+    ],
+    "subStat": [
+      { "value": "HP%", "label": "HP%" },
+      { "value": "ATK%", "label": "ATK%" },
+      { "value": "DEF%", "label": "DEF%" },
+      { "value": "SPD", "label": "SPD" },
+      { "value": "HP", "label": "HP" },
+      { "value": "ATK", "label": "ATK" },
+      { "value": "DEF", "label": "DEF" },
+      { "value": "BE", "label": "BE" },
+      { "value": "EHR", "label": "EHR" },
+      { "value": "ERES", "label": "ERES" },
+      { "value": "CR", "label": "CR" },
+      { "value": "CDMG", "label": "CDMG" }
+    ]
+  },
+  {
+    "part": "sphere",
+    "mainStat": [
+      { "value": "HP%", "label": "HP%" },
+      { "value": "ATK%", "label": "ATK%" },
+      { "value": "DEF%", "label": "DEF%" },
+      { "value": "PHYS%", "label": "PHYS%" },
+      { "value": "FIRE%", "label": "FIRE%" },
+      { "value": "ICE%", "label": "ICE%" },
+      { "value": "WIND%", "label": "WIND%" },
+      { "value": "ELEC%", "label": "ELEC%" },
+      { "value": "QUA%", "label": "QUA%" },
+      { "value": "IMG%", "label": "IMG%" }
+    ],
+    "subStat": [
+      { "value": "HP%", "label": "HP%" },
+      { "value": "ATK%", "label": "ATK%" },
+      { "value": "DEF%", "label": "DEF%" },
+      { "value": "SPD", "label": "SPD" },
+      { "value": "HP", "label": "HP" },
+      { "value": "ATK", "label": "ATK" },
+      { "value": "DEF", "label": "DEF" },
+      { "value": "BE", "label": "BE" },
+      { "value": "EHR", "label": "EHR" },
+      { "value": "ERES", "label": "ERES" },
+      { "value": "CR", "label": "CR" },
+      { "value": "CDMG", "label": "CDMG" }
+    ]
+  },
+  {
+    "part": "rope",
+    "mainStat": [
+      { "value": "HP%", "label": "HP%" },
+      { "value": "ATK%", "label": "ATK%" },
+      { "value": "DEF%", "label": "DEF%" },
+      { "value": "BE", "label": "BE" },
+      { "value": "ERR", "label": "ERR" }
+    ],
+    "subStat": [
+      { "value": "HP%", "label": "HP%" },
+      { "value": "ATK%", "label": "ATK%" },
+      { "value": "DEF%", "label": "DEF%" },
+      { "value": "SPD", "label": "SPD" },
+      { "value": "HP", "label": "HP" },
+      { "value": "ATK", "label": "ATK" },
+      { "value": "DEF", "label": "DEF" },
+      { "value": "BE", "label": "BE" },
+      { "value": "EHR", "label": "EHR" },
+      { "value": "ERES", "label": "ERES" },
+      { "value": "CR", "label": "CR" },
+      { "value": "CDMG", "label": "CDMG" }
+    ]
+  }
+]
