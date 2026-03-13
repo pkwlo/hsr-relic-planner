@@ -100,13 +100,50 @@ function groupRelicsByName(relics: any[]): Record<string, any[]> {
   return groups;
 }
 
-const RelicGroupEntry = ({ relic, onEdit }: { relic: any; onEdit: (relic: any) => void }) => {
+function statsEqual(a: any, b: any): boolean {
+  if (!a && !b) return true;
+  if (!a || !b) return false;
+  return (
+    a.mainS === b.mainS &&
+    a.sub1 === b.sub1 &&
+    a.sub2 === b.sub2 &&
+    a.sub3 === b.sub3 &&
+    a.sub4 === b.sub4
+  );
+}
+
+function relicStatsEqual(a: any, b: any): boolean {
+  return (
+    statsEqual(a.hatStats, b.hatStats) &&
+    statsEqual(a.gloveStats, b.gloveStats) &&
+    statsEqual(a.shoesStats, b.shoesStats) &&
+    statsEqual(a.bodyStats, b.bodyStats) &&
+    statsEqual(a.sphereStats, b.sphereStats) &&
+    statsEqual(a.ropeStats, b.ropeStats)
+  );
+}
+
+function mergeIdenticalRelics(relics: any[]): any[][] {
+  const groups: any[][] = [];
+  for (const relic of relics) {
+    const existing = groups.find((g) => relicStatsEqual(g[0], relic));
+    if (existing) {
+      existing.push(relic);
+    } else {
+      groups.push([relic]);
+    }
+  }
+  return groups;
+}
+
+const RelicGroupEntry = ({ relics, onEdit }: { relics: any[]; onEdit: (relic: any) => void }) => {
+  const relic = relics[0];
   return (
     <div
       className="flex gap-4 p-5"
       style={{ borderTop: "1px solid var(--border)" }}
     >
-      <div className="flex gap-3 flex-wrap flex-1">
+      <div className="flex gap-3 flex-wrap">
         <RelicCardMini part={relic.hatStats} name="Hat" />
         <RelicCardMini part={relic.gloveStats} name="Glove" />
         <RelicCardMini part={relic.shoesStats} name="Shoes" />
@@ -119,46 +156,52 @@ const RelicGroupEntry = ({ relic, onEdit }: { relic: any; onEdit: (relic: any) =
         style={{ borderLeft: "1px solid var(--border)", minWidth: 70 }}
       >
         <p className="text-xs font-semibold mb-2" style={{ color: "var(--foreground-muted)" }}>
-          Character
+          {relics.length > 1 ? "Characters" : "Character"}
         </p>
-        {relic.character ? (
-          <Image
-            src={"/char-images/" + relic.character.replaceAll(" ", "_") + ".png"}
-            alt={relic.character}
-            width={160}
-            height={188}
-            style={{
-              width: 48,
-              height: 55,
-              borderRadius: 12,
-              border: "2px solid rgba(255, 255, 255, 0.1)",
-            }}
-          />
-        ) : (
-          <p className="text-xs text-center" style={{ color: "var(--foreground-muted)" }}>
-            None
-          </p>
-        )}
-      </div>
-      <div className="flex flex-col items-center justify-start gap-1 ml-1">
-        <Image
-          src={edit}
-          alt="Edit"
-          height={16}
-          width={16}
-          style={{ cursor: "pointer", opacity: 0.6 }}
-          onClick={() => onEdit(relic)}
-          className="hover:opacity-100 transition-opacity"
-        />
-        <Image
-          src={deleteIcon}
-          alt="Delete"
-          height={16}
-          width={16}
-          style={{ cursor: "pointer", opacity: 0.6 }}
-          onClick={() => deleteRelic(relic.setId)}
-          className="hover:opacity-100 transition-opacity"
-        />
+        <div className="flex flex-row gap-3 items-start">
+          {relics.map((r) => (
+            <div key={r.setId} className="flex flex-col items-center gap-1">
+              {r.character ? (
+                <Image
+                  src={"/char-images/" + r.character.replaceAll(" ", "_") + ".png"}
+                  alt={r.character}
+                  width={160}
+                  height={188}
+                  style={{
+                    width: 48,
+                    height: 55,
+                    borderRadius: 12,
+                    border: "2px solid rgba(255, 255, 255, 0.1)",
+                  }}
+                />
+              ) : (
+                <p className="text-xs text-center" style={{ color: "var(--foreground-muted)" }}>
+                  None
+                </p>
+              )}
+              <div className="flex items-center gap-1">
+                <Image
+                  src={edit}
+                  alt="Edit"
+                  height={14}
+                  width={14}
+                  style={{ cursor: "pointer", opacity: 0.6 }}
+                  onClick={() => onEdit(r)}
+                  className="hover:opacity-100 transition-opacity"
+                />
+                <Image
+                  src={deleteIcon}
+                  alt="Delete"
+                  height={14}
+                  width={14}
+                  style={{ cursor: "pointer", opacity: 0.6 }}
+                  onClick={() => deleteRelic(r.setId)}
+                  className="hover:opacity-100 transition-opacity"
+                />
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -229,8 +272,8 @@ const RelicGroupCard = ({
       </button>
       {expanded && (
         <div>
-          {relics.map((relic: any, index: number) => (
-            <RelicGroupEntry key={relic.setId || index} relic={relic} onEdit={onEdit} />
+          {mergeIdenticalRelics(relics).map((group, index) => (
+            <RelicGroupEntry key={group[0].setId || index} relics={group} onEdit={onEdit} />
           ))}
         </div>
       )}
