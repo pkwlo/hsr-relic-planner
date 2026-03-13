@@ -5,7 +5,7 @@ import Sidebar from "@/components/Sidebar";
 import Header from "@/components/Header";
 
 export default function Home() {
-  const version = "v0.0.5 Alpha";
+  const version = "v0.0.6 Alpha";
   return (
     <>
       <Header />
@@ -42,6 +42,7 @@ export default function Home() {
                   Alpha
                 </p>
                 {[
+                  { ver: "v0.0.6", desc: "Move storage to local storage and add edit functionality" },
                   { ver: "v0.0.5", desc: "Site design overhaul" },
                   { ver: "v0.0.4", desc: "Add report bugs page" },
                   { ver: "v0.0.3", desc: "Add characters to inventory" },
