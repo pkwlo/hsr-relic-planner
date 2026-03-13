@@ -16,7 +16,7 @@ import relicSets from "@/app/relic-sets/relics.json";
 import deleteRelic from "./deleteRelic";
 import getRelics from "./getRelics";
 import getChars from "./getChars";
-import editRelic from "./editRelic";
+import EditRelic from "./EditRelic";
 import characterClick from "./characterClick";
 
 function getRelicImage(name: string): string | null {
@@ -50,7 +50,7 @@ const RelicCardMini = ({ part, name }: { part: any; name: string }) => {
         {name}
       </h3>
       <p className="text-xs font-medium mb-1.5" style={{ color: "var(--foreground-muted)" }}>
-        Main Stat
+        {/* Main Stat */}
       </p>
       {part.mainS && (
         <div
@@ -67,7 +67,7 @@ const RelicCardMini = ({ part, name }: { part: any; name: string }) => {
       {(part.sub1 || part.sub2 || part.sub3 || part.sub4) && (
         <>
           <p className="text-xs font-medium mb-1 mt-1" style={{ color: "var(--foreground-muted)" }}>
-            Sub Stats
+            {/* Sub Stats */}
           </p>
           {[part.sub1, part.sub2, part.sub3, part.sub4]
             .filter(Boolean)
@@ -100,13 +100,50 @@ function groupRelicsByName(relics: any[]): Record<string, any[]> {
   return groups;
 }
 
-const RelicGroupEntry = ({ relic }: { relic: any }) => {
+function statsEqual(a: any, b: any): boolean {
+  if (!a && !b) return true;
+  if (!a || !b) return false;
+  return (
+    a.mainS === b.mainS &&
+    a.sub1 === b.sub1 &&
+    a.sub2 === b.sub2 &&
+    a.sub3 === b.sub3 &&
+    a.sub4 === b.sub4
+  );
+}
+
+function relicStatsEqual(a: any, b: any): boolean {
+  return (
+    statsEqual(a.hatStats, b.hatStats) &&
+    statsEqual(a.gloveStats, b.gloveStats) &&
+    statsEqual(a.shoesStats, b.shoesStats) &&
+    statsEqual(a.bodyStats, b.bodyStats) &&
+    statsEqual(a.sphereStats, b.sphereStats) &&
+    statsEqual(a.ropeStats, b.ropeStats)
+  );
+}
+
+function mergeIdenticalRelics(relics: any[]): any[][] {
+  const groups: any[][] = [];
+  for (const relic of relics) {
+    const existing = groups.find((g) => relicStatsEqual(g[0], relic));
+    if (existing) {
+      existing.push(relic);
+    } else {
+      groups.push([relic]);
+    }
+  }
+  return groups;
+}
+
+const RelicGroupEntry = ({ relics, onEdit }: { relics: any[]; onEdit: (relic: any) => void }) => {
+  const relic = relics[0];
   return (
     <div
       className="flex gap-4 p-5"
       style={{ borderTop: "1px solid var(--border)" }}
     >
-      <div className="flex gap-3 flex-wrap flex-1">
+      <div className="flex gap-3 flex-wrap">
         <RelicCardMini part={relic.hatStats} name="Hat" />
         <RelicCardMini part={relic.gloveStats} name="Glove" />
         <RelicCardMini part={relic.shoesStats} name="Shoes" />
@@ -119,46 +156,52 @@ const RelicGroupEntry = ({ relic }: { relic: any }) => {
         style={{ borderLeft: "1px solid var(--border)", minWidth: 70 }}
       >
         <p className="text-xs font-semibold mb-2" style={{ color: "var(--foreground-muted)" }}>
-          Character
+          {relics.length > 1 ? "Characters" : "Character"}
         </p>
-        {relic.character ? (
-          <Image
-            src={"/char-images/" + relic.character.replaceAll(" ", "_") + ".png"}
-            alt={relic.character}
-            width={160}
-            height={188}
-            style={{
-              width: 48,
-              height: 55,
-              borderRadius: 12,
-              border: "2px solid rgba(255, 255, 255, 0.1)",
-            }}
-          />
-        ) : (
-          <p className="text-xs text-center" style={{ color: "var(--foreground-muted)" }}>
-            None
-          </p>
-        )}
-      </div>
-      <div className="flex flex-col items-center justify-start gap-1 ml-1">
-        <Image
-          src={edit}
-          alt="Edit"
-          height={16}
-          width={16}
-          style={{ cursor: "pointer", opacity: 0.6 }}
-          onClick={editRelic}
-          className="hover:opacity-100 transition-opacity"
-        />
-        <Image
-          src={deleteIcon}
-          alt="Delete"
-          height={16}
-          width={16}
-          style={{ cursor: "pointer", opacity: 0.6 }}
-          onClick={() => deleteRelic(relic.setId)}
-          className="hover:opacity-100 transition-opacity"
-        />
+        <div className="flex flex-row gap-3 items-start">
+          {relics.map((r) => (
+            <div key={r.setId} className="flex flex-col items-center gap-1">
+              {r.character ? (
+                <Image
+                  src={"/char-images/" + r.character.replaceAll(" ", "_") + ".png"}
+                  alt={r.character}
+                  width={160}
+                  height={188}
+                  style={{
+                    width: 48,
+                    height: 55,
+                    borderRadius: 12,
+                    border: "2px solid rgba(255, 255, 255, 0.1)",
+                  }}
+                />
+              ) : (
+                <p className="text-xs text-center" style={{ color: "var(--foreground-muted)" }}>
+                  None
+                </p>
+              )}
+              <div className="flex items-center gap-1">
+                <Image
+                  src={edit}
+                  alt="Edit"
+                  height={14}
+                  width={14}
+                  style={{ cursor: "pointer", opacity: 0.6 }}
+                  onClick={() => onEdit(r)}
+                  className="hover:opacity-100 transition-opacity"
+                />
+                <Image
+                  src={deleteIcon}
+                  alt="Delete"
+                  height={14}
+                  width={14}
+                  style={{ cursor: "pointer", opacity: 0.6 }}
+                  onClick={() => deleteRelic(r.setId)}
+                  className="hover:opacity-100 transition-opacity"
+                />
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -168,10 +211,12 @@ const RelicGroupCard = ({
   name,
   relics,
   globalExpanded,
+  onEdit,
 }: {
   name: string;
   relics: any[];
   globalExpanded: boolean;
+  onEdit: (relic: any) => void;
 }) => {
   const [expanded, setExpanded] = useState(true);
   const relicImage = getRelicImage(name);
@@ -227,8 +272,8 @@ const RelicGroupCard = ({
       </button>
       {expanded && (
         <div>
-          {relics.map((relic: any, index: number) => (
-            <RelicGroupEntry key={relic.setId || index} relic={relic} />
+          {mergeIdenticalRelics(relics).map((group, index) => (
+            <RelicGroupEntry key={group[0].setId || index} relics={group} onEdit={onEdit} />
           ))}
         </div>
       )}
@@ -240,10 +285,12 @@ const RelicList = ({
   items,
   emptyMessage,
   globalExpanded,
+  onEdit,
 }: {
   items: any[];
   emptyMessage: string;
   globalExpanded: boolean;
+  onEdit: (relic: any) => void;
 }) => {
   if (!items || items.length === 0) {
     return (
@@ -266,6 +313,7 @@ const RelicList = ({
           name={name}
           relics={relics}
           globalExpanded={globalExpanded}
+          onEdit={onEdit}
         />
       ))}
     </div>
@@ -344,61 +392,44 @@ const TabButton = ({
 export default function RelicDashboard() {
   const [charPopup, setCharPopup] = useState<boolean>(false);
   const [relicPopup, setRelicPopup] = useState<boolean>(false);
+  const [editingRelic, setEditingRelic] = useState<any | null>(null);
   const [relicData, setRelicData] = useState<any[]>([]);
   const [charData, setCharData] = useState<any[]>([]);
-  const [user, setUser] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<Tab>("relics");
   const [allExpanded, setAllExpanded] = useState(true);
 
   const { relics, ornaments } = splitByType(relicData ?? []);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      setUser(localStorage.getItem("email"));
-    }
+    setRelicData(getRelics());
+    setCharData(getChars());
   }, []);
-
-  useEffect(() => {
-    const fetchRelics = async () => {
-      try {
-        const data = await getRelics(user);
-        setRelicData(data);
-      } catch (error) {
-        console.error("Error fetching relics:", error);
-      }
-    };
-
-    const fetchChars = async () => {
-      try {
-        const data = await getChars(user);
-        setCharData(data);
-      } catch (error) {
-        console.error("Error fetching characters:", error);
-      }
-    };
-
-    if (user) {
-      fetchRelics();
-      fetchChars();
-    }
-  }, [user]);
 
   const addCharacter = (): void => {
     setCharPopup(true);
     setRelicPopup(false);
+    setEditingRelic(null);
   };
 
   const addRelic = (): void => {
     setRelicPopup(true);
     setCharPopup(false);
+    setEditingRelic(null);
+  };
+
+  const openEditRelic = (relic: any): void => {
+    setEditingRelic(relic);
+    setCharPopup(false);
+    setRelicPopup(false);
   };
 
   const closePopup = (): void => {
     setCharPopup(false);
     setRelicPopup(false);
+    setEditingRelic(null);
   };
 
-  return user ? (
+  return (
     <>
       <Header />
       <main className="flex flex-row min-h-screen">
@@ -452,16 +483,18 @@ export default function RelicDashboard() {
               items={relics}
               emptyMessage="No relic sets added yet. Add one to get started!"
               globalExpanded={allExpanded}
+              onEdit={openEditRelic}
             />
           ) : (
             <RelicList
               items={ornaments}
               emptyMessage="No ornament sets added yet. Add one to get started!"
               globalExpanded={allExpanded}
+              onEdit={openEditRelic}
             />
           )}
         </div>
-        {(charPopup || relicPopup) && (
+        {(charPopup || relicPopup || editingRelic) && (
           <div
             className="fixed inset-0 z-50 flex items-center justify-center"
             style={{ backgroundColor: "rgba(0, 0, 0, 0.6)", backdropFilter: "blur(4px)" }}
@@ -492,31 +525,15 @@ export default function RelicDashboard() {
                   backToChar={addCharacter}
                 />
               )}
+              {editingRelic && (
+                <EditRelic
+                  relic={editingRelic}
+                  closePopup={closePopup}
+                />
+              )}
             </div>
           </div>
         )}
-      </main>
-    </>
-  ) : (
-    <>
-      <Header />
-      <main className="flex flex-row min-h-screen">
-        <Sidebar />
-        <div className="flex-1 flex items-start p-8 animate-fade-in">
-          <div className="card p-8">
-            <h2 className="text-xl font-semibold mb-2">Get Started</h2>
-            <p className="text-sm" style={{ color: "var(--foreground-muted)" }}>
-              <a
-                href="/log-in"
-                className="font-medium"
-                style={{ color: "var(--accent)" }}
-              >
-                Log in
-              </a>{" "}
-              to start saving relics!
-            </p>
-          </div>
-        </div>
       </main>
     </>
   );
