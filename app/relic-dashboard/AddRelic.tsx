@@ -5,57 +5,87 @@ import stats from "@/app/relic-sets/stats.json";
 import styled from "@emotion/styled";
 import Image from "next/image";
 import Button from "@/components/ButtonWithDisable";
+import { saveRelic as saveRelicToStorage } from "@/lib/storage";
 
 const PartSelect = styled(Select)`
   color: #e8eaed;
   width: 150px;
   margin: 2px;
-
-  .css-13cymwt-control,
-  .css-t3ipsp-control {
-    background-color: var(--bg-secondary, #161822);
-    border-color: var(--border, rgba(255, 255, 255, 0.06));
-    border-radius: 8px;
-    min-height: 34px;
-  }
-
-  .css-t3ipsp-control {
-    border-color: var(--accent, #6c63ff);
-    box-shadow: 0 0 0 1px var(--accent, #6c63ff);
-  }
-
-  .css-1dimb5e-singleValue {
-    color: #e8eaed;
-    font-size: 0.8rem;
-  }
-
-  .css-1nmdiq5-menu {
-    background-color: var(--bg-surface, #1c1f2e);
-    border: 1px solid var(--border, rgba(255, 255, 255, 0.06));
-    border-radius: 8px;
-  }
-
-  .css-d7l1ni-option {
-    background-color: var(--bg-surface-hover, #252839);
-    color: #e8eaed;
-    font-size: 0.8rem;
-  }
-
-  .css-tr4s17-option {
-    background-color: var(--accent, #6c63ff);
-    color: white;
-    font-size: 0.8rem;
-  }
-
-  .css-1u9des2-indicatorSeparator {
-    display: none;
-  }
 `;
 
 const customStyles = {
+  control: (provided: any, state: any) => ({
+    ...provided,
+    backgroundColor: "var(--bg-secondary, #161822)",
+    borderColor: state.isFocused
+      ? "var(--accent, #6c63ff)"
+      : "var(--border, rgba(255, 255, 255, 0.06))",
+    borderRadius: 8,
+    minHeight: 34,
+    boxShadow: state.isFocused ? "0 0 0 1px var(--accent, #6c63ff)" : "none",
+    "&:hover": {
+      borderColor: state.isFocused
+        ? "var(--accent, #6c63ff)"
+        : "var(--border, rgba(255, 255, 255, 0.06))",
+    },
+  }),
+  singleValue: (provided: any) => ({
+    ...provided,
+    color: "#e8eaed",
+    fontSize: "0.8rem",
+  }),
+  menu: (provided: any) => ({
+    ...provided,
+    backgroundColor: "var(--bg-surface, #1c1f2e)",
+    border: "1px solid var(--border, rgba(255, 255, 255, 0.06))",
+    borderRadius: 8,
+  }),
   menuList: (provided: any) => ({
     ...provided,
     maxHeight: "200px",
+  }),
+  menuPortal: (provided: any) => ({
+    ...provided,
+    zIndex: 9999,
+  }),
+  option: (provided: any, state: any) => ({
+    ...provided,
+    backgroundColor: state.isSelected
+      ? "var(--accent, #6c63ff)"
+      : state.isFocused
+        ? "var(--bg-surface-hover, #252839)"
+        : "transparent",
+    color: state.isSelected ? "white" : "#e8eaed",
+    fontSize: "0.8rem",
+    "&:active": {
+      backgroundColor: "var(--accent, #6c63ff)",
+    },
+  }),
+  indicatorSeparator: () => ({
+    display: "none",
+  }),
+  input: (provided: any) => ({
+    ...provided,
+    color: "#e8eaed",
+  }),
+  placeholder: (provided: any) => ({
+    ...provided,
+    color: "rgba(232, 234, 237, 0.4)",
+    fontSize: "0.8rem",
+  }),
+  dropdownIndicator: (provided: any) => ({
+    ...provided,
+    color: "rgba(232, 234, 237, 0.4)",
+    "&:hover": {
+      color: "#e8eaed",
+    },
+  }),
+  clearIndicator: (provided: any) => ({
+    ...provided,
+    color: "rgba(232, 234, 237, 0.4)",
+    "&:hover": {
+      color: "#e8eaed",
+    },
   }),
 };
 
@@ -93,6 +123,18 @@ const PartSelector = ({
   const main = getStatsByPart(part, "main", stats);
   const sub = getStatsByPart(part, "sub", stats);
 
+  const selectedSubs = [sub1, sub2, sub3, sub4];
+  const filterSubs = (currentIndex: number) => {
+    const picked = selectedSubs
+      .filter((_, i) => i !== currentIndex)
+      .map((s) => s?.value)
+      .filter(Boolean);
+    return sub?.filter((opt: any) => !picked.includes(opt.value)) ?? [];
+  };
+
+  const portalTarget =
+    typeof document !== "undefined" ? document.body : undefined;
+
   return (
     <div className="flex flex-col p-4 rounded-lg" style={{ backgroundColor: "var(--bg-secondary)", border: "1px solid var(--border)" }}>
       <span className="text-sm font-semibold mb-2 capitalize" style={{ color: "var(--foreground)" }}>{part}</span>
@@ -104,39 +146,49 @@ const PartSelector = ({
         value={mainS}
         onChange={(selectedOption) => setMainS(selectedOption)}
         styles={customStyles}
+        menuPortalTarget={portalTarget}
+        menuPosition="fixed"
       />
       <span className="text-xs font-medium mt-2 mb-1" style={{ color: "var(--foreground-muted)" }}>Sub Stats</span>
       <PartSelect
-        options={sub}
+        options={filterSubs(0)}
         isClearable={true}
         isSearchable={true}
         value={sub1}
         onChange={(selectedOption) => setSub1(selectedOption)}
         styles={customStyles}
+        menuPortalTarget={portalTarget}
+        menuPosition="fixed"
       />
       <PartSelect
-        options={sub}
+        options={filterSubs(1)}
         isClearable={true}
         isSearchable={true}
         value={sub2}
         onChange={(selectedOption) => setSub2(selectedOption)}
         styles={customStyles}
+        menuPortalTarget={portalTarget}
+        menuPosition="fixed"
       />
       <PartSelect
-        options={sub}
+        options={filterSubs(2)}
         isClearable={true}
         isSearchable={true}
         value={sub3}
         onChange={(selectedOption) => setSub3(selectedOption)}
         styles={customStyles}
+        menuPortalTarget={portalTarget}
+        menuPosition="fixed"
       />
       <PartSelect
-        options={sub}
+        options={filterSubs(3)}
         isClearable={true}
         isSearchable={true}
         value={sub4}
         onChange={(selectedOption) => setSub4(selectedOption)}
         styles={customStyles}
+        menuPortalTarget={portalTarget}
+        menuPosition="fixed"
       />
     </div>
   );
@@ -320,7 +372,6 @@ const RelicListLengthTwo = ({
   closePopup: any;
 }) => {
   const [nextSection, setNextSection] = useState(false);
-  const [relicCounter, setRelicCounter] = useState(0);
   const [name, setName] = useState("");
   const [name2, setName2] = useState("");
   const name3 = "";
@@ -328,13 +379,11 @@ const RelicListLengthTwo = ({
   const type = getTypeByName(Object.keys(selectedRelics)[0], relics);
   const type2 = getTypeByName(Object.keys(selectedRelics)[1], relics);
 
-  useEffect(() => {
-    for (let relic in selectedRelics) {
-      if (getTypeByName(relic, relics) === "Relic Set") {
-        setRelicCounter((prev) => prev + 1);
-      }
-    }
+  const relicCounter = Object.keys(selectedRelics).filter(
+    (r) => getTypeByName(r, relics) === "Relic Set",
+  ).length;
 
+  useEffect(() => {
     if (type === "Planetary Ornament Set" && type2 === "Relic Set") {
       setName2(Object.keys(selectedRelics)[0]);
       setName(Object.keys(selectedRelics)[1]);
@@ -508,12 +557,7 @@ const RelicListLengthTwo = ({
                 )
               }
               disable={
-                type === "Relic Set"
-                  ? !hatStats.mainS ||
-                    !gloveStats.mainS ||
-                    !shoesStats.mainS ||
-                    !bodyStats.mainS
-                  : !sphereStats.mainS || !ropeStats.mainS
+                !sphereStats.mainS || !ropeStats.mainS
               }
             />
           </div>
@@ -596,12 +640,10 @@ const RelicListLengthTwo = ({
               )
             }
             disable={
-              type === "Relic Set"
-                ? !hatStats.mainS ||
-                  !gloveStats.mainS ||
-                  !shoesStats.mainS ||
-                  !bodyStats.mainS
-                : !sphereStats.mainS || !ropeStats.mainS
+              !hatStats.mainS ||
+              !gloveStats.mainS ||
+              !shoesStats.mainS ||
+              !bodyStats.mainS
             }
           />
         </div>
@@ -924,7 +966,7 @@ const clear = (
   });
 };
 
-async function save(
+function save(
   name: string,
   charSelected: string,
   hatStats: any,
@@ -934,7 +976,6 @@ async function save(
   sphereStats: any,
   ropeStats: any,
 ) {
-  const user = localStorage.getItem("email");
   const extractValues = (stats: {
     mainS: any;
     sub1: any;
@@ -949,37 +990,21 @@ async function save(
     sub4: stats.sub4 ? stats.sub4.value : null,
   });
 
-  try {
-    const res = await fetch("/api/saveRelic", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        user,
-        name,
-        type: getTypeByName(name, relics),
-        hatStats: extractValues(hatStats),
-        gloveStats: extractValues(gloveStats),
-        shoesStats: extractValues(shoesStats),
-        bodyStats: extractValues(bodyStats),
-        sphereStats: extractValues(sphereStats),
-        ropeStats: extractValues(ropeStats),
-        character: charSelected,
-      }),
-    });
+  const type = getTypeByName(name, relics);
 
-    const data = await res.json();
-
-    if (data.error) {
-      console.error("Error saving relic:", data.error);
-    }
-  } catch (error) {
-    console.error("Error saving relic:", error);
-  }
+  saveRelicToStorage({
+    name,
+    character: charSelected,
+    hatStats: type === "Relic Set" ? extractValues(hatStats) : null,
+    gloveStats: type === "Relic Set" ? extractValues(gloveStats) : null,
+    shoesStats: type === "Relic Set" ? extractValues(shoesStats) : null,
+    bodyStats: type === "Relic Set" ? extractValues(bodyStats) : null,
+    sphereStats: type === "Planetary Ornament Set" ? extractValues(sphereStats) : null,
+    ropeStats: type === "Planetary Ornament Set" ? extractValues(ropeStats) : null,
+  });
 }
 
-async function saveAll(
+function saveAll(
   name: string,
   name2: string,
   name3: string,
@@ -991,43 +1016,12 @@ async function saveAll(
   sphereStats: any,
   ropeStats: any,
 ) {
-  try {
-    await save(
-      name,
-      charSelected,
-      hatStats,
-      gloveStats,
-      shoesStats,
-      bodyStats,
-      sphereStats,
-      ropeStats,
-    );
-    if (name2 !== "") {
-      await save(
-        name2,
-        charSelected,
-        hatStats,
-        gloveStats,
-        shoesStats,
-        bodyStats,
-        sphereStats,
-        ropeStats,
-      );
-    }
-    if (name3 !== "") {
-      await save(
-        name3,
-        charSelected,
-        hatStats,
-        gloveStats,
-        shoesStats,
-        bodyStats,
-        sphereStats,
-        ropeStats,
-      );
-    }
-  } catch (error) {
-    console.error("Error during save:", error);
+  save(name, charSelected, hatStats, gloveStats, shoesStats, bodyStats, sphereStats, ropeStats);
+  if (name2 !== "") {
+    save(name2, charSelected, hatStats, gloveStats, shoesStats, bodyStats, sphereStats, ropeStats);
+  }
+  if (name3 !== "") {
+    save(name3, charSelected, hatStats, gloveStats, shoesStats, bodyStats, sphereStats, ropeStats);
   }
   if (typeof window !== "undefined") {
     window.location.href = "/relic-dashboard";
