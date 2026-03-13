@@ -50,7 +50,7 @@ const RelicCardMini = ({ part, name }: { part: any; name: string }) => {
         {name}
       </h3>
       <p className="text-xs font-medium mb-1.5" style={{ color: "var(--foreground-muted)" }}>
-        Main Stat
+        {/* Main Stat */}
       </p>
       {part.mainS && (
         <div
@@ -67,7 +67,7 @@ const RelicCardMini = ({ part, name }: { part: any; name: string }) => {
       {(part.sub1 || part.sub2 || part.sub3 || part.sub4) && (
         <>
           <p className="text-xs font-medium mb-1 mt-1" style={{ color: "var(--foreground-muted)" }}>
-            Sub Stats
+            {/* Sub Stats */}
           </p>
           {[part.sub1, part.sub2, part.sub3, part.sub4]
             .filter(Boolean)
@@ -346,42 +346,15 @@ export default function RelicDashboard() {
   const [relicPopup, setRelicPopup] = useState<boolean>(false);
   const [relicData, setRelicData] = useState<any[]>([]);
   const [charData, setCharData] = useState<any[]>([]);
-  const [user, setUser] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<Tab>("relics");
   const [allExpanded, setAllExpanded] = useState(true);
 
   const { relics, ornaments } = splitByType(relicData ?? []);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      setUser(localStorage.getItem("email"));
-    }
+    setRelicData(getRelics());
+    setCharData(getChars());
   }, []);
-
-  useEffect(() => {
-    const fetchRelics = async () => {
-      try {
-        const data = await getRelics(user);
-        setRelicData(data);
-      } catch (error) {
-        console.error("Error fetching relics:", error);
-      }
-    };
-
-    const fetchChars = async () => {
-      try {
-        const data = await getChars(user);
-        setCharData(data);
-      } catch (error) {
-        console.error("Error fetching characters:", error);
-      }
-    };
-
-    if (user) {
-      fetchRelics();
-      fetchChars();
-    }
-  }, [user]);
 
   const addCharacter = (): void => {
     setCharPopup(true);
@@ -398,7 +371,7 @@ export default function RelicDashboard() {
     setRelicPopup(false);
   };
 
-  return user ? (
+  return (
     <>
       <Header />
       <main className="flex flex-row min-h-screen">
@@ -495,28 +468,6 @@ export default function RelicDashboard() {
             </div>
           </div>
         )}
-      </main>
-    </>
-  ) : (
-    <>
-      <Header />
-      <main className="flex flex-row min-h-screen">
-        <Sidebar />
-        <div className="flex-1 flex items-start p-8 animate-fade-in">
-          <div className="card p-8">
-            <h2 className="text-xl font-semibold mb-2">Get Started</h2>
-            <p className="text-sm" style={{ color: "var(--foreground-muted)" }}>
-              <a
-                href="/log-in"
-                className="font-medium"
-                style={{ color: "var(--accent)" }}
-              >
-                Log in
-              </a>{" "}
-              to start saving relics!
-            </p>
-          </div>
-        </div>
       </main>
     </>
   );

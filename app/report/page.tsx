@@ -5,31 +5,18 @@ import Sidebar from "@/components/Sidebar";
 import Header from "@/components/Header";
 import Button from "@/components/Button";
 
-async function AddBug(title: string, description: string) {
-  const user = localStorage.getItem("email");
-  try {
-    const res = await fetch("/api/addBug", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        user,
-        title,
-        description,
-      }),
-    });
-
-    const data = await res.json();
-  } catch (error) {
-    console.error("Error submitting bug", error);
-  }
+function sendBugReport(title: string, description: string) {
+  const email = "pkwlo1992@gmail.com";
+  const subject = encodeURIComponent(`[Bug Report] ${title}`);
+  const body = encodeURIComponent(
+    `Bug Report\n\nTitle: ${title}\n\nDescription:\n${description}`,
+  );
+  window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
 }
 
 export default function ReportBug() {
   const [title, setTitle] = React.useState("");
   const [description, setDescription] = React.useState("");
-  const [screenshot, setScreenshot] = React.useState(null);
 
   return (
     <>
@@ -46,9 +33,10 @@ export default function ReportBug() {
             <p className="text-sm mb-6" style={{ color: "var(--foreground-muted)" }}>
               Fields indicated with a{" "}
               <span style={{ color: "#ef4444" }}>*</span> are required.
+              Clicking submit will open your email client.
             </p>
 
-            <form className="flex flex-col gap-5">
+            <form className="flex flex-col gap-5" onSubmit={(e) => e.preventDefault()}>
               <div className="flex flex-col gap-1.5">
                 <label className="text-sm font-medium">
                   Title <span style={{ color: "#ef4444" }}>*</span>
@@ -57,6 +45,7 @@ export default function ReportBug() {
                   type="text"
                   className="input-field"
                   placeholder="Brief summary of the issue"
+                  value={title}
                   onChange={(e) => setTitle(e.target.value)}
                 />
               </div>
@@ -73,29 +62,14 @@ export default function ReportBug() {
                   className="input-field"
                   rows={6}
                   placeholder="Describe the bug in detail..."
+                  value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   style={{ resize: "vertical" }}
                 />
               </div>
 
-              <div className="flex flex-col gap-1.5">
-                <label className="text-sm font-medium">
-                  Screenshot
-                </label>
-                <p className="text-xs" style={{ color: "var(--foreground-muted)" }}>
-                  Attach an image to help us understand the issue better.
-                </p>
-                <input
-                  type="file"
-                  className="text-sm file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-medium file:cursor-pointer transition-all"
-                  style={{
-                    color: "var(--foreground-muted)",
-                  }}
-                />
-              </div>
-
               <div className="pt-2">
-                <Button text="Submit" onClick={() => AddBug(title, description)} />
+                <Button text="Submit" onClick={() => sendBugReport(title, description)} />
               </div>
             </form>
           </div>

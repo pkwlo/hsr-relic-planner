@@ -1,31 +1,40 @@
 "use client";
 
-import React from "react";
-import { useEffect } from "react";
+import React, { useRef } from "react";
 import Button from "@/components/Button";
-
-const logOut = () => {
-  if (typeof window !== "undefined") {
-    localStorage.removeItem("loggedIn");
-    localStorage.removeItem("email");
-    window.location.reload();
-  }
-};
-
-function goTo(path: string) {
-  window.location.href = path;
-}
+import { exportData, importData, downloadJson, ExportPayload } from "@/lib/storage";
 
 const Header = () => {
-  const [loggedIn, setLoggedIn] = React.useState<boolean>(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      if (localStorage.getItem("loggedIn") === "true") {
-        setLoggedIn(true);
+  const handleExport = () => {
+    const data = exportData();
+    downloadJson(data, `hsr-relics-${new Date().toISOString().slice(0, 10)}.json`);
+  };
+
+  const handleImportClick = () => {
+    fileInputRef.current?.click();
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      try {
+        const payload: ExportPayload = JSON.parse(event.target?.result as string);
+        const result = importData(payload);
+        alert(`Imported ${result.count} relic set(s). Reloading...`);
+        window.location.reload();
+      } catch (err) {
+        alert("Failed to import: invalid file format.");
+        console.error(err);
       }
-    }
-  }, []);
+    };
+    reader.readAsText(file);
+    e.target.value = "";
+  };
 
   return (
     <header
@@ -40,14 +49,17 @@ const Header = () => {
       <h1 className="text-xl font-bold tracking-tight gradient-text">
         HSR Relic Planner
       </h1>
-      {loggedIn ? (
-        <Button text="Log Out" onClick={() => logOut()} />
-      ) : (
-        <div className="flex gap-2">
-          <Button text="Log In" onClick={() => goTo("/log-in")} />
-          <Button text="Register" onClick={() => goTo("/register")} />
-        </div>
-      )}
+      <div className="flex gap-2">
+        <Button text="Export Data" onClick={handleExport} />
+        <Button text="Import Data" onClick={handleImportClick} />
+        <input
+          ref={fileInputRef}
+          type="file"
+          accept=".json"
+          onChange={handleFileChange}
+          style={{ display: "none" }}
+        />
+      </div>
     </header>
   );
 };
